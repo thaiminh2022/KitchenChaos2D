@@ -13,8 +13,8 @@ scale = Vector2(0.5, 0.5)
 script = ExtResource("2_aw3df")
 kitchenObjectResPath = "res://ScriptableObjects/KitchenObjectRes/sliced_tomato.tres"
 
-[node name="extra visual" type="Node2D" parent="."]
-position = Vector2(2.66667, 0)
+[node name="extra visual" type="CanvasGroup" parent="."]
+position = Vector2(4, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="extra visual"]
 position = Vector2(-1.33333, 1.33333)

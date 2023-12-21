@@ -30,5 +30,5 @@ scale = Vector2(1.5, 1.5)
 script = ExtResource("8_jnnq1")
 clearCounter = NodePath("..")
 
-[node name="ProgressBar" parent="." index="4" node_paths=PackedStringArray("cuttingCounter") instance=ExtResource("9_qp6t5")]
-cuttingCounter = NodePath("..")
+[node name="ProgressBar" parent="." index="4" node_paths=PackedStringArray("hasProgressObject") instance=ExtResource("9_qp6t5")]
+hasProgressObject = NodePath("..")

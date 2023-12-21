@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtkphuogtaclf"]
+[gd_scene load_steps=11 format=3 uid="uid://dtkphuogtaclf"]
 
 [ext_resource type="PackedScene" uid="uid://o42dk2t8dngk" path="res://nodes/Counters/_baseCounter.tscn" id="1_7kh13"]
 [ext_resource type="Script" path="res://scripts/Counters/StoveCounter.cs" id="2_ml0pt"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://7oogp2jwxpki" path="res://ScriptableObjects/FryingRecipeRes/MeatUncooked-MeatCooked.tres" id="3_xxgo0"]
 [ext_resource type="Resource" uid="uid://cuwcnl0ggdn5l" path="res://ScriptableObjects/BurningRecipe/CookedMeat-BurnedMeat.tres" id="4_s1mt8"]
 [ext_resource type="Script" path="res://scripts/Counters/StoveCounterVisual.cs" id="6_jsgj1"]
+[ext_resource type="PackedScene" uid="uid://cekh08eiiw143" path="res://nodes/progress_bar.tscn" id="8_e30dq"]
 
 [sub_resource type="Curve" id="Curve_ejqh7"]
 _data = [Vector2(0.0650888, 1), 0.0, 0.0, 0, 0, Vector2(0.789941, 0.494737), -0.418576, -0.418576, 0, 0, Vector2(1, 0.0210526), 0.0, 0.0, 0, 0]
@@ -60,3 +61,6 @@ one_shot = true
 
 [node name="BurningTimer" type="Timer" parent="." index="5"]
 one_shot = true
+
+[node name="ProgressBar" parent="." index="6" node_paths=PackedStringArray("hasProgressObject") instance=ExtResource("8_e30dq")]
+hasProgressObject = NodePath("..")

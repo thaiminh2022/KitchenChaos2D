@@ -1,12 +1,11 @@
 using Godot;
+using System;
 
 
 public partial class CuttingCounter : BaseCounter, IHasProgress
 {
-	[Signal]
-	public delegate void ProgressChangedEventHandler(float progressNormalized);
-	[Signal]
-	public delegate void CutEventHandler();
+	public event EventHandler<float> OnProgressChanged;
+	public event EventHandler OnCut;
 
 
 	[Export] private CuttingRecipeRes[] cuttingRecipes;
@@ -27,7 +26,7 @@ public partial class CuttingCounter : BaseCounter, IHasProgress
 					player.GetKitchenObject().SetKitchenObjectParent(this);
 					cuttingProgress = 0;
 
-					EmitSignal(SignalName.ProgressChanged, 0f);
+					OnProgressChanged?.Invoke(this, 0f);
 
 				}
 			}
@@ -58,8 +57,9 @@ public partial class CuttingCounter : BaseCounter, IHasProgress
 			cuttingProgress++;
 			var recipe = GetCuttingRecipeWithInput(GetKitchenObject().GetKitchenObjectRes());
 			
-			EmitSignal(SignalName.ProgressChanged, (float)cuttingProgress / recipe.cuttingProgressMax);
-			EmitSignal(SignalName.Cut);
+			OnProgressChanged?.Invoke(this, (float)cuttingProgress / recipe.cuttingProgressMax);
+
+			OnCut?.Invoke(this, EventArgs.Empty);
 
 			if (cuttingProgress >= recipe.cuttingProgressMax)
 			{

@@ -17,12 +17,15 @@ public static class Constants
 		if (nodeParent is not null)
 		{
 			nodeParent.RemoveChild(node);
-			newParent.AddChild(node);
 		}
-		else
-		{
-			newParent.AddChild(node);
-		}
+		newParent.AddChild(node);
+
+	}
+
+	public static double GetTimeProgressNormalized(this Timer timer)
+	{
+		return timer.TimeLeft / timer.WaitTime;
+
 	}
 
 }

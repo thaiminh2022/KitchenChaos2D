@@ -5,10 +5,10 @@ public partial class SelectedCounterVisual : Node2D
 	[Export] private BaseCounter clearCounter;
 	public override void _Ready()
 	{
-		Player.Instance.SelectedCounterChange += OnCounterChange;
+		Player.Instance.OnSelectedCoutnerChange += OnCounterChange;
 	}
 
-	private void OnCounterChange(BaseCounter selectedCounter)
+	private void OnCounterChange(object sender, BaseCounter selectedCounter)
 	{
 		if (selectedCounter == clearCounter)
 		{

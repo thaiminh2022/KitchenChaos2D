@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 
 public partial class CuttingCounterVisual : AnimatedSprite2D
@@ -13,14 +14,13 @@ public partial class CuttingCounterVisual : AnimatedSprite2D
 	public override void _Ready()
 	{
 		AnimationFinished += OnAnimationFinished;
-
-		cuttingCounter.Cut += CuttingCounter_OnCut;
+		cuttingCounter.OnCut += CuttingCounter_OnCut;
 
 
 		PlayAnimation(IDLE);
 	}
 
-	private void CuttingCounter_OnCut()
+	private void CuttingCounter_OnCut(object sender, EventArgs e)
 	{
 		PlayAnimation(CUT);
 	}

@@ -1,6 +1,6 @@
 using Godot;
-using static Godot.WebRtcDataChannel;
-public partial class StoveCounter : BaseCounter
+using System;
+public partial class StoveCounter : BaseCounter, IHasProgress
 {
 	public enum State {
 		Idle, 
@@ -11,9 +11,8 @@ public partial class StoveCounter : BaseCounter
 
 	// State for other components to use.
 	private State state;
-
-	[Signal] public delegate void StateChangedEventHandler(State newState);
-
+	public event EventHandler<State> OnStateChanged;
+	public event EventHandler<float> OnProgressChanged;
 
 	[Export] private FryingRecipeRes[] fryingRecipes;
 	[Export] private BurningRecipeRes[] burningRecipes;
@@ -28,20 +27,37 @@ public partial class StoveCounter : BaseCounter
 
 	public override void _Ready()
 	{
-
 		ChangeState(State.Idle);
 
 		fryingTimer.Timeout += OnFried;
 		burningTimer.Timeout += OnBurned;
+
 	}
+
+	public override void _Process(double delta)
+	{
+		if(!fryingTimer.IsStopped())
+		{
+			// Stove is still frying stuff
+			OnProgressChanged?.Invoke(this, 1 - (float)fryingTimer.GetTimeProgressNormalized());
+
+		}
+
+		if (!burningTimer.IsStopped())
+		{
+			OnProgressChanged?.Invoke(this, (float)burningTimer.GetTimeProgressNormalized());
+		}
+	}
+
 
 	private void OnFried()
 	{
 		GetKitchenObject().DestroySelf();
-
 		KitchenObject.SpawnKitchenObject(fryingRecipeRes.output, this);
+		
 		ChangeState(State.Fried);
 
+		fryingTimer.Stop();
 
 		// Item is fried but still on the stove so it's BURNING
 		burningTimer.WaitTime = burningRecipeRes.burningTimeMax;
@@ -53,6 +69,8 @@ public partial class StoveCounter : BaseCounter
 	{
 		ChangeState(State.Burned);
 
+		// Invoke to clamped the value 
+		OnProgressChanged?.Invoke(this, 0f);
 
 		// Destroy the normal object
 		GetKitchenObject().DestroySelf();
@@ -86,8 +104,8 @@ public partial class StoveCounter : BaseCounter
 				// Set up frying timer
 				fryingTimer.WaitTime = fryingRecipeRes.fryingTimerMax;
 				fryingTimer.Start();
-				ChangeState(State.Frying);
 
+				ChangeState(State.Frying);
 			}
 		}
 		else
@@ -108,6 +126,7 @@ public partial class StoveCounter : BaseCounter
 			burningTimer.Stop();
 
 			ChangeState(State.Idle);
+			OnProgressChanged?.Invoke(this, 0f);
 		}
 	}
 
@@ -155,6 +174,7 @@ public partial class StoveCounter : BaseCounter
 		GD.Print("Stove state: ", state);
 
 		// Cast to an int since variant does not allow enum
-		EmitSignal(SignalName.StateChanged, (int)newState);
+		OnStateChanged?.Invoke(this, state);
 	}
+
 }

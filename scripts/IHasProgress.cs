@@ -1,8 +1,8 @@
 ﻿using Godot;
+using System;
 
 public interface IHasProgress
 {
-    [Signal]
-    delegate void ProgressChangedEventHandler(float progressNormalized);
+    public event EventHandler<float> OnProgressChanged;
 }
 

@@ -13,10 +13,10 @@ public partial class StoveCounterVisual : AnimatedSprite2D
 
 	public override void _Ready()
 	{
-		stoveCoutner.StateChanged += StoveCoutner_StateChanged;
+		stoveCoutner.OnStateChanged += StoveCoutner_StateChanged;
 	}
 
-	private void StoveCoutner_StateChanged(StoveCounter.State newState)
+	private void StoveCoutner_StateChanged(object sender, StoveCounter.State newState)
 	{
 		bool showVisual = newState == StoveCounter.State.Frying 
 			|| newState == StoveCounter.State.Fried;

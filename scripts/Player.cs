@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 
 public partial class Player : CharacterBody2D, IKitchenObjectParent
@@ -6,8 +7,7 @@ public partial class Player : CharacterBody2D, IKitchenObjectParent
 	public static Player Instance { get; private set; }
 
 
-	[Signal]
-	public delegate void SelectedCounterChangeEventHandler(BaseCounter selectedCounter);
+	public event EventHandler<BaseCounter>OnSelectedCoutnerChange;
 
 	[Export] private float moveSpeed;
 	[Export] private RayCast2D rayCast;
@@ -77,7 +77,7 @@ public partial class Player : CharacterBody2D, IKitchenObjectParent
 	private void SetSelectedCounter(BaseCounter newSelectedCounter)
 	{
 		selectedCounter = newSelectedCounter;
-		EmitSignal(SignalName.SelectedCounterChange, selectedCounter);
+		OnSelectedCoutnerChange?.Invoke(this, selectedCounter);
 	}
 
 	private void HandleMove()

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://diqnyotlt8kej"]
+
+[ext_resource type="PackedScene" uid="uid://o42dk2t8dngk" path="res://nodes/Counters/_baseCounter.tscn" id="1_brrth"]
+[ext_resource type="Script" path="res://scripts/Counters/PlateCounter.cs" id="2_kbeot"]
+
+[node name="Counter" instance=ExtResource("1_brrth")]
+script = ExtResource("2_kbeot")
+
+[node name="SpawnPlateTimer" type="Timer" parent="." index="2"]
+wait_time = 4.0
