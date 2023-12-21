@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://cekh08eiiw143"]
+
+[ext_resource type="Script" path="res://scripts/Counters/ProgressBarUI.cs" id="1_ijegf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rsp21"]
+bg_color = Color(0.192157, 0.192157, 0.192157, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.117647, 0.117647, 0.117647, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krby2"]
+bg_color = Color(0.862745, 0.54902, 0.180392, 1)
+
+[node name="ProgressBar" type="ProgressBar" node_paths=PackedStringArray("cuttingCounter")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -15.0
+offset_right = 5.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_rsp21")
+theme_override_styles/fill = SubResource("StyleBoxFlat_krby2")
+max_value = 1.0
+value = 0.3
+show_percentage = false
+script = ExtResource("1_ijegf")
+cuttingCounter = NodePath("")

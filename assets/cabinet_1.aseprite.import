@@ -1,0 +1,29 @@
+[remap]
+
+importer="Aseprite AnimatedSprite2D"
+type="PackedScene"
+uid="uid://cr1jyfo6eyeqg"
+path="res://.godot/imported/cabinet_1.aseprite-b5e46bd1ce150bb8dac562593a19d51d.scn"
+
+[deps]
+
+source_file="res://assets/cabinet_1.aseprite"
+dest_files=["res://.godot/imported/cabinet_1.aseprite-b5e46bd1ce150bb8dac562593a19d51d.scn"]
+
+[params]
+
+animation/default/name="default"
+animation/default/direction=0
+animation/default/repeat_count=0
+animation/autoplay_name=""
+atlas_textures/region_filter_clip_enabled=false
+root_node_name=""
+middle_import_script=""
+post_import_script=""
+sprite_sheet/edges_artifacts_avoidance_method=0
+sprite_sheet/sprites_surrounding_color=Color(1, 1, 1, 0)
+sprite_sheet/layout=0
+sprite_sheet/max_cells_in_strip=0
+sprite_sheet/trim_sprites_to_overall_min_size=true
+sprite_sheet/collapse_transparent_sprites=true
+sprite_sheet/merge_duplicated_sprites=true

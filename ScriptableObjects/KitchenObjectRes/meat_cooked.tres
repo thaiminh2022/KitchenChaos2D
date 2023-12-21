@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="KitchenObjectRes" load_steps=4 format=3 uid="uid://dhqvyex3kxl8k"]
+
+[ext_resource type="Texture2D" uid="uid://bjx4w67yiw1t8" path="res://assets/meat_cooked.aseprite" id="1_7blgr"]
+[ext_resource type="PackedScene" uid="uid://bdkuqb6j7kauw" path="res://nodes/Kitchen Objects/meat_cooked.tscn" id="2_on5bg"]
+[ext_resource type="Script" path="res://scripts/CustomResources/KitchenObjectRes.cs" id="3_14hvg"]
+
+[resource]
+script = ExtResource("3_14hvg")
+node = ExtResource("2_on5bg")
+icon = ExtResource("1_7blgr")
+objectName = "Cooked Meat"

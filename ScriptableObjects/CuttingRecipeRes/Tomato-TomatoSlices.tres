@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CuttingRecipeRes" load_steps=4 format=3 uid="uid://bnojfq8u1shye"]
+
+[ext_resource type="Script" path="res://scripts/CustomResources/CuttingRecipeRes.cs" id="1_ewj1p"]
+[ext_resource type="Resource" uid="uid://bgasvp6xoxo4w" path="res://ScriptableObjects/KitchenObjectRes/tomato.tres" id="1_nfxsx"]
+[ext_resource type="Resource" uid="uid://dq3n1jpohgvnp" path="res://ScriptableObjects/KitchenObjectRes/sliced_tomato.tres" id="1_wk2ib"]
+
+[resource]
+script = ExtResource("1_ewj1p")
+input = ExtResource("1_nfxsx")
+output = ExtResource("1_wk2ib")
+cuttingProgressMax = 3

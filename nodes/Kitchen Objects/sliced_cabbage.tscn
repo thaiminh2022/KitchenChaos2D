@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcoessvm3xl4i"]
+
+[ext_resource type="Texture2D" uid="uid://blxs3ww2dwrdw" path="res://assets/slice_cabbage.aseprite" id="1_xhtsq"]
+[ext_resource type="Script" path="res://scripts/KitchenObject.cs" id="2_flitp"]
+
+[node name="cabbage" type="Sprite2D"]
+z_index = 1
+y_sort_enabled = true
+rotation = 1.12503
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_xhtsq")
+
+[node name="KitchenObject" type="Node2D" parent="."]
+script = ExtResource("2_flitp")
+kitchenObjectResPath = "res://ScriptableObjects/KitchenObjectRes/sliced_cabbage.tres"
+
+[node name="extra visual" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="extra visual"]
+position = Vector2(2.40608, 1.14973)
+rotation = 0.262956
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("1_xhtsq")

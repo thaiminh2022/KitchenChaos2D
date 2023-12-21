@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://chi186ow6co16"]
+
+[ext_resource type="Texture2D" uid="uid://m5jkve6klfen" path="res://assets/cheese.aseprite" id="1_wutc7"]
+[ext_resource type="Script" path="res://scripts/KitchenObject.cs" id="2_pyjge"]
+
+[node name="cheese" type="Sprite2D"]
+z_index = 1
+y_sort_enabled = true
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_wutc7")
+
+[node name="KitchenObject" type="Node2D" parent="."]
+script = ExtResource("2_pyjge")
+kitchenObjectResPath = "res://ScriptableObjects/KitchenObjectRes/cheese.tres"

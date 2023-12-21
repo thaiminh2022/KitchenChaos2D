@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyx6kka2ov7ih"]
+
+[ext_resource type="Texture2D" uid="uid://by3kdiyj35bgv" path="res://assets/tomato.aseprite" id="1_idjb3"]
+[ext_resource type="Script" path="res://scripts/KitchenObject.cs" id="2_vu0jp"]
+
+[node name="tomato" type="Sprite2D"]
+z_index = 1
+y_sort_enabled = true
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_idjb3")
+
+[node name="KitchenObject" type="Node2D" parent="."]
+script = ExtResource("2_vu0jp")
+kitchenObjectResPath = "res://ScriptableObjects/KitchenObjectRes/tomato.tres"

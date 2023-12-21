@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkvbnwkxtb3d3"]
+
+[ext_resource type="Script" path="res://scripts/Player.cs" id="1_hi7lg"]
+[ext_resource type="PackedScene" uid="uid://b1uiigwy1bylq" path="res://assets/player.aseprite" id="2_g4cc5"]
+[ext_resource type="Script" path="res://scripts/PlayerAnimator.cs" id="3_vjadu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hbwqn"]
+size = Vector2(14, 10)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("rayCast", "playerHoldingPoint")]
+motion_mode = 1
+script = ExtResource("1_hi7lg")
+moveSpeed = 50.0
+rayCast = NodePath("RayCast2D")
+playerHoldingPoint = NodePath("PlayerAnimator/PlayerHoldingPoint")
+
+[node name="PlayerAnimator" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_g4cc5")]
+z_index = 2
+animation = &"walk"
+script = ExtResource("3_vjadu")
+player = NodePath("..")
+
+[node name="PlayerHoldingPoint" type="Marker2D" parent="PlayerAnimator"]
+position = Vector2(-9, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_hbwqn")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, 6)
+target_position = Vector2(8, 0)
+hit_from_inside = true

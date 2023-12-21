@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dixu1juxtujbn"]
+
+[ext_resource type="Texture2D" uid="uid://07u5dtekvhse" path="res://assets/meat_burned.aseprite" id="1_6foko"]
+[ext_resource type="Script" path="res://scripts/KitchenObject.cs" id="2_vlm7u"]
+
+[node name="meat_burned" type="Sprite2D"]
+z_index = 1
+y_sort_enabled = true
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_6foko")
+
+[node name="KitchenObject" type="Node2D" parent="."]
+script = ExtResource("2_vlm7u")
+kitchenObjectResPath = "res://ScriptableObjects/KitchenObjectRes/meat_burned.tres"

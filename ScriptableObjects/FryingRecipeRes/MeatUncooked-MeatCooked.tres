@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FryingRecipeRes" load_steps=4 format=3 uid="uid://7oogp2jwxpki"]
+
+[ext_resource type="Resource" uid="uid://l5wasriy6m2i" path="res://ScriptableObjects/KitchenObjectRes/meat_raw.tres" id="1_360bq"]
+[ext_resource type="Script" path="res://scripts/CustomResources/FryingRecipeRes.cs" id="1_ufwfy"]
+[ext_resource type="Resource" uid="uid://dhqvyex3kxl8k" path="res://ScriptableObjects/KitchenObjectRes/meat_cooked.tres" id="2_ev5et"]
+
+[resource]
+script = ExtResource("1_ufwfy")
+input = ExtResource("1_360bq")
+output = ExtResource("2_ev5et")
+fryingTimerMax = 3.0

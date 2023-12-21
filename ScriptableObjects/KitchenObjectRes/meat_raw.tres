@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="KitchenObjectRes" load_steps=4 format=3 uid="uid://l5wasriy6m2i"]
+
+[ext_resource type="Texture2D" uid="uid://d0hfv3428xcii" path="res://assets/meat_raw.aseprite" id="1_t7n3t"]
+[ext_resource type="PackedScene" uid="uid://bveek8agejnxk" path="res://nodes/Kitchen Objects/meat_raw.tscn" id="2_yubdk"]
+[ext_resource type="Script" path="res://scripts/CustomResources/KitchenObjectRes.cs" id="3_pyl3n"]
+
+[resource]
+script = ExtResource("3_pyl3n")
+node = ExtResource("2_yubdk")
+icon = ExtResource("1_t7n3t")
+objectName = "Raw Meat"

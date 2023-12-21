@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://gutp4i82t86q"]
+
+[ext_resource type="PackedScene" uid="uid://ccwsc4cd6xcsv" path="res://nodes/Counters/containerCounterUp.tscn" id="1_a5xi8"]
+[ext_resource type="PackedScene" uid="uid://c45ko0byu6jqk" path="res://nodes/Kitchen Objects/bread.tscn" id="3_axcm4"]
+[ext_resource type="Texture2D" uid="uid://q8sevrfrkdxm" path="res://assets/burger_bun.aseprite" id="3_fmp8c"]
+[ext_resource type="Script" path="res://scripts/CustomResources/KitchenObjectRes.cs" id="4_ai8vd"]
+
+[sub_resource type="Resource" id="Resource_vranj"]
+script = ExtResource("4_ai8vd")
+node = ExtResource("3_axcm4")
+icon = ExtResource("3_fmp8c")
+objectName = "Burger Bun"
+
+[node name="ContainerCounterUp_BurgerBun" instance=ExtResource("1_a5xi8")]
+kitchenObjectRes = SubResource("Resource_vranj")
+
+[node name="visual" parent="." index="2"]
+speed_scale = 3.0
+
+[node name="Sprite2D" type="Sprite2D" parent="visual" index="0"]
+position = Vector2(0, 5.33333)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_fmp8c")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bveek8agejnxk"]
+
+[ext_resource type="Texture2D" uid="uid://d0hfv3428xcii" path="res://assets/meat_raw.aseprite" id="1_nk603"]
+[ext_resource type="Script" path="res://scripts/KitchenObject.cs" id="2_ed52h"]
+
+[node name="meat_raw" type="Sprite2D"]
+z_index = 1
+y_sort_enabled = true
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_nk603")
+
+[node name="KitchenObject" type="Node2D" parent="."]
+script = ExtResource("2_ed52h")
+kitchenObjectResPath = "res://ScriptableObjects/KitchenObjectRes/meat_raw.tres"

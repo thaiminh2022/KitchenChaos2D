@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BurningRecipeRes" load_steps=4 format=3 uid="uid://cuwcnl0ggdn5l"]
+
+[ext_resource type="Resource" uid="uid://dhqvyex3kxl8k" path="res://ScriptableObjects/KitchenObjectRes/meat_cooked.tres" id="1_brrcc"]
+[ext_resource type="Script" path="res://scripts/CustomResources/BurningRecipeRes.cs" id="1_ykv5c"]
+[ext_resource type="Resource" uid="uid://caebpl0odhf2n" path="res://ScriptableObjects/KitchenObjectRes/meat_burned.tres" id="2_dxgf5"]
+
+[resource]
+script = ExtResource("1_ykv5c")
+input = ExtResource("1_brrcc")
+output = ExtResource("2_dxgf5")
+burningTimeMax = 3.0

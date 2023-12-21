@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c45ko0byu6jqk"]
+
+[ext_resource type="Texture2D" uid="uid://q8sevrfrkdxm" path="res://assets/burger_bun.aseprite" id="1_1wctk"]
+[ext_resource type="Script" path="res://scripts/KitchenObject.cs" id="2_3o517"]
+
+[node name="burger_bun" type="Sprite2D"]
+z_index = 1
+y_sort_enabled = true
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_1wctk")
+
+[node name="KitchenObject" type="Node2D" parent="."]
+script = ExtResource("2_3o517")
+kitchenObjectResPath = "res://ScriptableObjects/KitchenObjectRes/burger_bun.tres"

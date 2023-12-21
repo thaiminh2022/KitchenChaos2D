@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwcmh7fdqy4n1"]
+
+[ext_resource type="PackedScene" uid="uid://ccwsc4cd6xcsv" path="res://nodes/Counters/containerCounterUp.tscn" id="1_8nawi"]
+[ext_resource type="Texture2D" uid="uid://d0hfv3428xcii" path="res://assets/meat_raw.aseprite" id="2_kt63y"]
+[ext_resource type="PackedScene" uid="uid://bveek8agejnxk" path="res://nodes/Kitchen Objects/meat_raw.tscn" id="3_lp1ko"]
+[ext_resource type="Script" path="res://scripts/CustomResources/KitchenObjectRes.cs" id="4_6xnut"]
+
+[sub_resource type="Resource" id="Resource_fov2m"]
+script = ExtResource("4_6xnut")
+node = ExtResource("3_lp1ko")
+icon = ExtResource("2_kt63y")
+objectName = "Raw Meat"
+
+[node name="ContainerCounterUp_RawMeat" instance=ExtResource("1_8nawi")]
+kitchenObjectRes = SubResource("Resource_fov2m")
+
+[node name="visual" parent="." index="2"]
+speed_scale = 3.0
+
+[node name="Sprite2D" type="Sprite2D" parent="visual" index="0"]
+position = Vector2(0, 5.33333)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_kt63y")

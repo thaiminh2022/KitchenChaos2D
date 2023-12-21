@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://o42dk2t8dngk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdf83"]
+size = Vector2(13.3333, 14)
+
+[node name="Counter" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="CounterTopPoint" type="Marker2D" parent="."]
+position = Vector2(0, -4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_wdf83")

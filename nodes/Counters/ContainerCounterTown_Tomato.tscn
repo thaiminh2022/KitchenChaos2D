@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgtbuyvllund0"]
+
+[ext_resource type="PackedScene" uid="uid://cuuf7i733h2d6" path="res://nodes/Counters/containerCounterDown.tscn" id="1_ffk5k"]
+[ext_resource type="Texture2D" uid="uid://by3kdiyj35bgv" path="res://assets/tomato.aseprite" id="2_u7n33"]
+[ext_resource type="PackedScene" uid="uid://dyx6kka2ov7ih" path="res://nodes/Kitchen Objects/tomato.tscn" id="3_58u7s"]
+[ext_resource type="Script" path="res://scripts/CustomResources/KitchenObjectRes.cs" id="4_6lirv"]
+
+[sub_resource type="Resource" id="Resource_esjkg"]
+script = ExtResource("4_6lirv")
+node = ExtResource("3_58u7s")
+icon = ExtResource("2_u7n33")
+objectName = "Tomato"
+
+[node name="ContainerCounterDown_Tomato" instance=ExtResource("1_ffk5k")]
+kitchenObjectRes = SubResource("Resource_esjkg")
+
+[node name="visual" parent="." index="2"]
+speed_scale = 3.0
+
+[node name="Sprite2D" type="Sprite2D" parent="visual" index="0"]
+position = Vector2(0, 5.33333)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_u7n33")
