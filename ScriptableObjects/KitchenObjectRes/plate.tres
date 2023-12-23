@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="KitchenObjectRes" load_steps=4 format=3 uid="uid://c106dwmbceetb"]
+
+[ext_resource type="Texture2D" uid="uid://d0xdph5hged4c" path="res://assets/plate.aseprite" id="1_ramhh"]
+[ext_resource type="PackedScene" uid="uid://bcninnyutwtcw" path="res://nodes/Kitchen Objects/plate.tscn" id="2_udkib"]
+[ext_resource type="Script" path="res://scripts/CustomResources/KitchenObjectRes.cs" id="3_uwv2n"]
+
+[resource]
+script = ExtResource("3_uwv2n")
+node = ExtResource("2_udkib")
+icon = ExtResource("1_ramhh")
+objectName = "Plate"

@@ -1,13 +1,12 @@
 ﻿
 using Godot;
-using System.Collections.Generic;
 
 public partial class PlateCounterVisual : AnimatedSprite2D
 {
     const string PLATE_ANIMATION = "plate_";
 
-    [Export] private Marker2D counterTopPoint;
     [Export] private PlateCounter plateCounter;
+    [Export] private AnimatedSprite2D plateCounterSelected;
 
     int visualPlateAmount = 0;
 
@@ -22,24 +21,31 @@ public partial class PlateCounterVisual : AnimatedSprite2D
     {
         visualPlateAmount--;
 
+        // visual only support 0 to 4 so clamp it
         if(visualPlateAmount < 0)
         {
             visualPlateAmount = 0;
         }
+
+        ChangeVisual();
     }
 
     private void PlateCounter_OnPlateSpawn(object sender, System.EventArgs e)
     {
         visualPlateAmount++;
 
-        if(visualPlateAmount > 4)
+        // visual only support 0 to 4 so clamp it
+        if (visualPlateAmount > 4)
         {
             visualPlateAmount = 4;
         }
+
+        ChangeVisual();
     }
     private void ChangeVisual() {
-        // Hard setup animation because shading in 2D is not too pratical
+        // Hard setup animation because shading in 2D using gameengine is not pratical
         Play(PLATE_ANIMATION + visualPlateAmount);
+        plateCounterSelected.Play(PLATE_ANIMATION + visualPlateAmount);
     }
 
 }

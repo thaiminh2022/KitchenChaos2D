@@ -11,7 +11,7 @@ public partial class PlateCounter : BaseCounter
 	[Export] KitchenObjectRes plateObjectRes;
 
 	private int plateSpawnAmount;
-	private int plateSpawnAmountMax = 5;
+	private int plateSpawnAmountMax = 4;
 
 
 	public override void _Ready()

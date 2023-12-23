@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcninnyutwtcw"]
+
+[ext_resource type="Texture2D" uid="uid://d0xdph5hged4c" path="res://assets/plate.aseprite" id="1_ugtdq"]
+[ext_resource type="Script" path="res://scripts/PlateKitchenObject.cs" id="2_df1gy"]
+
+[node name="plate" type="Sprite2D"]
+z_index = 1
+y_sort_enabled = true
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_ugtdq")
+
+[node name="KitchenObject" type="Node2D" parent="."]
+script = ExtResource("2_df1gy")
+kitchenObjectResPath = "res://ScriptableObjects/KitchenObjectRes/plate.tres"

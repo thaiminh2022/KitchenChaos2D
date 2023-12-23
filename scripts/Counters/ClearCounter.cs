@@ -15,17 +15,18 @@ public sealed partial class ClearCounter : BaseCounter
 				// drop the player kitchen object in 
 				player.GetKitchenObject().SetKitchenObjectParent(this);
 			}
-			else
-			{
-				// Player not carrying anything
-			}
 		}
 		else
 		{
 			if (player.HasKitchenObject())
 			{
-				// Player carrying something - swap
-				// Try implement swap or something i'm too lazy
+				if(player.GetKitchenObject() is PlateKitchenObject plateKitchenObject)
+				{
+					// Player is holding a plate
+					plateKitchenObject.AddIngredient(GetKitchenObject().GetKitchenObjectRes());
+					GetKitchenObject().DestroySelf();
+
+				}
 			}
 			else
 			{

@@ -1,34 +1,29 @@
 [remap]
 
-importer="texture"
-type="CompressedTexture2D"
+importer="Aseprite AnimatedSprite2D"
+type="PackedScene"
 uid="uid://chotebi8oe3m5"
-path="res://.godot/imported/plate_counter.aseprite-b7ba3ff7898580f97d6a3e1a738034fe.ctex"
-metadata={
-"vram_texture": false
-}
+path="res://.godot/imported/plate_counter.aseprite-b7ba3ff7898580f97d6a3e1a738034fe.scn"
 
 [deps]
 
 source_file="res://assets/plate_counter.aseprite"
-dest_files=["res://.godot/imported/plate_counter.aseprite-b7ba3ff7898580f97d6a3e1a738034fe.ctex"]
+dest_files=["res://.godot/imported/plate_counter.aseprite-b7ba3ff7898580f97d6a3e1a738034fe.scn"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
-compress/lossy_quality=0.7
-compress/hdr_compression=1
-compress/normal_map=0
-compress/channel_pack=0
-mipmaps/generate=false
-mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
-process/fix_alpha_border=true
-process/premult_alpha=false
-process/normal_map_invert_y=false
-process/hdr_as_srgb=false
-process/hdr_clamp_exposure=false
-process/size_limit=0
-detect_3d/compress_to=1
+animation/default/name="default"
+animation/default/direction=0
+animation/default/repeat_count=0
+animation/autoplay_name=""
+atlas_textures/region_filter_clip_enabled=false
+root_node_name=""
+middle_import_script=""
+post_import_script=""
+sprite_sheet/edges_artifacts_avoidance_method=0
+sprite_sheet/sprites_surrounding_color=Color(1, 1, 1, 0)
+sprite_sheet/layout=0
+sprite_sheet/max_cells_in_strip=0
+sprite_sheet/trim_sprites_to_overall_min_size=true
+sprite_sheet/collapse_transparent_sprites=true
+sprite_sheet/merge_duplicated_sprites=true

@@ -1,10 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://diqnyotlt8kej"]
+[gd_scene load_steps=7 format=3 uid="uid://diqnyotlt8kej"]
 
 [ext_resource type="PackedScene" uid="uid://o42dk2t8dngk" path="res://nodes/Counters/_baseCounter.tscn" id="1_brrth"]
 [ext_resource type="Script" path="res://scripts/Counters/PlateCounter.cs" id="2_kbeot"]
+[ext_resource type="Resource" uid="uid://c106dwmbceetb" path="res://ScriptableObjects/KitchenObjectRes/plate.tres" id="3_3171j"]
+[ext_resource type="PackedScene" uid="uid://chotebi8oe3m5" path="res://assets/plate_counter.aseprite" id="3_idr35"]
+[ext_resource type="Script" path="res://scripts/Counters/SelectedCounterVisual.cs" id="4_o74s4"]
+[ext_resource type="Script" path="res://scripts/Counters/PlateCounterVisual.cs" id="5_dknfy"]
 
-[node name="Counter" instance=ExtResource("1_brrth")]
+[node name="PlateCounter" node_paths=PackedStringArray("SpawnPlateTimer", "counterTopPoint") instance=ExtResource("1_brrth")]
 script = ExtResource("2_kbeot")
+SpawnPlateTimer = NodePath("SpawnPlateTimer")
+plateObjectRes = ExtResource("3_3171j")
+counterTopPoint = NodePath("CounterTopPoint")
 
 [node name="SpawnPlateTimer" type="Timer" parent="." index="2"]
 wait_time = 4.0
+autostart = true
+
+[node name="plate_counter" parent="." index="3" node_paths=PackedStringArray("plateCounter") instance=ExtResource("3_idr35")]
+position = Vector2(0, -1)
+scale = Vector2(1.45, 1.45)
+script = ExtResource("5_dknfy")
+plateCounter = NodePath("..")
+
+[node name="selected" parent="." index="4" node_paths=PackedStringArray("clearCounter") instance=ExtResource("3_idr35")]
+visible = false
+modulate = Color(0.0705882, 0.164706, 1, 0.309804)
+position = Vector2(0, -1)
+scale = Vector2(1.45, 1.45)
+script = ExtResource("4_o74s4")
+clearCounter = NodePath("..")
