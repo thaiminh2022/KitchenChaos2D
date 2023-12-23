@@ -68,7 +68,7 @@ gh repo clone thaiminh2022/KitchenChaos2D
 
 These are Unity and Godot way to basicly get the attached script of a game object, repsectively. However, there are clear differences in syntax and the way both engine work.
 
-```csharp
+```cs
 using UnityEngine; // GetComponent exists in UnityEngine
 using Godot; // GetNode exists in Godot
 
@@ -98,7 +98,7 @@ T node = GetNode<T>(pathToNode);
 **Solution** </br>
 Use pattern matching instead
 
-```csharp
+```cs
 interface IInterface {
     // A interface
 }
