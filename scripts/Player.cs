@@ -7,7 +7,7 @@ public partial class Player : CharacterBody2D, IKitchenObjectParent
 	public static Player Instance { get; private set; }
 
 
-	public event EventHandler<BaseCounter>OnSelectedCoutnerChange;
+	public event EventHandler<BaseCounter>OnSelectedCounterChanged;
 
 	[Export] private float moveSpeed;
 	[Export] private RayCast2D rayCast;
@@ -17,7 +17,7 @@ public partial class Player : CharacterBody2D, IKitchenObjectParent
 	private bool isWalking = false;
 	private BaseCounter selectedCounter;
 	private Vector2 lastMoveDir;
-	private float moveDistance;
+	private float rayDistance;
 	private KitchenObject kitchenObject;
 
 	public override void _PhysicsProcess(double delta)
@@ -47,9 +47,9 @@ public partial class Player : CharacterBody2D, IKitchenObjectParent
 
 	private void HandleRayCasting(double delta)
 	{
-		float pixelMultiplier = 15;
-		moveDistance = moveSpeed * (float)delta * pixelMultiplier;
-		rayCast.TargetPosition = lastMoveDir * moveDistance;
+		float pixel_multiplier = 10f;
+		rayDistance = moveSpeed * (float)delta * pixel_multiplier;
+		rayCast.TargetPosition = lastMoveDir * rayDistance;
 
 		if (rayCast.IsColliding())
 		{
@@ -77,7 +77,7 @@ public partial class Player : CharacterBody2D, IKitchenObjectParent
 	private void SetSelectedCounter(BaseCounter newSelectedCounter)
 	{
 		selectedCounter = newSelectedCounter;
-		OnSelectedCoutnerChange?.Invoke(this, selectedCounter);
+		OnSelectedCounterChanged?.Invoke(this, selectedCounter);
 	}
 
 	private void HandleMove()

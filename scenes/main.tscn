@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ybloa0m22rwn"]
+[gd_scene load_steps=18 format=3 uid="uid://ccmfdp4smdyss"]
 
 [ext_resource type="PackedScene" uid="uid://dgxncuk7lio5i" path="res://nodes/Counters/clearCounterDown.tscn" id="2_oatpm"]
 [ext_resource type="PackedScene" uid="uid://dkvbnwkxtb3d3" path="res://nodes/player.tscn" id="2_xcenc"]
@@ -7,53 +7,94 @@
 [ext_resource type="PackedScene" uid="uid://cdbrhaqktqped" path="res://nodes/Counters/ContainerCounterDown_Cheese.tscn" id="5_i5sh2"]
 [ext_resource type="PackedScene" uid="uid://bgtbuyvllund0" path="res://nodes/Counters/ContainerCounterTown_Tomato.tscn" id="6_lb6hv"]
 [ext_resource type="PackedScene" uid="uid://dwcmh7fdqy4n1" path="res://nodes/Counters/ContainerCounterUp_RawMeat.tscn" id="7_ernq7"]
+[ext_resource type="PackedScene" uid="uid://bbpaifyk66rdy" path="res://nodes/Counters/delivery_counter.tscn" id="7_s474c"]
 [ext_resource type="PackedScene" uid="uid://gutp4i82t86q" path="res://nodes/Counters/ContainerCounterUp_BurgerBun.tscn" id="8_2gcql"]
 [ext_resource type="PackedScene" uid="uid://db7ga4i7s18vt" path="res://nodes/Counters/cuttingCounterDown.tscn" id="9_56qdx"]
-[ext_resource type="PackedScene" uid="uid://ds7cyaqwupx22" path="res://nodes/Counters/trashCounter.tscn" id="10_oik1q"]
+[ext_resource type="PackedScene" uid="uid://xceu5wqxpnjy" path="res://nodes/Counters/cuttingCounterUp.tscn" id="10_6kw6a"]
 [ext_resource type="PackedScene" uid="uid://dtkphuogtaclf" path="res://nodes/Counters/stoveCounter.tscn" id="11_icagi"]
 [ext_resource type="PackedScene" uid="uid://diqnyotlt8kej" path="res://nodes/Counters/plateCounter.tscn" id="12_1h2rd"]
+[ext_resource type="PackedScene" uid="uid://ds7cyaqwupx22" path="res://nodes/Counters/trashCounter.tscn" id="12_s8jd0"]
+[ext_resource type="PackedScene" uid="uid://cfkw2cspxe5xr" path="res://nodes/Counters/clearCounterRight.tscn" id="13_aw6wd"]
+[ext_resource type="PackedScene" uid="uid://cxxx11dgwhvo0" path="res://nodes/delivery_manager.tscn" id="14_aceaa"]
+[ext_resource type="PackedScene" uid="uid://d2s4dx6lavk6i" path="res://nodes/Counters/clearCounterLeft.tscn" id="14_grne8"]
 
-[node name="Main" type="Node"]
+[node name="main" type="Node2D"]
+y_sort_enabled = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(6.5, 6.5)
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+y_sort_enabled = true
+
+[node name="ClearCounterDown5" parent="CanvasGroup" instance=ExtResource("2_oatpm")]
+position = Vector2(-25, -36)
+
+[node name="StoveCounter" parent="CanvasGroup" instance=ExtResource("11_icagi")]
+position = Vector2(-12, -36)
+
+[node name="StoveCounter3" parent="CanvasGroup" instance=ExtResource("11_icagi")]
+position = Vector2(-13, 7)
+
+[node name="StoveCounter4" parent="CanvasGroup" instance=ExtResource("11_icagi")]
+position = Vector2(0, 7)
+
+[node name="StoveCounter2" parent="CanvasGroup" instance=ExtResource("11_icagi")]
+position = Vector2(1, -36)
+
+[node name="PlateCounter" parent="CanvasGroup" instance=ExtResource("12_1h2rd")]
+position = Vector2(27, 38)
+
+[node name="PlateCounter2" parent="CanvasGroup" instance=ExtResource("12_1h2rd")]
+position = Vector2(41, -11)
+
+[node name="Delivery_Counter" parent="CanvasGroup" instance=ExtResource("7_s474c")]
+position = Vector2(41, -26)
+
+[node name="ContainerCounterUp_BurgerBun" parent="CanvasGroup" instance=ExtResource("8_2gcql")]
+position = Vector2(12, 38)
+
+[node name="ContainerCounterUp_RawMeat" parent="CanvasGroup" instance=ExtResource("7_ernq7")]
+position = Vector2(-2, 38)
+
+[node name="ContainerCounterDown_Cabbage" parent="CanvasGroup" instance=ExtResource("4_5m3c4")]
+position = Vector2(14, -36)
+
+[node name="ContainerCounterDown_Cheese" parent="CanvasGroup" instance=ExtResource("5_i5sh2")]
+position = Vector2(27, -36)
+
+[node name="TrashCounter2" parent="CanvasGroup" instance=ExtResource("12_s8jd0")]
+position = Vector2(-17, 38)
+
+[node name="ClearCounterUp" parent="CanvasGroup" instance=ExtResource("3_oyuy4")]
+position = Vector2(-31, 38)
+
+[node name="ClearCounterLeft" parent="CanvasGroup" instance=ExtResource("14_grne8")]
+position = Vector2(41, 5)
+
+[node name="ClearCounterLeft2" parent="CanvasGroup" instance=ExtResource("14_grne8")]
+position = Vector2(41, 22)
+
+[node name="CuttingCounterUp" parent="CanvasGroup" instance=ExtResource("10_6kw6a")]
+position = Vector2(0, -5)
+
+[node name="ClearCounterRight" parent="CanvasGroup" instance=ExtResource("13_aw6wd")]
+position = Vector2(-56, -26)
+
+[node name="ClearCounterRight2" parent="CanvasGroup" instance=ExtResource("13_aw6wd")]
+position = Vector2(-56, -11)
+
+[node name="ClearCounterRight3" parent="CanvasGroup" instance=ExtResource("13_aw6wd")]
+position = Vector2(-56, 4)
+
+[node name="CuttingCounterDown" parent="CanvasGroup" instance=ExtResource("9_56qdx")]
+position = Vector2(-13, -5)
+
+[node name="ContainerCounterDown_Tomato" parent="CanvasGroup" instance=ExtResource("6_lb6hv")]
+position = Vector2(-39, -36)
 
 [node name="Player" parent="." instance=ExtResource("2_xcenc")]
+position = Vector2(24, 9)
+scale = Vector2(0.75, 0.75)
 
-[node name="Counters" type="CanvasGroup" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(8, 8)
 
-[node name="ClearCounterUp" parent="Counters" instance=ExtResource("3_oyuy4")]
-position = Vector2(-30, 37)
-
-[node name="ClearCounterDown" parent="Counters" instance=ExtResource("2_oatpm")]
-position = Vector2(-29, -36)
-
-[node name="ClearCounterDown2" parent="Counters" instance=ExtResource("2_oatpm")]
-position = Vector2(-5, -36)
-
-[node name="ContainerCounterDown_Cabbage" parent="Counters" instance=ExtResource("4_5m3c4")]
-position = Vector2(18, -36)
-
-[node name="ContainerCounterDown_Cheese" parent="Counters" instance=ExtResource("5_i5sh2")]
-position = Vector2(41, -36)
-
-[node name="ContainerCounterDown_Tomato" parent="Counters" instance=ExtResource("6_lb6hv")]
-position = Vector2(63, -36)
-
-[node name="ContainerCounterUp_RawMeat" parent="Counters" instance=ExtResource("7_ernq7")]
-position = Vector2(-6, 37)
-
-[node name="ContainerCounterUp_BurgerBun" parent="Counters" instance=ExtResource("8_2gcql")]
-position = Vector2(16, 37)
-
-[node name="CuttingCounterDown" parent="Counters" instance=ExtResource("9_56qdx")]
-position = Vector2(-52, -35)
-
-[node name="TrashCounter" parent="Counters" instance=ExtResource("10_oik1q")]
-position = Vector2(-54, 38)
-
-[node name="StoveCounter" parent="Counters" instance=ExtResource("11_icagi")]
-position = Vector2(-75, -35)
-
-[node name="PlateCounter" parent="Counters" instance=ExtResource("12_1h2rd")]
-position = Vector2(38, 39)
+[node name="DeliveryManager" parent="." instance=ExtResource("14_aceaa")]

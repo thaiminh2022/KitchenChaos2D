@@ -25,8 +25,6 @@ burningTimer = NodePath("BurningTimer")
 counterTopPoint = NodePath("CounterTopPoint")
 
 [node name="stove" parent="." index="2" node_paths=PackedStringArray("stoveCoutner", "fryingParticles") instance=ExtResource("2_x5nuq")]
-position = Vector2(0, -1)
-scale = Vector2(1.4, 1.4)
 animation = &"idle"
 script = ExtResource("6_jsgj1")
 stoveCoutner = NodePath("..")
@@ -51,8 +49,6 @@ color_ramp = SubResource("Gradient_y0785")
 [node name="selected" parent="." index="3" node_paths=PackedStringArray("clearCounter") instance=ExtResource("2_x5nuq")]
 visible = false
 modulate = Color(0.0705882, 0.164706, 1, 0.309804)
-position = Vector2(0, -1)
-scale = Vector2(1.4, 1.4)
 script = ExtResource("3_1dejt")
 clearCounter = NodePath("..")
 

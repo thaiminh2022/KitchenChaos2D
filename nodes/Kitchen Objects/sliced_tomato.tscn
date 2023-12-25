@@ -4,26 +4,22 @@
 [ext_resource type="Script" path="res://scripts/KitchenObject.cs" id="2_aw3df"]
 
 [node name="tomato" type="Sprite2D"]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(0, 1)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.75, 0.75)
 
 [node name="KitchenObject" type="Node2D" parent="."]
 script = ExtResource("2_aw3df")
 kitchenObjectResPath = "res://ScriptableObjects/KitchenObjectRes/sliced_tomato.tres"
 
 [node name="extra visual" type="CanvasGroup" parent="."]
-position = Vector2(4, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="extra visual"]
-position = Vector2(-1.33333, 1.33333)
+position = Vector2(2.33334, 1)
 texture = ExtResource("1_2efrj")
 
 [node name="Sprite2D3" type="Sprite2D" parent="extra visual"]
-position = Vector2(-2.66667, -2.66667)
+position = Vector2(1, -3)
 texture = ExtResource("1_2efrj")
 
 [node name="Sprite2D2" type="Sprite2D" parent="extra visual"]
-position = Vector2(-6.66667, 0)
+position = Vector2(-3, -0.33333)
 texture = ExtResource("1_2efrj")

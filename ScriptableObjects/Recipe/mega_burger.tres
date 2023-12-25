@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RecipeRes" load_steps=7 format=3 uid="uid://dnlnk6mfhdko6"]
+
+[ext_resource type="Resource" uid="uid://dbs70gex5aamx" path="res://ScriptableObjects/KitchenObjectRes/bread.tres" id="1_46r3b"]
+[ext_resource type="Resource" uid="uid://dhqvyex3kxl8k" path="res://ScriptableObjects/KitchenObjectRes/meat_cooked.tres" id="2_y6c5g"]
+[ext_resource type="Script" path="res://scripts/CustomResources/RecipeRes.cs" id="3_fjy4k"]
+[ext_resource type="Resource" uid="uid://cqaaq1ettgh6v" path="res://ScriptableObjects/KitchenObjectRes/sliced_cabbage.tres" id="3_lcmjw"]
+[ext_resource type="Resource" uid="uid://bgyeebe0a5slq" path="res://ScriptableObjects/KitchenObjectRes/sliced_cheese.tres" id="4_qsy54"]
+[ext_resource type="Resource" uid="uid://bcfu5qjpksefn" path="res://ScriptableObjects/KitchenObjectRes/sliced_tomato.tres" id="5_ore5r"]
+
+[resource]
+script = ExtResource("3_fjy4k")
+kitchenObjectResList = Array[Object]([ExtResource("1_46r3b"), ExtResource("2_y6c5g"), ExtResource("3_lcmjw"), ExtResource("4_qsy54"), ExtResource("5_ore5r")])
+recipeName = "Mega Burger"

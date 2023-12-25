@@ -10,12 +10,8 @@
 script = ExtResource("2_pcy5i")
 counterTopPoint = NodePath("CounterTopPoint")
 
-[node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, 1.5)
-
 [node name="visual" parent="." index="2" node_paths=PackedStringArray("containerCounter") instance=ExtResource("3_ka37s")]
 y_sort_enabled = true
-scale = Vector2(1.5, 1.5)
 script = ExtResource("4_u5wmo")
 containerCounter = NodePath("..")
 
@@ -23,7 +19,6 @@ containerCounter = NodePath("..")
 visible = false
 modulate = Color(0.0705882, 0.164706, 1, 0.309804)
 y_sort_enabled = true
-scale = Vector2(1.5, 1.5)
 speed_scale = 2.0
 script = ExtResource("5_rphj3")
 clearCounter = NodePath("..")

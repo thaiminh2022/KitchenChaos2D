@@ -4,9 +4,6 @@
 [ext_resource type="Script" path="res://scripts/KitchenObject.cs" id="2_vlm7u"]
 
 [node name="meat_burned" type="Sprite2D"]
-z_index = 1
-y_sort_enabled = true
-scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_6foko")
 
 [node name="KitchenObject" type="Node2D" parent="."]

@@ -64,6 +64,8 @@ gh repo clone thaiminh2022/KitchenChaos2D
 
 ## 💻 Code Changes
 
+***If you think you have better ideas for these listed problem, see contributing.***
+
 ### GetComponent() vs GetNode()
 
 These are Unity and Godot way to basicly get the attached script of a game object, repsectively. However, there are clear differences in syntax and the way both engine work.
@@ -130,7 +132,6 @@ private event EventHandler<EventArgs> OnEventHappend;
 | Usage in interface | Can be use in interfaces |    Cannot be used in interfaces |
 
 I originally use signal as it was more conventional for Godot, however CodeMonkey later use EventHandler in an interface, which sinal can't so I switched back to EventHandler. </br>
-**Any ideas to still you Signal without giving up the benefit of interface are welcome.**
 
 ## ⚠️ License
 

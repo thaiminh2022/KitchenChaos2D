@@ -13,13 +13,11 @@ counterTopPoint = NodePath("CounterTopPoint")
 position = Vector2(0, 1.5)
 
 [node name="visual" parent="." index="2" instance=ExtResource("3_ho0yf")]
-scale = Vector2(1.5, 1.5)
 animation = &"up"
 
 [node name="selected" parent="." index="3" node_paths=PackedStringArray("clearCounter") instance=ExtResource("3_ho0yf")]
 visible = false
 modulate = Color(0.0705882, 0.164706, 1, 0.309804)
-scale = Vector2(1.5, 1.5)
 animation = &"up"
 script = ExtResource("4_jj3nm")
 clearCounter = NodePath("..")

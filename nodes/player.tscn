@@ -5,9 +5,11 @@
 [ext_resource type="Script" path="res://scripts/PlayerAnimator.cs" id="3_vjadu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hbwqn"]
-size = Vector2(14, 10)
+size = Vector2(14, 11)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("rayCast", "playerHoldingPoint")]
+y_sort_enabled = true
+collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_hi7lg")
 moveSpeed = 50.0
@@ -15,19 +17,22 @@ rayCast = NodePath("RayCast2D")
 playerHoldingPoint = NodePath("PlayerAnimator/PlayerHoldingPoint")
 
 [node name="PlayerAnimator" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_g4cc5")]
-z_index = 2
 animation = &"walk"
 script = ExtResource("3_vjadu")
 player = NodePath("..")
 
 [node name="PlayerHoldingPoint" type="Marker2D" parent="PlayerAnimator"]
+z_index = 1
 position = Vector2(-9, 5)
+scale = Vector2(0.75, 0.75)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 10)
+z_index = 2
+position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_hbwqn")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(0, 6)
-target_position = Vector2(8, 0)
+position = Vector2(0, 2)
+target_position = Vector2(0, -10)
+collision_mask = 6
 hit_from_inside = true

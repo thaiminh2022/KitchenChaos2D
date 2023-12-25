@@ -4,10 +4,7 @@
 [ext_resource type="Script" path="res://scripts/KitchenObject.cs" id="2_flitp"]
 
 [node name="cabbage" type="Sprite2D"]
-z_index = 1
-y_sort_enabled = true
 rotation = 1.12503
-scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_xhtsq")
 
 [node name="KitchenObject" type="Node2D" parent="."]

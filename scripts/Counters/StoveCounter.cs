@@ -1,7 +1,7 @@
 using Godot;
 using System;
-public partial class StoveCounter : BaseCounter, IHasProgress
-{
+
+public sealed partial class StoveCounter : BaseCounter, IHasProgress {
 	public enum State {
 		Idle, 
 		Frying,
@@ -114,20 +114,37 @@ public partial class StoveCounter : BaseCounter, IHasProgress
 
 			if (player.HasKitchenObject())
 			{
-				// Player carrying something - TODO:swap
-				return;
+				if (player.GetKitchenObject().TryGetPlate(out var plateKitchenObject)) {
+					// Player is holding a plate
+					bool success = plateKitchenObject
+						.TryAddIngredient(GetKitchenObject().GetKitchenObjectRes());
+
+					if (success) {
+						GetKitchenObject().DestroySelf();
+						ResetState();
+					}
+
+				}
+
+			}
+			else {
+				// Player is not carying anything, give kitchen object to player
+				GetKitchenObject().SetKitchenObjectParent(player);
+
+				ResetState();
 			}
 
-			// Player is not carying anything, give kitchen object to player
-			GetKitchenObject().SetKitchenObjectParent(player);
-
-			// Reset all timers since the player picked the item up
-			fryingTimer.Stop();
-			burningTimer.Stop();
-
-			ChangeState(State.Idle);
-			OnProgressChanged?.Invoke(this, 0f);
+			
 		}
+	}
+
+	private void ResetState() {
+		// Reset all timers since the player picked the item up
+		fryingTimer.Stop();
+		burningTimer.Stop();
+
+		ChangeState(State.Idle);
+		OnProgressChanged?.Invoke(this, 0f);
 	}
 
 	private bool HasRecipeWithInput(KitchenObjectRes inputKitchenObjectRes)

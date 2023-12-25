@@ -14,10 +14,18 @@ objectName = "Burger Bun"
 [node name="ContainerCounterUp_BurgerBun" instance=ExtResource("1_a5xi8")]
 kitchenObjectRes = SubResource("Resource_vranj")
 
+[node name="CounterTopPoint" parent="." index="0"]
+z_index = 0
+scale = Vector2(0.75, 0.75)
+
 [node name="visual" parent="." index="2"]
+y_sort_enabled = false
 speed_scale = 3.0
 
 [node name="Sprite2D" type="Sprite2D" parent="visual" index="0"]
 position = Vector2(0, 5.33333)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_fmp8c")
+
+[node name="selected" parent="." index="3"]
+y_sort_enabled = false

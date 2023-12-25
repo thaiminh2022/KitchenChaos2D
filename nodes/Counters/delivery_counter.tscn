@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://bbpaifyk66rdy"]
+
+[ext_resource type="PackedScene" uid="uid://o42dk2t8dngk" path="res://nodes/Counters/_baseCounter.tscn" id="1_lyihn"]
+[ext_resource type="Script" path="res://scripts/Counters/DeliveryCounter.cs" id="2_iydoh"]
+[ext_resource type="Texture2D" uid="uid://by3m7uf2328ls" path="res://assets/delivery_counter.aseprite" id="2_udwxq"]
+[ext_resource type="Shader" path="res://shaders/moving_visual.gdshader" id="3_dityj"]
+[ext_resource type="Script" path="res://scripts/Counters/SelectedCounterVisual.cs" id="3_re6ns"]
+[ext_resource type="Texture2D" uid="uid://kbubg7vmuctc" path="res://assets/right_arrow.aseprite" id="3_wa6js"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4hj1m"]
+shader = ExtResource("3_dityj")
+shader_parameter/offset_speed = Vector2(-1, 0)
+
+[node name="Delivery_Counter" node_paths=PackedStringArray("counterTopPoint") instance=ExtResource("1_lyihn")]
+script = ExtResource("2_iydoh")
+counterTopPoint = NodePath("CounterTopPoint")
+
+[node name="visual" type="Sprite2D" parent="." index="2"]
+texture = ExtResource("2_udwxq")
+
+[node name="moving_arrows" type="Sprite2D" parent="visual" index="0"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_4hj1m")
+position = Vector2(0, -1)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("3_wa6js")
+offset = Vector2(0, -1.5528)
+
+[node name="selected" type="Sprite2D" parent="." index="3" node_paths=PackedStringArray("clearCounter")]
+visible = false
+modulate = Color(0.0705882, 0.164706, 1, 0.309804)
+texture = ExtResource("2_udwxq")
+script = ExtResource("3_re6ns")
+clearCounter = NodePath("..")

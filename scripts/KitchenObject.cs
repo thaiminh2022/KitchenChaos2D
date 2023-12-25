@@ -1,10 +1,10 @@
-using System.Linq.Expressions;
 using Godot;
 
 [GlobalClass]
 public partial class KitchenObject : Node2D
 {
-	[Export] private string kitchenObjectResPath;
+	[Export(PropertyHint.File)]
+	private string kitchenObjectResPath;
 	private KitchenObjectRes cacheKitchenObject;
 
 private IKitchenObjectParent kitchenObjectParent;
@@ -14,6 +14,15 @@ private IKitchenObjectParent kitchenObjectParent;
 		cacheKitchenObject ??= ResourceLoader.Load<KitchenObjectRes>(kitchenObjectResPath);
 
 		return cacheKitchenObject;
+	}
+
+	public bool TryGetPlate(out PlateKitchenObject plateKitchenObject) {
+		if(this is PlateKitchenObject) {
+			plateKitchenObject = this as PlateKitchenObject;
+			return true;
+		}
+		plateKitchenObject = null;
+		return false;
 	}
 
 	public void SetKitchenObjectParent(IKitchenObjectParent newKitchenObjectParent)
@@ -55,8 +64,9 @@ private IKitchenObjectParent kitchenObjectParent;
 	public static KitchenObject SpawnKitchenObject(KitchenObjectRes kitchenObjectRes, IKitchenObjectParent kitchenObjectParent)
 	{
 		var instance = kitchenObjectRes.node.Instantiate();
-		KitchenObject kitchenObject = instance.GetNode<KitchenObject>("KitchenObject");
-		
+		var kitchenObject = instance.GetNode<KitchenObject>("KitchenObject");
+
+
 		kitchenObject.SetKitchenObjectParent(kitchenObjectParent);
 
 		return kitchenObject;

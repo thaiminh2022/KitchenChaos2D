@@ -16,8 +16,7 @@ cuttingRecipes = Array[Object]([ExtResource("3_tipb7"), ExtResource("4_hast3"), 
 counterTopPoint = NodePath("CounterTopPoint")
 
 [node name="visual" parent="." index="2" node_paths=PackedStringArray("cuttingCounter") instance=ExtResource("8_oxii6")]
-position = Vector2(0, -2)
-scale = Vector2(1.5, 1.5)
+y_sort_enabled = true
 speed_scale = 2.0
 script = ExtResource("7_0pw68")
 cuttingCounter = NodePath("..")
@@ -25,10 +24,11 @@ cuttingCounter = NodePath("..")
 [node name="selected" parent="." index="3" node_paths=PackedStringArray("clearCounter") instance=ExtResource("8_oxii6")]
 visible = false
 modulate = Color(0.0705882, 0.164706, 1, 0.309804)
-position = Vector2(0, -2)
-scale = Vector2(1.5, 1.5)
+y_sort_enabled = true
 script = ExtResource("8_jnnq1")
 clearCounter = NodePath("..")
 
 [node name="ProgressBar" parent="." index="4" node_paths=PackedStringArray("hasProgressObject") instance=ExtResource("9_qp6t5")]
+offset_top = -10.0
+offset_bottom = -8.0
 hasProgressObject = NodePath("..")

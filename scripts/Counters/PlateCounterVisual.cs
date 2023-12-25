@@ -1,51 +1,49 @@
-﻿
+
 using Godot;
 
 public partial class PlateCounterVisual : AnimatedSprite2D
 {
-    const string PLATE_ANIMATION = "plate_";
+	const string PLATE_ANIMATION = "plate_";
 
-    [Export] private PlateCounter plateCounter;
-    [Export] private AnimatedSprite2D plateCounterSelected;
+	[Export] private PlateCounter plateCounter;
 
-    int visualPlateAmount = 0;
+	int visualPlateAmount = 0;
 
-    public override void _Ready()
-    {
-        plateCounter.OnPlateSpawn += PlateCounter_OnPlateSpawn;
-        plateCounter.OnPlateRemoved += PlateCounter_OnPlateRemoved;
+	public override void _Ready()
+	{
+		plateCounter.OnPlateSpawn += PlateCounter_OnPlateSpawn;
+		plateCounter.OnPlateRemoved += PlateCounter_OnPlateRemoved;
 
-    }
+	}
 
-    private void PlateCounter_OnPlateRemoved(object sender, System.EventArgs e)
-    {
-        visualPlateAmount--;
+	private void PlateCounter_OnPlateRemoved(object sender, System.EventArgs e)
+	{
+		visualPlateAmount--;
 
-        // visual only support 0 to 4 so clamp it
-        if(visualPlateAmount < 0)
-        {
-            visualPlateAmount = 0;
-        }
+		// visual only support 0 to 4 so clamp it
+		if(visualPlateAmount < 0)
+		{
+			visualPlateAmount = 0;
+		}
 
-        ChangeVisual();
-    }
+		ChangeVisual();
+	}
 
-    private void PlateCounter_OnPlateSpawn(object sender, System.EventArgs e)
-    {
-        visualPlateAmount++;
+	private void PlateCounter_OnPlateSpawn(object sender, System.EventArgs e)
+	{
+		visualPlateAmount++;
 
-        // visual only support 0 to 4 so clamp it
-        if (visualPlateAmount > 4)
-        {
-            visualPlateAmount = 4;
-        }
+		// visual only support 0 to 4 so clamp it
+		if (visualPlateAmount > 4)
+		{
+			visualPlateAmount = 4;
+		}
 
-        ChangeVisual();
-    }
-    private void ChangeVisual() {
-        // Hard setup animation because shading in 2D using gameengine is not pratical
-        Play(PLATE_ANIMATION + visualPlateAmount);
-        plateCounterSelected.Play(PLATE_ANIMATION + visualPlateAmount);
-    }
+		ChangeVisual();
+	}
+	private void ChangeVisual() {
+		// Hard setup animation because shading in 2D using gameengine is not pratical
+		Play(PLATE_ANIMATION + visualPlateAmount);
+	}
 
 }

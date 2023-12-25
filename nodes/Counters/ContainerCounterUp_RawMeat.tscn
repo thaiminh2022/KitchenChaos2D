@@ -14,10 +14,18 @@ objectName = "Raw Meat"
 [node name="ContainerCounterUp_RawMeat" instance=ExtResource("1_8nawi")]
 kitchenObjectRes = SubResource("Resource_fov2m")
 
+[node name="CounterTopPoint" parent="." index="0"]
+z_index = 0
+scale = Vector2(0.75, 0.75)
+
 [node name="visual" parent="." index="2"]
+y_sort_enabled = false
 speed_scale = 3.0
 
 [node name="Sprite2D" type="Sprite2D" parent="visual" index="0"]
 position = Vector2(0, 5.33333)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_kt63y")
+
+[node name="selected" parent="." index="3"]
+y_sort_enabled = false

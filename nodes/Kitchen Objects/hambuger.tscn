@@ -1,0 +1,141 @@
+[gd_scene load_steps=18 format=3 uid="uid://ccbuw0fp1wrjv"]
+
+[ext_resource type="Texture2D" uid="uid://q8sevrfrkdxm" path="res://assets/burger_bun.aseprite" id="1_jc3tp"]
+[ext_resource type="Script" path="res://scripts/PlateCompleteVisual.cs" id="1_ssk48"]
+[ext_resource type="Texture2D" uid="uid://c3kawty606ers" path="res://assets/burger_bun_bottom.aseprite" id="2_lq2ih"]
+[ext_resource type="Texture2D" uid="uid://dmoa8vlgqjaph" path="res://assets/sliced_tomato.aseprite" id="3_hthng"]
+[ext_resource type="Texture2D" uid="uid://cyhgwjhmqa1er" path="res://assets/sliced_cheese.aseprite" id="3_nli06"]
+[ext_resource type="Texture2D" uid="uid://blxs3ww2dwrdw" path="res://assets/slice_cabbage.aseprite" id="4_yrcal"]
+[ext_resource type="Texture2D" uid="uid://bjx4w67yiw1t8" path="res://assets/meat_cooked.aseprite" id="5_iro81"]
+[ext_resource type="Texture2D" uid="uid://d0hfv3428xcii" path="res://assets/meat_raw.aseprite" id="7_lqxya"]
+[ext_resource type="Script" path="res://scripts/KitchenObjectRes_Node.cs" id="8_22ypa"]
+[ext_resource type="Texture2D" uid="uid://07u5dtekvhse" path="res://assets/meat_burned.aseprite" id="8_38gfv"]
+[ext_resource type="Resource" uid="uid://dbs70gex5aamx" path="res://ScriptableObjects/KitchenObjectRes/bread.tres" id="9_5tphx"]
+[ext_resource type="Resource" uid="uid://bcfu5qjpksefn" path="res://ScriptableObjects/KitchenObjectRes/sliced_tomato.tres" id="10_thk8y"]
+[ext_resource type="Resource" uid="uid://cqaaq1ettgh6v" path="res://ScriptableObjects/KitchenObjectRes/sliced_cabbage.tres" id="11_hxi6m"]
+[ext_resource type="Resource" uid="uid://bgyeebe0a5slq" path="res://ScriptableObjects/KitchenObjectRes/sliced_cheese.tres" id="12_ssgbj"]
+[ext_resource type="Resource" uid="uid://dhqvyex3kxl8k" path="res://ScriptableObjects/KitchenObjectRes/meat_cooked.tres" id="13_h75n1"]
+[ext_resource type="Resource" uid="uid://l5wasriy6m2i" path="res://ScriptableObjects/KitchenObjectRes/meat_raw.tres" id="16_1121r"]
+[ext_resource type="Resource" uid="uid://caebpl0odhf2n" path="res://ScriptableObjects/KitchenObjectRes/meat_burned.tres" id="17_2oo6i"]
+
+[node name="hambuger" type="Node2D" node_paths=PackedStringArray("kitchenObjectRes_Nodes")]
+position = Vector2(0, -1)
+script = ExtResource("1_ssk48")
+kitchenObjectRes_Nodes = [NodePath("data objects/burger_top"), NodePath("data objects/burger_bottom"), NodePath("data objects/sliced_tomato"), NodePath("data objects/sliced_cabbage"), NodePath("data objects/sliced_cheese"), NodePath("data objects/meat_cooked"), NodePath("data objects/meat_raw"), NodePath("data objects/meat_burned")]
+
+[node name="visual" type="CanvasGroup" parent="."]
+
+[node name="bun_bottm" type="Sprite2D" parent="visual"]
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_lq2ih")
+
+[node name="tomatos" type="Node2D" parent="visual"]
+position = Vector2(-0.2388, -2)
+scale = Vector2(1, 1)
+
+[node name="sliced_tomato" type="Sprite2D" parent="visual/tomatos"]
+position = Vector2(0, -1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_hthng")
+
+[node name="sliced_tomato2" type="Sprite2D" parent="visual/tomatos"]
+position = Vector2(-2, 2)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_hthng")
+
+[node name="sliced_tomato3" type="Sprite2D" parent="visual/tomatos"]
+position = Vector2(3, 2)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_hthng")
+
+[node name="cabbage_leafs" type="Node2D" parent="visual"]
+position = Vector2(-1.2388, -1)
+
+[node name="cabbage_leaf" type="Sprite2D" parent="visual/cabbage_leafs"]
+position = Vector2(-0.7612, 2)
+rotation = -2.55051
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_yrcal")
+
+[node name="cabbage_leaf2" type="Sprite2D" parent="visual/cabbage_leafs"]
+position = Vector2(2.09297, -0.907028)
+rotation = -1.23569
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_yrcal")
+
+[node name="cheese" type="Sprite2D" parent="visual"]
+position = Vector2(-1, -1)
+rotation = -2.24973
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_nli06")
+
+[node name="meat_types" type="Node2D" parent="visual"]
+
+[node name="meat_cooked" type="Sprite2D" parent="visual/meat_types"]
+position = Vector2(0, -2)
+rotation = -3.14159
+scale = Vector2(1.1, 1.1)
+skew = 0.095993
+texture = ExtResource("5_iro81")
+
+[node name="meat_raw" type="Sprite2D" parent="visual/meat_types"]
+position = Vector2(0, -2)
+rotation = -3.14159
+scale = Vector2(1.1, 1.1)
+skew = 0.095993
+texture = ExtResource("7_lqxya")
+
+[node name="meat_burned" type="Sprite2D" parent="visual/meat_types"]
+position = Vector2(0, -2)
+rotation = -3.14159
+scale = Vector2(1.1, 1.1)
+skew = 0.095993
+texture = ExtResource("8_38gfv")
+
+[node name="bun_top" type="Sprite2D" parent="visual"]
+position = Vector2(0, -6)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("1_jc3tp")
+
+[node name="data objects" type="Node2D" parent="."]
+visible = false
+
+[node name="burger_top" type="Node2D" parent="data objects" node_paths=PackedStringArray("node")]
+script = ExtResource("8_22ypa")
+kitchenObjectRes = ExtResource("9_5tphx")
+node = NodePath("../../visual/bun_top")
+
+[node name="burger_bottom" type="Node2D" parent="data objects" node_paths=PackedStringArray("node")]
+script = ExtResource("8_22ypa")
+kitchenObjectRes = ExtResource("9_5tphx")
+node = NodePath("../../visual/bun_bottm")
+
+[node name="sliced_tomato" type="Node2D" parent="data objects" node_paths=PackedStringArray("node")]
+script = ExtResource("8_22ypa")
+kitchenObjectRes = ExtResource("10_thk8y")
+node = NodePath("../../visual/tomatos")
+
+[node name="sliced_cabbage" type="Node2D" parent="data objects" node_paths=PackedStringArray("node")]
+script = ExtResource("8_22ypa")
+kitchenObjectRes = ExtResource("11_hxi6m")
+node = NodePath("../../visual/cabbage_leafs")
+
+[node name="sliced_cheese" type="Node2D" parent="data objects" node_paths=PackedStringArray("node")]
+script = ExtResource("8_22ypa")
+kitchenObjectRes = ExtResource("12_ssgbj")
+node = NodePath("../../visual/cheese")
+
+[node name="meat_cooked" type="Node2D" parent="data objects" node_paths=PackedStringArray("node")]
+script = ExtResource("8_22ypa")
+kitchenObjectRes = ExtResource("13_h75n1")
+node = NodePath("../../visual/meat_types/meat_cooked")
+
+[node name="meat_raw" type="Node2D" parent="data objects" node_paths=PackedStringArray("node")]
+script = ExtResource("8_22ypa")
+kitchenObjectRes = ExtResource("16_1121r")
+node = NodePath("../../visual/meat_types/meat_raw")
+
+[node name="meat_burned" type="Node2D" parent="data objects" node_paths=PackedStringArray("node")]
+script = ExtResource("8_22ypa")
+kitchenObjectRes = ExtResource("17_2oo6i")
+node = NodePath("../../visual/meat_types/meat_burned")

@@ -2,8 +2,7 @@ using Godot;
 using System;
 
 
-public partial class CuttingCounter : BaseCounter, IHasProgress
-{
+public partial class CuttingCounter : BaseCounter, IHasProgress {
 	public event EventHandler<float> OnProgressChanged;
 	public event EventHandler OnCut;
 
@@ -12,16 +11,12 @@ public partial class CuttingCounter : BaseCounter, IHasProgress
 
 	private int cuttingProgress;
 
-	public override void Interact(Player player)
-	{
-		if (!HasKitchenObject())
-		{
+	public override void Interact(Player player) {
+		if (!HasKitchenObject()) {
 			// There is no kitchen object here
-			if (player.HasKitchenObject())
-			{
+			if (player.HasKitchenObject()) {
 				// Player holding something kitchen object
-				if (HasRecipeWithInput(player.GetKitchenObject().GetKitchenObjectRes()))
-				{
+				if (HasRecipeWithInput(player.GetKitchenObject().GetKitchenObjectRes())) {
 					// Drop if object has a recipe.
 					player.GetKitchenObject().SetKitchenObjectParent(this);
 					cuttingProgress = 0;
@@ -30,39 +25,43 @@ public partial class CuttingCounter : BaseCounter, IHasProgress
 
 				}
 			}
-			else
-			{
+			else {
 				// Player not carrying anything
 			}
 		}
-		else
-		{
-			if (player.HasKitchenObject())
-			{
-				// Player carrying something - swap
+		else {
+			if (player.HasKitchenObject()) {
+				if (player.GetKitchenObject().TryGetPlate(out var plateKitchenObject)) {
+					// Player is holding a plate
+					bool success = plateKitchenObject
+						.TryAddIngredient(GetKitchenObject().GetKitchenObjectRes());
+
+					if (success) {
+						GetKitchenObject().DestroySelf();
+					}
+
+				}
 			}
-			else
-			{
+			else {
 				// Player is not carying anything, give to player
 				GetKitchenObject().SetKitchenObjectParent(player);
+				OnProgressChanged?.Invoke(this, 0f);
+
 			}
 		}
 	}
 
-	public override void InteractAlternate(Player player)
-	{
-		if (HasKitchenObject() && HasRecipeWithInput(GetKitchenObject().GetKitchenObjectRes()))
-		{
+	public override void InteractAlternate(Player player) {
+		if (HasKitchenObject() && HasRecipeWithInput(GetKitchenObject().GetKitchenObjectRes())) {
 			// Start cutting the kitchen object
 			cuttingProgress++;
 			var recipe = GetCuttingRecipeWithInput(GetKitchenObject().GetKitchenObjectRes());
-			
+
 			OnProgressChanged?.Invoke(this, (float)cuttingProgress / recipe.cuttingProgressMax);
 
 			OnCut?.Invoke(this, EventArgs.Empty);
 
-			if (cuttingProgress >= recipe.cuttingProgressMax)
-			{
+			if (cuttingProgress >= recipe.cuttingProgressMax) {
 				// Enough cut
 				GetKitchenObject().DestroySelf();
 				KitchenObject.SpawnKitchenObject(recipe.output, this);
@@ -71,23 +70,18 @@ public partial class CuttingCounter : BaseCounter, IHasProgress
 		}
 	}
 
-	private bool HasRecipeWithInput(KitchenObjectRes inputKitchenObjectRes)
-	{
+	private bool HasRecipeWithInput(KitchenObjectRes inputKitchenObjectRes) {
 		var recipe = GetCuttingRecipeWithInput(inputKitchenObjectRes);
 		return recipe is not null;
 	}
 
-	private KitchenObjectRes GetOuputForInput(KitchenObjectRes inputKitchenObjectRes)
-	{
+	private KitchenObjectRes GetOuputForInput(KitchenObjectRes inputKitchenObjectRes) {
 		return GetCuttingRecipeWithInput(inputKitchenObjectRes).output;
 	}
 
-	private CuttingRecipeRes GetCuttingRecipeWithInput(KitchenObjectRes inputKitchenObjectRes)
-	{
-		foreach (var recipe in cuttingRecipes)
-		{
-			if (recipe.input == inputKitchenObjectRes)
-			{
+	private CuttingRecipeRes GetCuttingRecipeWithInput(KitchenObjectRes inputKitchenObjectRes) {
+		foreach (var recipe in cuttingRecipes) {
+			if (recipe.input == inputKitchenObjectRes) {
 				return recipe;
 			}
 		}

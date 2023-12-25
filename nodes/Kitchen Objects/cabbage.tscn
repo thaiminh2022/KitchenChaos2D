@@ -4,9 +4,6 @@
 [ext_resource type="Script" path="res://scripts/KitchenObject.cs" id="2_8r5gk"]
 
 [node name="cabbage" type="Sprite2D"]
-z_index = 1
-y_sort_enabled = true
-scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_8p82v")
 
 [node name="KitchenObject" type="Node2D" parent="."]
