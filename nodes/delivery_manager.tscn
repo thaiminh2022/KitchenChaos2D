@@ -1,3 +1,13 @@
-[gd_scene format=3 uid="uid://cxxx11dgwhvo0"]
+[gd_scene load_steps=3 format=3 uid="uid://cxxx11dgwhvo0"]
 
-[node name="DeliveryManager" type="Node"]
+[ext_resource type="Script" path="res://scripts/DeliveryManager.cs" id="1_67g4x"]
+[ext_resource type="Resource" uid="uid://cx4swrrrym2tk" path="res://ScriptableObjects/recipe_list.tres" id="2_r1m11"]
+
+[node name="DeliveryManager" type="Node" node_paths=PackedStringArray("spawnRecipeTimer")]
+script = ExtResource("1_67g4x")
+recipeListRes = ExtResource("2_r1m11")
+spawnRecipeTimer = NodePath("SpawnRecipeTImer")
+
+[node name="SpawnRecipeTImer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true

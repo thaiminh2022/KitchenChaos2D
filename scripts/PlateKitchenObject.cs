@@ -16,22 +16,14 @@ public partial class PlateKitchenObject : KitchenObject {
 	public bool TryAddIngredient(KitchenObjectRes kitchenObjectRes) {
 
 		if (!IsValidIngredient(kitchenObjectRes)) {
-			GD.Print("Not valid ingredient");
 			return false;
 		}
 
 		if (kitchenObjectResList.Contains(kitchenObjectRes)) {
-			GD.Print("Not unique ingredient");
 			return false;
-
 		}
 
 		GD.Print(kitchenObjectResList.Count);
-
-		if (kitchenObjectResList.Count > 0) {
-			GD.Print(kitchenObjectResList[^1] == kitchenObjectRes);
-			GD.Print(kitchenObjectResList.Contains(kitchenObjectRes));
-		}
 
 		kitchenObjectResList.Add(kitchenObjectRes);
 		OnIngredientAdded?.Invoke(this, kitchenObjectRes);
