@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://o42dk2t8dngk" path="res://nodes/Counters/_baseCounter.tscn" id="1_brrth"]
 [ext_resource type="Script" path="res://scripts/Counters/PlateCounter.cs" id="2_kbeot"]
 [ext_resource type="Resource" uid="uid://c106dwmbceetb" path="res://ScriptableObjects/KitchenObjectRes/plate.tres" id="3_3171j"]
-[ext_resource type="PackedScene" uid="uid://chotebi8oe3m5" path="res://assets/plate_counter.aseprite" id="3_idr35"]
+[ext_resource type="PackedScene" uid="uid://chotebi8oe3m5" path="res://assets/sprites/plate_counter.aseprite" id="3_idr35"]
 [ext_resource type="Script" path="res://scripts/Counters/SelectedCounterVisual.cs" id="4_o74s4"]
 [ext_resource type="Script" path="res://scripts/Counters/PlateCounterVisual.cs" id="5_dknfy"]
 
@@ -12,9 +12,6 @@ script = ExtResource("2_kbeot")
 SpawnPlateTimer = NodePath("SpawnPlateTimer")
 plateObjectRes = ExtResource("3_3171j")
 counterTopPoint = NodePath("CounterTopPoint")
-
-[node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, 0)
 
 [node name="SpawnPlateTimer" type="Timer" parent="." index="2"]
 wait_time = 4.0

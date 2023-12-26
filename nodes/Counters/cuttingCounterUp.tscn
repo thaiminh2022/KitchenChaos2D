@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://44up3pm8nxhs" path="res://ScriptableObjects/CuttingRecipeRes/Cheese-ChesseSlices.tres" id="4_ab57m"]
 [ext_resource type="Resource" uid="uid://bnojfq8u1shye" path="res://ScriptableObjects/CuttingRecipeRes/Tomato-TomatoSlices.tres" id="5_pbg02"]
 [ext_resource type="Script" path="res://scripts/Counters/CuttingCounterVisual.cs" id="7_fbe0q"]
-[ext_resource type="PackedScene" uid="uid://drux7sfq4syod" path="res://assets/cutting_counter_up.aseprite" id="7_v5n78"]
+[ext_resource type="PackedScene" uid="uid://drux7sfq4syod" path="res://assets/sprites/cutting_counter_up.aseprite" id="7_v5n78"]
 [ext_resource type="Script" path="res://scripts/Counters/SelectedCounterVisual.cs" id="8_dqpdm"]
 [ext_resource type="PackedScene" uid="uid://cekh08eiiw143" path="res://nodes/progress_bar.tscn" id="9_ykinx"]
 
@@ -21,11 +21,13 @@ offset_bottom = -8.0
 hasProgressObject = NodePath("..")
 
 [node name="cutting_counter_up" parent="." index="3" node_paths=PackedStringArray("cuttingCounter") instance=ExtResource("7_v5n78")]
+speed_scale = 2.0
 script = ExtResource("7_fbe0q")
 cuttingCounter = NodePath("..")
 
 [node name="selected" parent="." index="4" node_paths=PackedStringArray("clearCounter") instance=ExtResource("7_v5n78")]
 visible = false
 modulate = Color(0.0705882, 0.164706, 1, 0.309804)
+speed_scale = 2.0
 script = ExtResource("8_dqpdm")
 clearCounter = NodePath("..")

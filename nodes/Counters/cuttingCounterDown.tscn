@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://bnojfq8u1shye" path="res://ScriptableObjects/CuttingRecipeRes/Tomato-TomatoSlices.tres" id="5_334e0"]
 [ext_resource type="Script" path="res://scripts/Counters/CuttingCounterVisual.cs" id="7_0pw68"]
 [ext_resource type="Script" path="res://scripts/Counters/SelectedCounterVisual.cs" id="8_jnnq1"]
-[ext_resource type="PackedScene" uid="uid://bu3tfea3k1ivb" path="res://assets/cutting_counter_down.aseprite" id="8_oxii6"]
+[ext_resource type="PackedScene" uid="uid://bu3tfea3k1ivb" path="res://assets/sprites/cutting_counter_down.aseprite" id="8_oxii6"]
 [ext_resource type="PackedScene" uid="uid://cekh08eiiw143" path="res://nodes/progress_bar.tscn" id="9_qp6t5"]
 
 [node name="CuttingCounterDown" node_paths=PackedStringArray("counterTopPoint") instance=ExtResource("1_qygfg")]

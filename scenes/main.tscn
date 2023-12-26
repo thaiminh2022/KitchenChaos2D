@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ccmfdp4smdyss"]
+[gd_scene load_steps=27 format=3 uid="uid://ccmfdp4smdyss"]
 
 [ext_resource type="PackedScene" uid="uid://dgxncuk7lio5i" path="res://nodes/Counters/clearCounterDown.tscn" id="2_oatpm"]
 [ext_resource type="PackedScene" uid="uid://dkvbnwkxtb3d3" path="res://nodes/player.tscn" id="2_xcenc"]
@@ -17,84 +17,86 @@
 [ext_resource type="PackedScene" uid="uid://cfkw2cspxe5xr" path="res://nodes/Counters/clearCounterRight.tscn" id="13_aw6wd"]
 [ext_resource type="PackedScene" uid="uid://cxxx11dgwhvo0" path="res://nodes/delivery_manager.tscn" id="14_aceaa"]
 [ext_resource type="PackedScene" uid="uid://d2s4dx6lavk6i" path="res://nodes/Counters/clearCounterLeft.tscn" id="14_grne8"]
+[ext_resource type="PackedScene" uid="uid://b0k8sgxbka2b7" path="res://nodes/delivery_manger_ui.tscn" id="18_8qoms"]
+[ext_resource type="PackedScene" uid="uid://bu5kx7ihbgobp" path="res://nodes/music_manager.tscn" id="19_6ah70"]
+[ext_resource type="PackedScene" uid="uid://16yhofw8o5j7" path="res://nodes/sound_manager.tscn" id="20_0831m"]
+[ext_resource type="Texture2D" uid="uid://d0xahgh4nt5o" path="res://assets/sprites/floor.aseprite" id="21_c5nh7"]
+[ext_resource type="PackedScene" uid="uid://ccwsc4cd6xcsv" path="res://nodes/Counters/containerCounterUp.tscn" id="22_4tj8j"]
+[ext_resource type="PackedScene" uid="uid://cuuf7i733h2d6" path="res://nodes/Counters/containerCounterDown.tscn" id="23_rnbo2"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o4abs"]
+texture = ExtResource("21_c5nh7")
+0:0/0 = 0
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_bmmnj"]
+resource_name = "Counters"
+scenes/2/scene = ExtResource("2_oatpm")
+scenes/3/scene = ExtResource("14_grne8")
+scenes/4/scene = ExtResource("13_aw6wd")
+scenes/5/scene = ExtResource("3_oyuy4")
+scenes/6/scene = ExtResource("23_rnbo2")
+scenes/7/scene = ExtResource("4_5m3c4")
+scenes/8/scene = ExtResource("5_i5sh2")
+scenes/9/scene = ExtResource("6_lb6hv")
+scenes/10/scene = ExtResource("22_4tj8j")
+scenes/11/scene = ExtResource("8_2gcql")
+scenes/12/scene = ExtResource("7_ernq7")
+scenes/13/scene = ExtResource("9_56qdx")
+scenes/14/scene = ExtResource("10_6kw6a")
+scenes/15/scene = ExtResource("7_s474c")
+scenes/16/scene = ExtResource("12_1h2rd")
+scenes/17/scene = ExtResource("11_icagi")
+scenes/18/scene = ExtResource("12_s8jd0")
+
+[sub_resource type="TileSet" id="TileSet_b2sxr"]
+sources/0 = SubResource("TileSetAtlasSource_o4abs")
+sources/1 = SubResource("TileSetScenesCollectionSource_bmmnj")
 
 [node name="main" type="Node2D"]
 y_sort_enabled = true
 
-[node name="CanvasGroup" type="CanvasGroup" parent="."]
-y_sort_enabled = true
-
-[node name="ClearCounterDown5" parent="CanvasGroup" instance=ExtResource("2_oatpm")]
-position = Vector2(-25, -36)
-
-[node name="StoveCounter" parent="CanvasGroup" instance=ExtResource("11_icagi")]
-position = Vector2(-12, -36)
-
-[node name="StoveCounter3" parent="CanvasGroup" instance=ExtResource("11_icagi")]
-position = Vector2(-13, 7)
-
-[node name="StoveCounter4" parent="CanvasGroup" instance=ExtResource("11_icagi")]
-position = Vector2(0, 7)
-
-[node name="StoveCounter2" parent="CanvasGroup" instance=ExtResource("11_icagi")]
-position = Vector2(1, -36)
-
-[node name="PlateCounter" parent="CanvasGroup" instance=ExtResource("12_1h2rd")]
-position = Vector2(27, 38)
-
-[node name="PlateCounter2" parent="CanvasGroup" instance=ExtResource("12_1h2rd")]
-position = Vector2(41, -11)
-
-[node name="Delivery_Counter" parent="CanvasGroup" instance=ExtResource("7_s474c")]
-position = Vector2(41, -26)
-
-[node name="ContainerCounterUp_BurgerBun" parent="CanvasGroup" instance=ExtResource("8_2gcql")]
-position = Vector2(12, 38)
-
-[node name="ContainerCounterUp_RawMeat" parent="CanvasGroup" instance=ExtResource("7_ernq7")]
-position = Vector2(-2, 38)
-
-[node name="ContainerCounterDown_Cabbage" parent="CanvasGroup" instance=ExtResource("4_5m3c4")]
-position = Vector2(14, -36)
-
-[node name="ContainerCounterDown_Cheese" parent="CanvasGroup" instance=ExtResource("5_i5sh2")]
-position = Vector2(27, -36)
-
-[node name="TrashCounter2" parent="CanvasGroup" instance=ExtResource("12_s8jd0")]
-position = Vector2(-17, 38)
-
-[node name="ClearCounterUp" parent="CanvasGroup" instance=ExtResource("3_oyuy4")]
-position = Vector2(-31, 38)
-
-[node name="ClearCounterLeft" parent="CanvasGroup" instance=ExtResource("14_grne8")]
-position = Vector2(41, 5)
-
-[node name="ClearCounterLeft2" parent="CanvasGroup" instance=ExtResource("14_grne8")]
-position = Vector2(41, 22)
-
-[node name="CuttingCounterUp" parent="CanvasGroup" instance=ExtResource("10_6kw6a")]
-position = Vector2(0, -5)
-
-[node name="ClearCounterRight" parent="CanvasGroup" instance=ExtResource("13_aw6wd")]
-position = Vector2(-56, -26)
-
-[node name="ClearCounterRight2" parent="CanvasGroup" instance=ExtResource("13_aw6wd")]
-position = Vector2(-56, -11)
-
-[node name="ClearCounterRight3" parent="CanvasGroup" instance=ExtResource("13_aw6wd")]
-position = Vector2(-56, 4)
-
-[node name="CuttingCounterDown" parent="CanvasGroup" instance=ExtResource("9_56qdx")]
-position = Vector2(-13, -5)
-
-[node name="ContainerCounterDown_Tomato" parent="CanvasGroup" instance=ExtResource("6_lb6hv")]
-position = Vector2(-39, -36)
-
-[node name="Player" parent="." instance=ExtResource("2_xcenc")]
-position = Vector2(24, 9)
-scale = Vector2(0.75, 0.75)
-
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(8, 8)
+zoom = Vector2(11, 11)
 
 [node name="DeliveryManager" parent="." instance=ExtResource("14_aceaa")]
+
+[node name="UICanvas" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="UICanvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="DeliveryManagerUI" parent="UICanvas/MarginContainer" instance=ExtResource("18_8qoms")]
+layout_mode = 2
+
+[node name="MusicManager" parent="." instance=ExtResource("19_6ah70")]
+
+[node name="SoundManager" parent="." instance=ExtResource("20_0831m")]
+
+[node name="TileMap" type="TileMap" parent="."]
+z_index = -1
+y_sort_enabled = true
+tile_set = SubResource("TileSet_b2sxr")
+format = 2
+layer_0/name = "Floor"
+layer_0/modulate = Color(1, 1, 1, 0.901961)
+layer_0/z_index = -1
+layer_0/tile_data = PackedInt32Array(-65537, 0, 0, -65538, 0, 0, -2, 0, 0, 65534, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, -65533, 0, 0, -65534, 0, 0, -65535, 0, 0, -65536, 0, 0, -1, 0, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -196604, 0, 0, -196605, 0, 0, -196606, 0, 0, -196607, 0, 0, -196608, 0, 0, -131073, 0, 0, -131074, 0, 0, -131075, 0, 0, -131076, 0, 0, -131077, 0, 0, -65541, 0, 0, -5, 0, 0, 65531, 0, 0, 131067, 0, 0, 196603, 0, 0, 196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 131068, 0, 0, 131069, 0, 0, 65532, 0, 0, 65533, 0, 0, -3, 0, 0, -4, 0, 0, -65540, 0, 0, -65539, 0, 0, -65532, 0, 0, 4, 0, 0, 65540, 0, 0, 131076, 0, 0, 131075, 0, 0, 131074, 0, 0, 131073, 0, 0, 131072, 0, 0, 196607, 0, 0, 65538, 0, 0, 65539, 0, 0, 196612, 0, 0, 196611, 0, 0, 196610, 0, 0, 196609, 0, 0, 196608, 0, 0, 262143, 0, 0, 262142, 0, 0, 262141, 0, 0, 262140, 0, 0, 262139, 0, 0, -196613, 0, 0, -196612, 0, 0, -196611, 0, 0, -196610, 0, 0, -196609, 0, 0, -262144, 0, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -262140, 0, 0)
+layer_1/name = "Counter"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = true
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array(-65539, 1, 262144, -3, 1, 262144, 65533, 1, 262144, 131069, 1, 1048576, -131074, 1, 131072, -131073, 1, 458752, -196608, 1, 589824, -196607, 1, 524288, -196606, 1, 1048576, -131069, 1, 983040, -65533, 1, 1048576, 3, 1, 196608, 65539, 1, 196608, 196606, 1, 1179648, 196607, 1, 786432, 131072, 1, 720896, 131073, 1, 327680, 131074, 1, 1048576, 65535, 1, 1114112, 0, 1, 851968, 1, 1, 131072, -1, 1, 917504, -65536, 1, 917504, -65535, 1, 327680)
+
+[node name="Player" parent="TileMap" instance=ExtResource("2_xcenc")]
+position = Vector2(25, 21)
+scale = Vector2(0.75, 0.75)

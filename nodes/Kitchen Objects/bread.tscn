@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c45ko0byu6jqk"]
 
-[ext_resource type="Texture2D" uid="uid://q8sevrfrkdxm" path="res://assets/burger_bun.aseprite" id="1_1wctk"]
+[ext_resource type="Texture2D" uid="uid://q8sevrfrkdxm" path="res://assets/sprites/burger_bun.aseprite" id="1_1wctk"]
 [ext_resource type="Script" path="res://scripts/KitchenObject.cs" id="2_3o517"]
 
 [node name="bread" type="Sprite2D"]

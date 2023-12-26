@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bcninnyutwtcw"]
 
-[ext_resource type="Texture2D" uid="uid://d0xdph5hged4c" path="res://assets/plate.aseprite" id="1_ugtdq"]
+[ext_resource type="Texture2D" uid="uid://d0xdph5hged4c" path="res://assets/sprites/plate.aseprite" id="1_4eyd7"]
 [ext_resource type="Script" path="res://scripts/PlateKitchenObject.cs" id="2_df1gy"]
 [ext_resource type="Resource" uid="uid://dbs70gex5aamx" path="res://ScriptableObjects/KitchenObjectRes/bread.tres" id="3_qol3q"]
 [ext_resource type="Resource" uid="uid://caebpl0odhf2n" path="res://ScriptableObjects/KitchenObjectRes/meat_burned.tres" id="4_8fuvp"]
@@ -10,12 +10,12 @@
 [ext_resource type="Resource" uid="uid://bgyeebe0a5slq" path="res://ScriptableObjects/KitchenObjectRes/sliced_cheese.tres" id="8_a5dw5"]
 [ext_resource type="Resource" uid="uid://bcfu5qjpksefn" path="res://ScriptableObjects/KitchenObjectRes/sliced_tomato.tres" id="9_expjy"]
 [ext_resource type="PackedScene" uid="uid://ccbuw0fp1wrjv" path="res://nodes/Kitchen Objects/hambuger.tscn" id="10_jsuqy"]
-[ext_resource type="Script" path="res://scripts/PlateIconUI.cs" id="11_x2aow"]
+[ext_resource type="Script" path="res://scripts/UI/PlateIconUI.cs" id="11_vggiv"]
 [ext_resource type="PackedScene" uid="uid://cg80fnapbpgfe" path="res://nodes/plate_icon_template.tscn" id="12_5ldyc"]
 
 [node name="plate" type="Sprite2D"]
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_ugtdq")
+texture = ExtResource("1_4eyd7")
 
 [node name="KitchenObject" type="Node2D" parent="."]
 script = ExtResource("2_df1gy")
@@ -41,7 +41,7 @@ grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 columns = 3
-script = ExtResource("11_x2aow")
+script = ExtResource("11_vggiv")
 plateKitchenObject = NodePath("../KitchenObject")
 iconTemplate = ExtResource("12_5ldyc")
 

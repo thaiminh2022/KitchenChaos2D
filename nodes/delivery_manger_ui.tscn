@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0k8sgxbka2b7"]
+
+[ext_resource type="Script" path="res://scripts/UI/DeliveryManagerUI.cs" id="1_w3mgr"]
+[ext_resource type="PackedScene" uid="uid://clblm6sev4h0h" path="res://nodes/recipe_template.tscn" id="2_cvcn5"]
+
+[node name="DeliveryManagerUI" type="Control" node_paths=PackedStringArray("container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w3mgr")
+template = ExtResource("2_cvcn5")
+container = NodePath("Container")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_right = 434.0
+offset_bottom = 72.0
+theme_override_font_sizes/font_size = 50
+text = "RECIPE WAITING..."
+
+[node name="Container" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_top = 106.0
+offset_right = 250.0
+offset_bottom = 336.0
+theme_override_constants/separation = 30
+
+[node name="RecipeTemplate" parent="Container" instance=ExtResource("2_cvcn5")]
+layout_mode = 2

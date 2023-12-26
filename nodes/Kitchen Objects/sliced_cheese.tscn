@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://lg86uyftc65f"]
 
-[ext_resource type="Texture2D" uid="uid://cyhgwjhmqa1er" path="res://assets/sliced_cheese.aseprite" id="1_na3f8"]
+[ext_resource type="Texture2D" uid="uid://cyhgwjhmqa1er" path="res://assets/sprites/sliced_cheese.aseprite" id="1_na3f8"]
 [ext_resource type="Script" path="res://scripts/KitchenObject.cs" id="2_2ge0v"]
 
 [node name="cheese" type="Sprite2D"]

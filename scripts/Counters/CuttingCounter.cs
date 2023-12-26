@@ -3,6 +3,9 @@ using System;
 
 
 public partial class CuttingCounter : BaseCounter, IHasProgress {
+
+	public static event EventHandler OnAnyCut;
+	
 	public event EventHandler<float> OnProgressChanged;
 	public event EventHandler OnCut;
 
@@ -60,6 +63,8 @@ public partial class CuttingCounter : BaseCounter, IHasProgress {
 			OnProgressChanged?.Invoke(this, (float)cuttingProgress / recipe.cuttingProgressMax);
 
 			OnCut?.Invoke(this, EventArgs.Empty);
+			OnAnyCut?.Invoke(this, EventArgs.Empty);
+
 
 			if (cuttingProgress >= recipe.cuttingProgressMax) {
 				// Enough cut

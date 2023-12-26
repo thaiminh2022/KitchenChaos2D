@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://o42dk2t8dngk" path="res://nodes/Counters/_baseCounter.tscn" id="1_lyihn"]
 [ext_resource type="Script" path="res://scripts/Counters/DeliveryCounter.cs" id="2_iydoh"]
-[ext_resource type="Texture2D" uid="uid://by3m7uf2328ls" path="res://assets/delivery_counter.aseprite" id="2_udwxq"]
+[ext_resource type="Texture2D" uid="uid://by3m7uf2328ls" path="res://assets/sprites/delivery_counter.aseprite" id="2_udwxq"]
 [ext_resource type="Shader" path="res://shaders/moving_visual.gdshader" id="3_dityj"]
 [ext_resource type="Script" path="res://scripts/Counters/SelectedCounterVisual.cs" id="3_re6ns"]
-[ext_resource type="Texture2D" uid="uid://kbubg7vmuctc" path="res://assets/right_arrow.aseprite" id="3_wa6js"]
+[ext_resource type="Texture2D" uid="uid://kbubg7vmuctc" path="res://assets/sprites/right_arrow.aseprite" id="3_wa6js"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4hj1m"]
 shader = ExtResource("3_dityj")

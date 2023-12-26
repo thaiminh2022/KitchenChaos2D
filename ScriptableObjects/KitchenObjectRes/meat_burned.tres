@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="KitchenObjectRes" load_steps=4 format=3 uid="uid://caebpl0odhf2n"]
 
-[ext_resource type="Texture2D" uid="uid://07u5dtekvhse" path="res://assets/meat_burned.aseprite" id="1_dxi0n"]
+[ext_resource type="Texture2D" uid="uid://07u5dtekvhse" path="res://assets/sprites/meat_burned.aseprite" id="1_dxi0n"]
 [ext_resource type="PackedScene" uid="uid://dixu1juxtujbn" path="res://nodes/Kitchen Objects/meat_burned.tscn" id="2_swkp0"]
 [ext_resource type="Script" path="res://scripts/CustomResources/KitchenObjectRes.cs" id="3_3k0nc"]
 
