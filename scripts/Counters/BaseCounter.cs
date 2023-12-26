@@ -1,8 +1,12 @@
 using Godot;
+using System;
 
 
 public abstract partial class BaseCounter : StaticBody2D, IKitchenObjectParent
 {
+    public static event EventHandler OnAnyObjectPlaced;
+         
+
     [Export] private Marker2D counterTopPoint;
 
     private KitchenObject kitchenObject;
@@ -16,6 +20,10 @@ public abstract partial class BaseCounter : StaticBody2D, IKitchenObjectParent
     public void SetKitchenObject(KitchenObject newKitchenObject)
     {
         kitchenObject = newKitchenObject;
+
+        if(newKitchenObject is not null ) {
+            OnAnyObjectPlaced?.Invoke(this, EventArgs.Empty);
+        }
     }
     public void ClearKitchenObject()
     {

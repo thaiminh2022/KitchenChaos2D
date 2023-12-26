@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bdkuqb6j7kauw"]
 
-[ext_resource type="Texture2D" uid="uid://bjx4w67yiw1t8" path="res://assets/meat_cooked.aseprite" id="1_q00jc"]
+[ext_resource type="Texture2D" uid="uid://bjx4w67yiw1t8" path="res://assets/sprites/meat_cooked.aseprite" id="1_q00jc"]
 [ext_resource type="Script" path="res://scripts/KitchenObject.cs" id="2_lleia"]
 
 [node name="meat_cooked" type="Sprite2D"]

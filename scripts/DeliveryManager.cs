@@ -1,11 +1,18 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 public partial class DeliveryManager : Node {
 
-	public static DeliveryManager Instance { get; private set; }
+	public event EventHandler OnRecipeSpawn;
+	public event EventHandler OnRecipeComplete;
+	public event EventHandler OnRecipeSucceeded;
+	public event EventHandler OnRecipeFailed;
 
+
+
+	public static DeliveryManager Instance { get; private set; }
 
 	[Export] private int waitingRecipeMax = 4;
 
@@ -33,7 +40,8 @@ public partial class DeliveryManager : Node {
 			RecipeRes recipe = recipeResList[randomIndex];
 			waitingRecipeList.Add(recipe);
 
-			GD.Print("Added recipe: ", recipe.recipeName);
+			OnRecipeSpawn?.Invoke(this, EventArgs.Empty);
+
 		}
 
 	}
@@ -65,14 +73,21 @@ public partial class DeliveryManager : Node {
 
 		if (matchedRecipe is not null) {
 			// Player delivered a correct recipe
-			GD.Print("Matched recipe: ", matchedRecipe.recipeName);
 			waitingRecipeList.Remove(matchedRecipe);
+			
+			OnRecipeComplete?.Invoke(this, EventArgs.Empty);
+			OnRecipeSucceeded?.Invoke(this, EventArgs.Empty);
 		} else {
 			// Player did not deliver a correct recipe
 			GD.Print("Did not find any matched recipe");
+			OnRecipeFailed?.Invoke(this, EventArgs.Empty);
 
 		}
 
+	}
+
+	public List<RecipeRes> GetWaitingRecipeResList() {
+		return waitingRecipeList;
 	}
 
 }

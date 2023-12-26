@@ -2,18 +2,18 @@
 
 [ext_resource type="PackedScene" uid="uid://o42dk2t8dngk" path="res://nodes/Counters/_baseCounter.tscn" id="1_0u8m5"]
 [ext_resource type="Script" path="res://scripts/Counters/TrashCounter.cs" id="2_1lu2l"]
-[ext_resource type="Texture2D" uid="uid://ck8n2cbujv5fv" path="res://assets/trash_can.aseprite" id="2_f3n4x"]
+[ext_resource type="Texture2D" uid="uid://ck8n2cbujv5fv" path="res://assets/sprites/trash_can.aseprite" id="3_jklh2"]
 [ext_resource type="Script" path="res://scripts/Counters/SelectedCounterVisual.cs" id="4_knixo"]
 
 [node name="TrashCounter" instance=ExtResource("1_0u8m5")]
 script = ExtResource("2_1lu2l")
 
 [node name="visual" type="Sprite2D" parent="." index="2"]
-texture = ExtResource("2_f3n4x")
+texture = ExtResource("3_jklh2")
 
 [node name="selected" type="Sprite2D" parent="." index="3" node_paths=PackedStringArray("clearCounter")]
 visible = false
 modulate = Color(0.0705882, 0.164706, 1, 0.309804)
-texture = ExtResource("2_f3n4x")
+texture = ExtResource("3_jklh2")
 script = ExtResource("4_knixo")
 clearCounter = NodePath("..")

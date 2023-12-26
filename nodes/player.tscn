@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkvbnwkxtb3d3"]
+[gd_scene load_steps=6 format=3 uid="uid://dkvbnwkxtb3d3"]
 
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_hi7lg"]
-[ext_resource type="PackedScene" uid="uid://b1uiigwy1bylq" path="res://assets/player.aseprite" id="2_g4cc5"]
+[ext_resource type="PackedScene" uid="uid://b1uiigwy1bylq" path="res://assets/sprites/player.aseprite" id="2_g4cc5"]
 [ext_resource type="Script" path="res://scripts/PlayerAnimator.cs" id="3_vjadu"]
+[ext_resource type="Script" path="res://scripts/PlayerSound.cs" id="4_lf3gf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hbwqn"]
 size = Vector2(14, 11)
@@ -36,3 +37,15 @@ position = Vector2(0, 2)
 target_position = Vector2(0, -10)
 collision_mask = 6
 hit_from_inside = true
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
+[node name="PlayerSound" type="Node2D" parent="." node_paths=PackedStringArray("player", "footStepTimer")]
+script = ExtResource("4_lf3gf")
+player = NodePath("..")
+footStepTimer = NodePath("FootStepTimer")
+
+[node name="FootStepTimer" type="Timer" parent="PlayerSound"]
+wait_time = 0.5
+autostart = true

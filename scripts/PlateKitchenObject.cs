@@ -22,9 +22,6 @@ public partial class PlateKitchenObject : KitchenObject {
 		if (kitchenObjectResList.Contains(kitchenObjectRes)) {
 			return false;
 		}
-
-		GD.Print(kitchenObjectResList.Count);
-
 		kitchenObjectResList.Add(kitchenObjectRes);
 		OnIngredientAdded?.Invoke(this, kitchenObjectRes);
 		return true;

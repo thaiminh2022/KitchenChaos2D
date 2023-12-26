@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dcoessvm3xl4i"]
 
-[ext_resource type="Texture2D" uid="uid://blxs3ww2dwrdw" path="res://assets/slice_cabbage.aseprite" id="1_xhtsq"]
+[ext_resource type="Texture2D" uid="uid://blxs3ww2dwrdw" path="res://assets/sprites/slice_cabbage.aseprite" id="1_xhtsq"]
 [ext_resource type="Script" path="res://scripts/KitchenObject.cs" id="2_flitp"]
 
 [node name="cabbage" type="Sprite2D"]

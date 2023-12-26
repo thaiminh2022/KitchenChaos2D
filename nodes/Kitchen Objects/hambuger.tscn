@@ -1,16 +1,16 @@
 [gd_scene load_steps=18 format=3 uid="uid://ccbuw0fp1wrjv"]
 
-[ext_resource type="Texture2D" uid="uid://q8sevrfrkdxm" path="res://assets/burger_bun.aseprite" id="1_jc3tp"]
 [ext_resource type="Script" path="res://scripts/PlateCompleteVisual.cs" id="1_ssk48"]
-[ext_resource type="Texture2D" uid="uid://c3kawty606ers" path="res://assets/burger_bun_bottom.aseprite" id="2_lq2ih"]
-[ext_resource type="Texture2D" uid="uid://dmoa8vlgqjaph" path="res://assets/sliced_tomato.aseprite" id="3_hthng"]
-[ext_resource type="Texture2D" uid="uid://cyhgwjhmqa1er" path="res://assets/sliced_cheese.aseprite" id="3_nli06"]
-[ext_resource type="Texture2D" uid="uid://blxs3ww2dwrdw" path="res://assets/slice_cabbage.aseprite" id="4_yrcal"]
-[ext_resource type="Texture2D" uid="uid://bjx4w67yiw1t8" path="res://assets/meat_cooked.aseprite" id="5_iro81"]
-[ext_resource type="Texture2D" uid="uid://d0hfv3428xcii" path="res://assets/meat_raw.aseprite" id="7_lqxya"]
+[ext_resource type="Texture2D" uid="uid://c3kawty606ers" path="res://assets/sprites/burger_bun_bottom.aseprite" id="2_oaa2w"]
+[ext_resource type="Texture2D" uid="uid://dmoa8vlgqjaph" path="res://assets/sprites/sliced_tomato.aseprite" id="3_40iuc"]
+[ext_resource type="Texture2D" uid="uid://blxs3ww2dwrdw" path="res://assets/sprites/slice_cabbage.aseprite" id="4_e0uwr"]
+[ext_resource type="Texture2D" uid="uid://cyhgwjhmqa1er" path="res://assets/sprites/sliced_cheese.aseprite" id="5_okxbr"]
+[ext_resource type="Texture2D" uid="uid://bjx4w67yiw1t8" path="res://assets/sprites/meat_cooked.aseprite" id="6_jw4f0"]
+[ext_resource type="Texture2D" uid="uid://d0hfv3428xcii" path="res://assets/sprites/meat_raw.aseprite" id="7_iks4o"]
+[ext_resource type="Texture2D" uid="uid://07u5dtekvhse" path="res://assets/sprites/meat_burned.aseprite" id="8_2ro3m"]
 [ext_resource type="Script" path="res://scripts/KitchenObjectRes_Node.cs" id="8_22ypa"]
-[ext_resource type="Texture2D" uid="uid://07u5dtekvhse" path="res://assets/meat_burned.aseprite" id="8_38gfv"]
 [ext_resource type="Resource" uid="uid://dbs70gex5aamx" path="res://ScriptableObjects/KitchenObjectRes/bread.tres" id="9_5tphx"]
+[ext_resource type="Texture2D" uid="uid://q8sevrfrkdxm" path="res://assets/sprites/burger_bun.aseprite" id="9_6tmor"]
 [ext_resource type="Resource" uid="uid://bcfu5qjpksefn" path="res://ScriptableObjects/KitchenObjectRes/sliced_tomato.tres" id="10_thk8y"]
 [ext_resource type="Resource" uid="uid://cqaaq1ettgh6v" path="res://ScriptableObjects/KitchenObjectRes/sliced_cabbage.tres" id="11_hxi6m"]
 [ext_resource type="Resource" uid="uid://bgyeebe0a5slq" path="res://ScriptableObjects/KitchenObjectRes/sliced_cheese.tres" id="12_ssgbj"]
@@ -27,26 +27,25 @@ kitchenObjectRes_Nodes = [NodePath("data objects/burger_top"), NodePath("data ob
 
 [node name="bun_bottm" type="Sprite2D" parent="visual"]
 scale = Vector2(1.1, 1.1)
-texture = ExtResource("2_lq2ih")
+texture = ExtResource("2_oaa2w")
 
 [node name="tomatos" type="Node2D" parent="visual"]
 position = Vector2(-0.2388, -2)
-scale = Vector2(1, 1)
 
 [node name="sliced_tomato" type="Sprite2D" parent="visual/tomatos"]
 position = Vector2(0, -1)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_hthng")
+texture = ExtResource("3_40iuc")
 
 [node name="sliced_tomato2" type="Sprite2D" parent="visual/tomatos"]
 position = Vector2(-2, 2)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_hthng")
+texture = ExtResource("3_40iuc")
 
 [node name="sliced_tomato3" type="Sprite2D" parent="visual/tomatos"]
 position = Vector2(3, 2)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_hthng")
+texture = ExtResource("3_40iuc")
 
 [node name="cabbage_leafs" type="Node2D" parent="visual"]
 position = Vector2(-1.2388, -1)
@@ -55,47 +54,44 @@ position = Vector2(-1.2388, -1)
 position = Vector2(-0.7612, 2)
 rotation = -2.55051
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_yrcal")
+texture = ExtResource("4_e0uwr")
 
 [node name="cabbage_leaf2" type="Sprite2D" parent="visual/cabbage_leafs"]
 position = Vector2(2.09297, -0.907028)
 rotation = -1.23569
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_yrcal")
+texture = ExtResource("4_e0uwr")
 
 [node name="cheese" type="Sprite2D" parent="visual"]
 position = Vector2(-1, -1)
 rotation = -2.24973
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("3_nli06")
+texture = ExtResource("5_okxbr")
 
 [node name="meat_types" type="Node2D" parent="visual"]
 
 [node name="meat_cooked" type="Sprite2D" parent="visual/meat_types"]
 position = Vector2(0, -2)
-rotation = -3.14159
 scale = Vector2(1.1, 1.1)
 skew = 0.095993
-texture = ExtResource("5_iro81")
+texture = ExtResource("6_jw4f0")
 
 [node name="meat_raw" type="Sprite2D" parent="visual/meat_types"]
 position = Vector2(0, -2)
-rotation = -3.14159
 scale = Vector2(1.1, 1.1)
 skew = 0.095993
-texture = ExtResource("7_lqxya")
+texture = ExtResource("7_iks4o")
 
 [node name="meat_burned" type="Sprite2D" parent="visual/meat_types"]
 position = Vector2(0, -2)
-rotation = -3.14159
 scale = Vector2(1.1, 1.1)
 skew = 0.095993
-texture = ExtResource("8_38gfv")
+texture = ExtResource("8_2ro3m")
 
 [node name="bun_top" type="Sprite2D" parent="visual"]
 position = Vector2(0, -6)
 scale = Vector2(1.1, 1.1)
-texture = ExtResource("1_jc3tp")
+texture = ExtResource("9_6tmor")
 
 [node name="data objects" type="Node2D" parent="."]
 visible = false
