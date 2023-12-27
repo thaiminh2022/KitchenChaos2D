@@ -9,7 +9,7 @@ public partial class MainMenuUI : Control
 	public override void _Ready() {
 
 		playButton.Pressed += () => {
-			SceneManager.Instance.SwitchSceneInteractive(1);
+			SceneManager.SwitchSceneInteractive(SceneManager.Scene.MainGame);
 		};
 		quitButton.Pressed += () => {
 			QuitGame();
