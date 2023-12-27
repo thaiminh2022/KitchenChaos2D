@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1v2mrn733e8p"]
+
+[ext_resource type="Script" path="res://scripts/UI/GameOverUI.cs" id="1_bg28j"]
+
+[node name="GameOverUI" type="Control" node_paths=PackedStringArray("recipeDeliveredAmountText")]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bg28j")
+recipeDeliveredAmountText = NodePath("RecipeDeliveredAmountLabel")
+
+[node name="Bacvkground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.521569)
+
+[node name="GameOverLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 108.0
+offset_bottom = 296.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.984314, 0.47451, 0, 1)
+theme_override_colors/font_outline_color = Color(0.984314, 0.47451, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 135
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RecipeDeliveredLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 361.0
+offset_bottom = 467.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 69
+text = "Recipe Delivered"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="RecipeDeliveredAmountLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 466.0
+offset_bottom = 606.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 100
+text = "10"
+horizontal_alignment = 1
+uppercase = true

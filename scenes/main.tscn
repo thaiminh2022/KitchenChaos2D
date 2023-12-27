@@ -1,9 +1,12 @@
-[gd_scene load_steps=27 format=3 uid="uid://ccmfdp4smdyss"]
+[gd_scene load_steps=31 format=3 uid="uid://ccmfdp4smdyss"]
 
 [ext_resource type="PackedScene" uid="uid://dgxncuk7lio5i" path="res://nodes/Counters/clearCounterDown.tscn" id="2_oatpm"]
 [ext_resource type="PackedScene" uid="uid://dkvbnwkxtb3d3" path="res://nodes/player.tscn" id="2_xcenc"]
+[ext_resource type="PackedScene" uid="uid://dk3gm68lae3v3" path="res://nodes/gameplay_clock_UI.tscn" id="3_7nswy"]
+[ext_resource type="PackedScene" uid="uid://mkusfgxx17f3" path="res://nodes/game_start_countdown_ui.tscn" id="3_im5tc"]
 [ext_resource type="PackedScene" uid="uid://xlvq32ylesv8" path="res://nodes/Counters/clearCounterUp.tscn" id="3_oyuy4"]
 [ext_resource type="PackedScene" uid="uid://cxa2rrmprvrdv" path="res://nodes/Counters/ContainerCounterDown_Cabbage.tscn" id="4_5m3c4"]
+[ext_resource type="PackedScene" uid="uid://d1v2mrn733e8p" path="res://nodes/game_over_ui.tscn" id="4_rbyle"]
 [ext_resource type="PackedScene" uid="uid://cdbrhaqktqped" path="res://nodes/Counters/ContainerCounterDown_Cheese.tscn" id="5_i5sh2"]
 [ext_resource type="PackedScene" uid="uid://bgtbuyvllund0" path="res://nodes/Counters/ContainerCounterTown_Tomato.tscn" id="6_lb6hv"]
 [ext_resource type="PackedScene" uid="uid://dwcmh7fdqy4n1" path="res://nodes/Counters/ContainerCounterUp_RawMeat.tscn" id="7_ernq7"]
@@ -15,14 +18,15 @@
 [ext_resource type="PackedScene" uid="uid://diqnyotlt8kej" path="res://nodes/Counters/plateCounter.tscn" id="12_1h2rd"]
 [ext_resource type="PackedScene" uid="uid://ds7cyaqwupx22" path="res://nodes/Counters/trashCounter.tscn" id="12_s8jd0"]
 [ext_resource type="PackedScene" uid="uid://cfkw2cspxe5xr" path="res://nodes/Counters/clearCounterRight.tscn" id="13_aw6wd"]
-[ext_resource type="PackedScene" uid="uid://cxxx11dgwhvo0" path="res://nodes/delivery_manager.tscn" id="14_aceaa"]
+[ext_resource type="PackedScene" uid="uid://cxxx11dgwhvo0" path="res://nodes/managers/delivery_manager.tscn" id="14_aceaa"]
 [ext_resource type="PackedScene" uid="uid://d2s4dx6lavk6i" path="res://nodes/Counters/clearCounterLeft.tscn" id="14_grne8"]
 [ext_resource type="PackedScene" uid="uid://b0k8sgxbka2b7" path="res://nodes/delivery_manger_ui.tscn" id="18_8qoms"]
-[ext_resource type="PackedScene" uid="uid://bu5kx7ihbgobp" path="res://nodes/music_manager.tscn" id="19_6ah70"]
-[ext_resource type="PackedScene" uid="uid://16yhofw8o5j7" path="res://nodes/sound_manager.tscn" id="20_0831m"]
+[ext_resource type="PackedScene" uid="uid://bu5kx7ihbgobp" path="res://nodes/managers/music_manager.tscn" id="19_6ah70"]
+[ext_resource type="PackedScene" uid="uid://16yhofw8o5j7" path="res://nodes/managers/sound_manager.tscn" id="20_0831m"]
 [ext_resource type="Texture2D" uid="uid://d0xahgh4nt5o" path="res://assets/sprites/floor.aseprite" id="21_c5nh7"]
 [ext_resource type="PackedScene" uid="uid://ccwsc4cd6xcsv" path="res://nodes/Counters/containerCounterUp.tscn" id="22_4tj8j"]
 [ext_resource type="PackedScene" uid="uid://cuuf7i733h2d6" path="res://nodes/Counters/containerCounterDown.tscn" id="23_rnbo2"]
+[ext_resource type="PackedScene" uid="uid://begpkbtitiv3a" path="res://nodes/managers/game_manager.tscn" id="24_f0565"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o4abs"]
 texture = ExtResource("21_c5nh7")
@@ -76,6 +80,14 @@ theme_override_constants/margin_bottom = 20
 [node name="DeliveryManagerUI" parent="UICanvas/MarginContainer" instance=ExtResource("18_8qoms")]
 layout_mode = 2
 
+[node name="GameplayClockUI" parent="UICanvas" instance=ExtResource("3_7nswy")]
+process_mode = 4
+
+[node name="GameStartCountdownUI" parent="UICanvas" instance=ExtResource("3_im5tc")]
+visible = false
+
+[node name="GameOverUI" parent="UICanvas" instance=ExtResource("4_rbyle")]
+
 [node name="MusicManager" parent="." instance=ExtResource("19_6ah70")]
 
 [node name="SoundManager" parent="." instance=ExtResource("20_0831m")]
@@ -100,3 +112,5 @@ layer_1/tile_data = PackedInt32Array(-65539, 1, 262144, -3, 1, 262144, 65533, 1,
 [node name="Player" parent="TileMap" instance=ExtResource("2_xcenc")]
 position = Vector2(25, 21)
 scale = Vector2(0.75, 0.75)
+
+[node name="GameManager" parent="." instance=ExtResource("24_f0565")]

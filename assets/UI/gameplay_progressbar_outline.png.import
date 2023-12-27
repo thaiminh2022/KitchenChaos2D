@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d00mryqa8mw0q"
-path="res://.godot/imported/circle.aseprite-31869c5dfe494502bdf5fdc7ad0ce61c.ctex"
+uid="uid://ch1pdpe3h36xx"
+path="res://.godot/imported/gameplay_progressbar_outline.png-01eabef834661459a3676ee3be838973.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/circle.aseprite"
-dest_files=["res://.godot/imported/circle.aseprite-31869c5dfe494502bdf5fdc7ad0ce61c.ctex"]
+source_file="res://assets/UI/gameplay_progressbar_outline.png"
+dest_files=["res://.godot/imported/gameplay_progressbar_outline.png-01eabef834661459a3676ee3be838973.ctex"]
 
 [params]
 

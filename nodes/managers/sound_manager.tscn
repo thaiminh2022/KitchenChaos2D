@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://16yhofw8o5j7"]
 
-[ext_resource type="Script" path="res://scripts/SoundManager.cs" id="1_34fm0"]
-[ext_resource type="Resource" uid="uid://crope1wqr86in" path="res://ScriptableObjects/audioclip_ref_res.tres" id="2_smyy5"]
+[ext_resource type="Script" path="res://scripts/SoundManager.cs" id="1_ctxov"]
+[ext_resource type="Resource" uid="uid://crope1wqr86in" path="res://ScriptableObjects/audioclip_ref_res.tres" id="2_l5ht5"]
 
 [node name="SoundManager" type="Node" node_paths=PackedStringArray("template")]
-script = ExtResource("1_34fm0")
-audioClipRefRes = ExtResource("2_smyy5")
+script = ExtResource("1_ctxov")
+audioClipRefRes = ExtResource("2_l5ht5")
 template = NodePath("AudioStreamPlayer2DTemplate")
 
 [node name="AudioStreamPlayer2DTemplate" type="AudioStreamPlayer2D" parent="."]

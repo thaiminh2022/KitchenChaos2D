@@ -20,6 +20,7 @@ public partial class DeliveryManager : Node {
 	[Export] private Timer spawnRecipeTimer;
 
 	private List<RecipeRes> waitingRecipeList;
+	private int successfulRecipeDeliveredAmount = 0;
 
 	public override void _EnterTree() {
 		Instance = this;
@@ -74,7 +75,8 @@ public partial class DeliveryManager : Node {
 		if (matchedRecipe is not null) {
 			// Player delivered a correct recipe
 			waitingRecipeList.Remove(matchedRecipe);
-			
+			successfulRecipeDeliveredAmount++;
+
 			OnRecipeComplete?.Invoke(this, EventArgs.Empty);
 			OnRecipeSucceeded?.Invoke(this, EventArgs.Empty);
 		} else {
@@ -89,5 +91,6 @@ public partial class DeliveryManager : Node {
 	public List<RecipeRes> GetWaitingRecipeResList() {
 		return waitingRecipeList;
 	}
+	public int GetSuccessFulRecipeDeliveredAmount() => successfulRecipeDeliveredAmount;
 
 }

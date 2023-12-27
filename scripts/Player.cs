@@ -31,12 +31,20 @@ public partial class Player : CharacterBody2D, IKitchenObjectParent {
 	}
 
 	private void HandleInteract() {
+
 		if (Input.IsActionJustPressed(Constants.INTEREACT)) {
+			if (!GameManager.Instance.IsGamePlaying())
+				return;
+
 			selectedCounter?.Interact(this);
 		}
 	}
 	private void HandleAltInteract() {
+
 		if (Input.IsActionJustPressed(Constants.ALT_INTEREACT)) {
+			if (!GameManager.Instance.IsGamePlaying())
+				return;
+
 			selectedCounter?.InteractAlternate(this);
 		}
 	}

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cg80fnapbpgfe"]
 
 [ext_resource type="Script" path="res://scripts/UI/PlateIconSingleUI.cs" id="1_5gam0"]
-[ext_resource type="Texture2D" uid="uid://d00mryqa8mw0q" path="res://assets/sprites/circle.aseprite" id="2_bvgfc"]
+[ext_resource type="Texture2D" uid="uid://d00mryqa8mw0q" path="res://assets/UI/circle.aseprite" id="2_twfyl"]
 [ext_resource type="Texture2D" uid="uid://dmoa8vlgqjaph" path="res://assets/sprites/sliced_tomato.aseprite" id="3_v1bxx"]
 
 [node name="plate_icon_template" type="Control" node_paths=PackedStringArray("image")]
@@ -16,7 +16,7 @@ image = NodePath("icon")
 modulate = Color(0, 0, 0, 0.317647)
 custom_minimum_size = Vector2(4, 4)
 layout_mode = 0
-texture = ExtResource("2_bvgfc")
+texture = ExtResource("2_twfyl")
 expand_mode = 1
 
 [node name="icon" type="TextureRect" parent="."]

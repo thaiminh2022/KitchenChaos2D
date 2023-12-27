@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://begpkbtitiv3a"]
+
+[ext_resource type="Script" path="res://scripts/GameManager.cs" id="1_8o0r2"]
+
+[node name="GameManager" type="Node" node_paths=PackedStringArray("waitingToStartTimer", "countdownToStart", "gamePlayingTimer")]
+script = ExtResource("1_8o0r2")
+waitingToStartTimer = NodePath("WaitingToStartTimer")
+countdownToStart = NodePath("CountDownToStartTimer")
+gamePlayingTimer = NodePath("GameplayTimer")
+
+[node name="WaitingToStartTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="CountDownToStartTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="GameplayTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true

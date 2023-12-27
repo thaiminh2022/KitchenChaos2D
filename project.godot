@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="KitchenChaos2D"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 config/icon="res://icon_godot.svg"
+
+[autoload]
+
+SceneManager="*res://nodes/managers/SceneManager.tscn"
 
 [display]
 

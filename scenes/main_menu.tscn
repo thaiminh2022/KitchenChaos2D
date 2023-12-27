@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuav4sq7obsyx"]
+
+[ext_resource type="Script" path="res://scripts/UI/MainMenuUI.cs" id="1_oefg3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jrbx1"]
+bg_color = Color(0.152941, 0.152941, 0.152941, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_offset = Vector2(10, 10)
+
+[node name="MainMenu" type="Node"]
+
+[node name="MainMenuCanvas" type="CanvasLayer" parent="."]
+
+[node name="MainMenuUI" type="Control" parent="MainMenuCanvas" node_paths=PackedStringArray("playButton", "quitButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oefg3")
+playButton = NodePath("PlayButton")
+quitButton = NodePath("QuitButton")
+
+[node name="PlayButton" type="Button" parent="MainMenuCanvas/MainMenuUI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 67.0
+offset_top = -437.0
+offset_right = 517.0
+offset_bottom = -287.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxFlat_jrbx1")
+text = "Play
+"
+
+[node name="QuitButton" type="Button" parent="MainMenuCanvas/MainMenuUI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 67.0
+offset_top = -201.0
+offset_right = 517.0
+offset_bottom = -61.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 65
+theme_override_styles/normal = SubResource("StyleBoxFlat_jrbx1")
+text = "Quit"

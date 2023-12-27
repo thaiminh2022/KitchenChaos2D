@@ -1,0 +1,11 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3k2xnt4pqrie"]
+
+[ext_resource type="Script" path="res://scripts/SceneManager.cs" id="1_lamfp"]
+[ext_resource type="PackedScene" uid="uid://cuav4sq7obsyx" path="res://scenes/main_menu.tscn" id="2_evb2r"]
+[ext_resource type="PackedScene" uid="uid://ccmfdp4smdyss" path="res://scenes/main.tscn" id="3_tqtsg"]
+[ext_resource type="PackedScene" uid="uid://gvvu52u8bb5f" path="res://scenes/loading_scene.tscn" id="4_5pmkw"]
+
+[node name="SceneManager" type="Node"]
+script = ExtResource("1_lamfp")
+scenes = Array[PackedScene]([ExtResource("2_evb2r"), ExtResource("3_tqtsg")])
+loadingScene = ExtResource("4_5pmkw")
