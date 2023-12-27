@@ -1,8 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cuav4sq7obsyx"]
+[gd_scene load_steps=3 format=3 uid="uid://cuav4sq7obsyx"]
 
 [ext_resource type="Script" path="res://scripts/UI/MainMenuUI.cs" id="1_oefg3"]
-[ext_resource type="PackedScene" uid="uid://b1uiigwy1bylq" path="res://assets/sprites/player.aseprite" id="2_m2ofn"]
-[ext_resource type="Shader" path="res://shaders/player_shader.gdshader" id="3_gkimn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jrbx1"]
 bg_color = Color(0.152941, 0.152941, 0.152941, 1)
@@ -14,14 +12,7 @@ border_color = Color(0, 0, 0, 1)
 shadow_size = 5
 shadow_offset = Vector2(10, 10)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1rc32"]
-resource_local_to_scene = true
-shader = ExtResource("3_gkimn")
-shader_parameter/from_color = Color(1, 1, 1, 1)
-shader_parameter/to_color = Color(0.94902, 0, 0, 1)
-
 [node name="MainMenu" type="Node"]
-process_mode = 3
 
 [node name="MainMenuCanvas" type="CanvasLayer" parent="."]
 
@@ -64,25 +55,3 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 65
 theme_override_styles/normal = SubResource("StyleBoxFlat_jrbx1")
 text = "Quit"
-
-[node name="Label" type="Label" parent="MainMenuCanvas/MainMenuUI"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 84.0
-offset_bottom = 292.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 150
-text = "KitchenChaos2D"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-
-[node name="player" parent="Camera2D" instance=ExtResource("2_m2ofn")]
-texture_repeat = 2
-material = SubResource("ShaderMaterial_1rc32")
-position = Vector2(1284, 621)
-scale = Vector2(25, 25)
-autoplay = "default"

@@ -12,19 +12,16 @@ public partial class SceneManager : Node {
 	[Export] private PackedScene loadingScene;
 	[Export] private bool useSubThread = true;
 
-	private static string currentWaitingToLoadScenePath;
+	private string scenePath;
 	private Array progressArray;
-	private static LoadingScene currentLoadingScene;
+	private LoadingScene currentLoadingScene;
 
 	[Signal]
 	public delegate void ProgressChangedEventHandler(float progress);
 	[Signal]
 	public delegate void SceneLoadFinishedEventHandler();
 
-	public enum Scene {
-		MainMenu = 0,
-		MainGame = 1,
-	}
+
 
 
 	public override void _EnterTree() {
@@ -62,27 +59,25 @@ public partial class SceneManager : Node {
 
 	#endregion
 
+	public void SwitchSceneInteractive(int index) {
+		scenePath = scenes[index].ResourcePath;
 
-
-	public static void SwitchSceneInteractive(Scene scene) {
-		currentWaitingToLoadScenePath = Instance.scenes[(int)scene].ResourcePath;
-
-		currentLoadingScene = Instance.loadingScene.Instantiate<LoadingScene>();
-		Instance.GetTree().Root.AddChild(currentLoadingScene);
+		currentLoadingScene = loadingScene.Instantiate<LoadingScene>();
+		GetTree().Root.AddChild(currentLoadingScene);
 
 		StartLoad();
 	}
 
-	private static void StartLoad() {
+	private void StartLoad() {
 
-		Error loadState = ResourceLoader.LoadThreadedRequest(currentWaitingToLoadScenePath, "", Instance.useSubThread);
+		Error loadState = ResourceLoader.LoadThreadedRequest(scenePath, "", useSubThread);
 		if (loadState == Error.Ok) {
-			Instance.SetProcess(true);
+			SetProcess(true);
 		}
 	}
 
 	public override void _Process(double delta) {
-		var loadStatus = ResourceLoader.LoadThreadedGetStatus(currentWaitingToLoadScenePath, progressArray);
+		var loadStatus = ResourceLoader.LoadThreadedGetStatus(scenePath, progressArray);
 
 		switch (loadStatus) {
 			case ResourceLoader.ThreadLoadStatus.InvalidResource:
@@ -94,7 +89,7 @@ public partial class SceneManager : Node {
 				EmitSignal(SignalName.ProgressChanged, progressArray[0]);
 				break;
 			case ResourceLoader.ThreadLoadStatus.Loaded:
-				var loaded_resource = ResourceLoader.LoadThreadedGet(currentWaitingToLoadScenePath) as PackedScene;
+				var loaded_resource = ResourceLoader.LoadThreadedGet(scenePath) as PackedScene;
 				EmitSignal(SignalName.ProgressChanged, 1.0);
 
 				currentLoadingScene.SetFinishedAnimationCallBack(() => {
