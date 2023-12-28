@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cuav4sq7obsyx"]
+[gd_scene load_steps=8 format=3 uid="uid://cuav4sq7obsyx"]
 
 [ext_resource type="Script" path="res://scripts/UI/MainMenuUI.cs" id="1_oefg3"]
 [ext_resource type="Texture2D" uid="uid://3dr2gmvxgqxn" path="res://assets/UI/player_icon.aseprite" id="2_giyxj"]
 [ext_resource type="Shader" path="res://shaders/player_shader.gdshader" id="3_yjxhy"]
+[ext_resource type="Script" path="res://scripts/ResetStaticManager.cs" id="4_2l670"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jrbx1"]
 bg_color = Color(0.152941, 0.152941, 0.152941, 1)
@@ -111,3 +112,6 @@ texture = ExtResource("2_giyxj")
 position = Vector2(1430, 803)
 scale = Vector2(20, 20)
 texture = ExtResource("2_giyxj")
+
+[node name="ResetStaticManager" type="Node" parent="."]
+script = ExtResource("4_2l670")

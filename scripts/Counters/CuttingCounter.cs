@@ -5,6 +5,10 @@ using System;
 public partial class CuttingCounter : BaseCounter, IHasProgress {
 
 	public static event EventHandler OnAnyCut;
+
+	public static void ResetStatic() {
+		OnAnyCut = null;
+	}
 	
 	public event EventHandler<float> OnProgressChanged;
 	public event EventHandler OnCut;

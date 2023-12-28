@@ -27,9 +27,4 @@ public partial class PlateIconUI : Control {
 			AddChild(instance);
 		}
 	}
-
-	public override void _ExitTree() {
-		plateKitchenObject.OnIngredientAdded -= PlateKitchenObject_OnIngredientAdded;
-
-	}
 }

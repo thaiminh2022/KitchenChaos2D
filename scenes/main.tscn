@@ -64,8 +64,6 @@ metadata/_edit_vertical_guides_ = [144.0]
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(11, 11)
 
-[node name="DeliveryManager" parent="." instance=ExtResource("14_aceaa")]
-
 [node name="UICanvas" type="CanvasLayer" parent="."]
 
 [node name="MarginContainer" type="MarginContainer" parent="UICanvas"]
@@ -90,12 +88,41 @@ visible = false
 [node name="GameOverUI" parent="UICanvas" instance=ExtResource("4_rbyle")]
 
 [node name="PauseMenuUI" parent="UICanvas" instance=ExtResource("6_j6h1e")]
-visible = false
+
+[node name="SettingMenu" type="Control" parent="UICanvas"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="UICanvas/SettingMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.521569)
+
+[node name="SettingText" type="Label" parent="UICanvas/SettingMenu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 87.0
+offset_bottom = 295.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 150
+text = "Settings"
+horizontal_alignment = 1
+uppercase = true
 
 [node name="MusicManager" parent="." instance=ExtResource("19_6ah70")]
 autoplay = true
-
-[node name="SoundManager" parent="." instance=ExtResource("20_0831m")]
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -1
@@ -117,6 +144,10 @@ layer_1/tile_data = PackedInt32Array(-65539, 1, 262144, -3, 1, 262144, 65533, 1,
 [node name="Player" parent="TileMap" instance=ExtResource("2_xcenc")]
 position = Vector2(25, 21)
 scale = Vector2(0.75, 0.75)
+
+[node name="DeliveryManager" parent="." instance=ExtResource("14_aceaa")]
+
+[node name="SoundManager" parent="." instance=ExtResource("20_0831m")]
 
 [node name="GameManager" parent="." instance=ExtResource("24_f0565")]
 process_mode = 3

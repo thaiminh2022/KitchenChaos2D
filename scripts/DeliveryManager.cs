@@ -12,6 +12,10 @@ public partial class DeliveryManager : Node {
 
 	public static DeliveryManager Instance { get; private set; }
 
+	public static void ResetStatic() {
+		Instance = null;
+	}
+
 	[Export] private int waitingRecipeMax = 4;
 
 	[Export] private RecipeListRes recipeListRes;
@@ -21,12 +25,7 @@ public partial class DeliveryManager : Node {
 	private int successfulRecipeDeliveredAmount = 0;
 
 	public override void _EnterTree() {
-		if (Instance is not null) {
-			QueueFree();
-			return;
-		}
 		Instance = this;
-
 		waitingRecipeList = new();
 	}
 
@@ -84,7 +83,6 @@ public partial class DeliveryManager : Node {
 			OnRecipeSucceeded?.Invoke(this, EventArgs.Empty);
 		} else {
 			// Player did not deliver a correct recipe
-			GD.Print("Did not find any matched recipe");
 			OnRecipeFailed?.Invoke(this, EventArgs.Empty);
 
 		}

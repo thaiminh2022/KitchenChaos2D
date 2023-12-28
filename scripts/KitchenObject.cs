@@ -37,7 +37,6 @@ private IKitchenObjectParent kitchenObjectParent;
 		if (newKitchenObjectParent.HasKitchenObject())
 		{
 			string name = ((Node)newKitchenObjectParent).Name;
-			GD.PrintErr(name, " already has a kitchen object");
 			return;
 		}
 		newKitchenObjectParent.SetKitchenObject(this);

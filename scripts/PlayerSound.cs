@@ -5,6 +5,10 @@ public partial class PlayerSound : Node2D
 {
 	public static event EventHandler OnPlayerMoved;
 
+	public static void ResetStatic() {
+		OnPlayerMoved = null;
+	}
+
 	[Export] Player player;
 	[Export] Timer footStepTimer;
 

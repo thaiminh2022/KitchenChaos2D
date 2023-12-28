@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://scripts/Counters/CuttingCounterVisual.cs" id="7_fbe0q"]
 [ext_resource type="PackedScene" uid="uid://drux7sfq4syod" path="res://assets/sprites/cutting_counter_up.aseprite" id="7_v5n78"]
 [ext_resource type="Script" path="res://scripts/Counters/SelectedCounterVisual.cs" id="8_dqpdm"]
-[ext_resource type="PackedScene" uid="uid://cekh08eiiw143" path="res://nodes/progress_bar.tscn" id="9_ykinx"]
+[ext_resource type="PackedScene" uid="uid://cekh08eiiw143" path="res://nodes/UI/progress_bar.tscn" id="9_ykinx"]
 
 [node name="CuttingCounterUp" node_paths=PackedStringArray("counterTopPoint") instance=ExtResource("1_iousf")]
 script = ExtResource("2_yglbb")

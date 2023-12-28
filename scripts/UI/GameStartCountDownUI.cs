@@ -8,6 +8,7 @@ public partial class GameStartCountDownUI : Control {
 		GameManager.Instance.OnStateChanged += GameManager_OnStateChanged;
 	}
 
+
 	private void GameManager_OnStateChanged(object sender, EventArgs e) {
 		if (GameManager.Instance.CountdownToStartActive()) {
 			Show();
@@ -21,9 +22,5 @@ public partial class GameStartCountDownUI : Control {
 			double timeLeft = Mathf.Ceil(GameManager.Instance.GetCountdownToStartTimeLeft());
 			countDownText.Text = timeLeft.ToString();
 		}
-	}
-	public override void _ExitTree() {
-		GameManager.Instance.OnStateChanged -= GameManager_OnStateChanged;
-
 	}
 }

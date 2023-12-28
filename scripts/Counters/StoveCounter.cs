@@ -188,7 +188,6 @@ public sealed partial class StoveCounter : BaseCounter, IHasProgress {
 	private void ChangeState(State newState)
 	{
 		state = newState;
-		//GD.Print("Stove state: ", state);
 
 		// Cast to an int since variant does not allow enum
 		OnStateChanged?.Invoke(this, state);

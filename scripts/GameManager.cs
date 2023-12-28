@@ -5,6 +5,10 @@ public partial class GameManager : Node {
 
 	public static GameManager Instance { get; private set; }
 
+	public static void ResetStatic() {
+		Instance = null;
+	}
+
 	public event EventHandler OnStateChanged;
 	public event EventHandler OnGamePaused;
 	public event EventHandler OnGameResumed;
@@ -72,7 +76,6 @@ public partial class GameManager : Node {
 		state = newState;
 		OnStateChanged?.Invoke(this, EventArgs.Empty);
 
-		GD.Print(newState);
 
 	}
 
@@ -90,10 +93,5 @@ public partial class GameManager : Node {
 		}
 	}
 
-	public override void _ExitTree() {
-		waitingToStartTimer.Timeout -= WaitingToStartTimer_Timeout;
-		countdownToStart.Timeout -= CountdownToStartTimer_Timeout;
-		gamePlayingTimer.Timeout -= GamePlayingTimer_Timeout;
-	}
 
 }

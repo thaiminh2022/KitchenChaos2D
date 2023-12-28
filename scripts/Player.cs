@@ -5,6 +5,11 @@ using System;
 public partial class Player : CharacterBody2D, IKitchenObjectParent {
 	public static Player Instance { get; private set; }
 
+	public static void ResetStatic() {
+		Instance = null;
+
+	}
+
 	public event EventHandler<BaseCounter> OnSelectedCounterChanged;
 	public event EventHandler OnPlayerPickUpKitchenObject;
 

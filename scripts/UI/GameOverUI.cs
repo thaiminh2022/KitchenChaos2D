@@ -9,6 +9,11 @@ public partial class GameOverUI : Control
 		GameManager.Instance.OnStateChanged += GameManager_OnStateChanged;
 	}
 
+	public override void _ExitTree() {
+		GameManager.Instance.OnStateChanged -= GameManager_OnStateChanged;
+
+	}
+
 	private void GameManager_OnStateChanged(object sender, EventArgs e) {
 		if (GameManager.Instance.IsGameOver()) {
 			int  successfuldeliveriesAmount = DeliveryManager.Instance.GetSuccessFulRecipeDeliveredAmount();
@@ -18,10 +23,6 @@ public partial class GameOverUI : Control
 		} else {
 			Hide();
 		}
-	}
-
-	public override void _ExitTree() {
-		GameManager.Instance.OnStateChanged -= GameManager_OnStateChanged;
 	}
 
 

@@ -6,9 +6,12 @@ public partial class DeliveryManagerUI : Control {
 
 	public override void _Ready() {
 		DeliveryManager.Instance.OnRecipeComplete += DeliveryManager_OnRecipeComplete;
-		DeliveryManager.Instance.OnRecipeSpawn += DeliveryManager_OnRecipeSpawn; ;
+		DeliveryManager.Instance.OnRecipeSpawn += DeliveryManager_OnRecipeSpawn;
+	}
 
-		UpdateVisual();
+	public  override void _ExitTree() {
+		DeliveryManager.Instance.OnRecipeComplete -= DeliveryManager_OnRecipeComplete;
+		DeliveryManager.Instance.OnRecipeSpawn -= DeliveryManager_OnRecipeSpawn;
 	}
 
 	private void DeliveryManager_OnRecipeSpawn(object sender, System.EventArgs e) {
@@ -34,9 +37,6 @@ public partial class DeliveryManagerUI : Control {
 
 	}
 
-	public override void _ExitTree() {
-		DeliveryManager.Instance.OnRecipeComplete -= DeliveryManager_OnRecipeComplete;
-		DeliveryManager.Instance.OnRecipeSpawn -= DeliveryManager_OnRecipeSpawn; ;
-	}
+
 
 }

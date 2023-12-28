@@ -11,7 +11,7 @@
 [ext_resource type="Resource" uid="uid://bcfu5qjpksefn" path="res://ScriptableObjects/KitchenObjectRes/sliced_tomato.tres" id="9_expjy"]
 [ext_resource type="PackedScene" uid="uid://ccbuw0fp1wrjv" path="res://nodes/Kitchen Objects/hambuger.tscn" id="10_jsuqy"]
 [ext_resource type="Script" path="res://scripts/UI/PlateIconUI.cs" id="11_vggiv"]
-[ext_resource type="PackedScene" uid="uid://cg80fnapbpgfe" path="res://nodes/plate_icon_template.tscn" id="12_5ldyc"]
+[ext_resource type="PackedScene" uid="uid://cg80fnapbpgfe" path="res://nodes/UI/plate_icon_template.tscn" id="12_5ldyc"]
 
 [node name="plate" type="Sprite2D"]
 scale = Vector2(1.5, 1.5)

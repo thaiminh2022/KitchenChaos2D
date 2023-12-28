@@ -14,6 +14,11 @@ public partial class PlateCompleteVisual : Node2D {
 		}
 	}
 
+	private void PlateCompleteVisual_TreeExiting() {
+		plateKitchenObject.OnIngredientAdded -= PlateKitchenObject_OnIngredientAdded;
+
+	}
+
 	private void PlateKitchenObject_OnIngredientAdded(object sender, KitchenObjectRes e) {
 		foreach (var kitchenObjectResNode in kitchenObjectRes_Nodes) {
 			if (e == kitchenObjectResNode.kitchenObjectRes) {
@@ -21,10 +26,4 @@ public partial class PlateCompleteVisual : Node2D {
 			}
 		}
 	}
-
-	public override void _ExitTree() {
-		plateKitchenObject.OnIngredientAdded -= PlateKitchenObject_OnIngredientAdded;
-
-	}
-
 }

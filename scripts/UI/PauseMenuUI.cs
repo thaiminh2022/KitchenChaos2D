@@ -29,9 +29,4 @@ public partial class PauseMenuUI : Control {
 		Show();
 	}
 
-	public override void _ExitTree() {
-		GameManager.Instance.OnGamePaused -= GameManager_OnGamePaused;
-		GameManager.Instance.OnGameResumed -= GameManager_OnGameResumed;
-
-	}
 }

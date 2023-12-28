@@ -5,7 +5,10 @@ using System;
 public abstract partial class BaseCounter : StaticBody2D, IKitchenObjectParent
 {
     public static event EventHandler OnAnyObjectPlaced;
-         
+    
+    public static void ResetStatic() {
+        OnAnyObjectPlaced = null;
+    }
 
     [Export] private Marker2D counterTopPoint;
 
