@@ -26,6 +26,9 @@ A port of the famous [**CodeMonkey**][CodeMonkey] 10 hours Unity tutorial: Kitch
       - [GetComponent](#getcomponent)
       - [GetNode](#getnode)
     - [EventHandler vs \[Signal\]](#eventhandler-vs-signal)
+    - [In-script counter vs Timer node](#in-script-counter-vs-timer-node)
+      - [In-script counter](#in-script-counter)
+      - [Timer node (better option 90% of the time)](#timer-node-better-option-90-of-the-time)
   - [⚠️ License](#️-license)
 
 ## ✨ How To Pronounce My Name
@@ -125,13 +128,70 @@ private event EventHandler<EventArgs> OnEventHappend;
 [Signal] private delegate void EventHappenedEventHandler();
 ```
 
-|   |      EventHandler      |  Signal |
-|----------|:-------------:|:------:|
-| Interaction with Godot Engine|  No interaction | Showed in the signal tab |
-| Interaction with other nodes |    Only in C# files   |   Interact with anything using the signal tab |
-| Usage in interface | Can be use in interfaces |    Cannot be used in interfaces |
+|                               |       EventHandler       |                   Signal                    |
+| ----------------------------- | :----------------------: | :-----------------------------------------: |
+| Interaction with Godot Engine |      No interaction      |          Showed in the signal tab           |
+| Interaction with other nodes  |     Only in C# files     | Interact with anything using the signal tab |
+| Usage in interface            | Can be use in interfaces |        Cannot be used in interfaces         |
 
 I originally use signal as it was more conventional for Godot, however CodeMonkey later use EventHandler in an interface, which sinal can't so I switched back to EventHandler. </br>
+
+>**Warning** </br>
+> If you are planning to use EventHandler, you **HAVE TO** unsubcribe before the object go out of scope. Most common way is in the _ExitTree method.
+
+### In-script counter vs Timer node
+
+It's really common in game developement to have a counter varible which track the time before some actions happen. This can be done by using a in-script counter varible or the Timer node.
+
+For more details, checkout [**Timer Docs**][timer_docs]
+
+#### In-script counter
+
+```cs
+using Godot;
+
+float counter = 0; // The counting time (in seconds)
+float counterMax = 3; // The maxium time (in seconds)
+
+// This will do some actions after 3 seconds. 
+public override void _Process(delta) {
+  counter += delta;
+
+  if (counter >= counterMax) {
+    // Do some actions
+
+    // Reset the counter
+    counter = 0;
+  }
+}
+```
+
+This method is very common if you are comming from Unity. However, it requires a lot of boilerplate code.
+
+#### Timer node (better option 90% of the time)
+
+```cs
+using Godot;
+
+[Export] Timer timer; // drag and setup the timer node in the editor
+
+
+override void _Ready() {
+  timer.Timeout += TimerTimeout;
+}
+
+private void TimerTimeout() {
+  // This will be call after setuped amount of second in the editor.
+}
+
+private override void _ExitTree() {
+  // It's also good to unsubcribe before the node goes out of scope
+  timer.Timeout -= TimerTimeout;
+}
+
+```
+
+This should be the better way. However it's only recommended to use Timer node if your wait time is **more than 0.05 seconds**. If your wait time is longer than that, please prefer the in-script method.
 
 ## ⚠️ License
 
@@ -152,3 +212,6 @@ MIT
 
 [repo_license_img]: https://img.shields.io/badge/LICENSE-MIT-yellow?style=for-the-badge&logo=none
 [repo_license_url]: ./LICENSE
+
+<!-- Godot links -->
+[timer_docs]: https://docs.godotengine.org/en/stable/classes/class_timer.html

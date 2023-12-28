@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d1v2mrn733e8p"]
 
-[ext_resource type="Script" path="res://scripts/UI/GameOverUI.cs" id="1_bg28j"]
+[ext_resource type="Script" path="res://scripts/UI/GameOverUI.cs" id="1_mr03g"]
 
 [node name="GameOverUI" type="Control" node_paths=PackedStringArray("recipeDeliveredAmountText")]
 visible = false
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_bg28j")
+script = ExtResource("1_mr03g")
 recipeDeliveredAmountText = NodePath("RecipeDeliveredAmountLabel")
 
 [node name="Bacvkground" type="ColorRect" parent="."]

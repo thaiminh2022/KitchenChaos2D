@@ -20,5 +20,9 @@ public partial class GameOverUI : Control
 		}
 	}
 
-	
+	public override void _ExitTree() {
+		GameManager.Instance.OnStateChanged -= GameManager_OnStateChanged;
+	}
+
+
 }

@@ -39,4 +39,9 @@ public partial class CuttingCounterVisual : AnimatedSprite2D
 		Play(name);
 		currentAnimation = name;
 	}
+
+	public override void _ExitTree() {
+		AnimationFinished -= OnAnimationFinished;
+		cuttingCounter.OnCut -= CuttingCounter_OnCut;
+	}
 }

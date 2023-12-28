@@ -31,4 +31,9 @@ public partial class StoveCounterVisual : AnimatedSprite2D
 			fryingParticles.Hide();
 		}
 	}
+
+	public override void _ExitTree() {
+		stoveCoutner.OnStateChanged -= StoveCoutner_StateChanged;
+
+	}
 }

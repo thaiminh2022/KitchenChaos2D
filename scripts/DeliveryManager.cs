@@ -10,8 +10,6 @@ public partial class DeliveryManager : Node {
 	public event EventHandler OnRecipeSucceeded;
 	public event EventHandler OnRecipeFailed;
 
-
-
 	public static DeliveryManager Instance { get; private set; }
 
 	[Export] private int waitingRecipeMax = 4;
@@ -23,7 +21,12 @@ public partial class DeliveryManager : Node {
 	private int successfulRecipeDeliveredAmount = 0;
 
 	public override void _EnterTree() {
+		if (Instance is not null) {
+			QueueFree();
+			return;
+		}
 		Instance = this;
+
 		waitingRecipeList = new();
 	}
 

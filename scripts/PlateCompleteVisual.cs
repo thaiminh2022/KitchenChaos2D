@@ -22,4 +22,9 @@ public partial class PlateCompleteVisual : Node2D {
 		}
 	}
 
+	public override void _ExitTree() {
+		plateKitchenObject.OnIngredientAdded -= PlateKitchenObject_OnIngredientAdded;
+
+	}
+
 }

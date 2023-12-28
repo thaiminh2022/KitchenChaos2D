@@ -22,4 +22,8 @@ public partial class GameStartCountDownUI : Control {
 			countDownText.Text = timeLeft.ToString();
 		}
 	}
+	public override void _ExitTree() {
+		GameManager.Instance.OnStateChanged -= GameManager_OnStateChanged;
+
+	}
 }

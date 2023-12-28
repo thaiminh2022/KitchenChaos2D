@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bs863i835rryy"]
 
-[ext_resource type="Script" path="res://scripts/UI/PauseMenuUI.cs" id="1_ka5by"]
+[ext_resource type="Script" path="res://scripts/UI/PauseMenuUI.cs" id="1_gk57a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ro8um"]
 bg_color = Color(0.203922, 0.203922, 0.203922, 1)
@@ -12,14 +12,17 @@ border_color = Color(0, 0, 0, 1)
 shadow_size = 2
 shadow_offset = Vector2(5, 5)
 
-[node name="PauseMenuUI" type="Control"]
+[node name="PauseMenuUI" type="Control" node_paths=PackedStringArray("resumeBtn", "mainMenuBtn")]
+process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ka5by")
+script = ExtResource("1_gk57a")
+resumeBtn = NodePath("VBoxContainer/ResumeBtn")
+mainMenuBtn = NodePath("VBoxContainer/MainMenuBtn")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -66,7 +69,7 @@ theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = SubResource("StyleBoxFlat_ro8um")
 text = "Resume"
 
-[node name="ResumeBtn2" type="Button" parent="VBoxContainer"]
+[node name="MainMenuBtn" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 theme_override_font_sizes/font_size = 80

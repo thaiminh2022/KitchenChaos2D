@@ -34,4 +34,9 @@ public partial class DeliveryManagerUI : Control {
 
 	}
 
+	public override void _ExitTree() {
+		DeliveryManager.Instance.OnRecipeComplete -= DeliveryManager_OnRecipeComplete;
+		DeliveryManager.Instance.OnRecipeSpawn -= DeliveryManager_OnRecipeSpawn; ;
+	}
+
 }

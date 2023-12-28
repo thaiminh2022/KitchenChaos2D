@@ -1,11 +1,13 @@
 using Godot;
 using Godot.Collections;
+using System.IO;
 
 public partial class SceneManager : Node {
 
 	public static SceneManager Instance { get; private set; }
 
 	[Export] private PackedScene[] scenes;
+	private Node CurrentScene;
 
 	// Loading scene
 	[ExportGroup("Interactive settings")]
@@ -15,6 +17,7 @@ public partial class SceneManager : Node {
 	private string scenePath;
 	private Array progressArray;
 	private LoadingScene currentLoadingScene;
+
 
 	[Signal]
 	public delegate void ProgressChangedEventHandler(float progress);
@@ -33,6 +36,11 @@ public partial class SceneManager : Node {
 		GD.Print("Scene manager entered tree");
 	}
 
+	public override void _Ready() {
+		Viewport root = GetTree().Root;
+		CurrentScene = root.GetChild(root.GetChildCount() - 1);
+	}
+
 	#region Switch Scene non interactive
 
 	public static void SwitchScene(Scene scene) {
@@ -40,12 +48,18 @@ public partial class SceneManager : Node {
 	}
 
 	private void SwitchSceneDeferred(int index) {
-		if (index >= Instance.scenes.Length || index < 0) {
+		if (index >= scenes.Length || index < 0) {
 			GD.PrintErr("Scene index not found");
 			return;
 		}
-		var scene = scenes[index];
-		GetTree().ChangeSceneToPacked(scene);
+
+		CurrentScene.Free();
+		var nextScene = GD.Load<PackedScene>(scenes[index].ResourcePath);
+		CurrentScene = nextScene.Instantiate();
+		GetTree().Root.AddChild(CurrentScene);
+		GetTree().CurrentScene = CurrentScene;
+
+		
 	}
 
 	#endregion
@@ -68,6 +82,7 @@ public partial class SceneManager : Node {
 	}
 
 	public override void _Process(double delta) {
+		
 		var loadStatus = ResourceLoader.LoadThreadedGetStatus(scenePath, progressArray);
 
 		switch (loadStatus) {

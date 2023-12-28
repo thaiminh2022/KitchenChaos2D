@@ -20,4 +20,8 @@ public partial class SelectedCounterVisual : Node2D
 		}
 	}
 
+	public override void _ExitTree() {
+		Player.Instance.OnSelectedCounterChanged -= OnCounterChange;
+	}
+
 }

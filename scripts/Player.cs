@@ -5,7 +5,6 @@ using System;
 public partial class Player : CharacterBody2D, IKitchenObjectParent {
 	public static Player Instance { get; private set; }
 
-
 	public event EventHandler<BaseCounter> OnSelectedCounterChanged;
 	public event EventHandler OnPlayerPickUpKitchenObject;
 
@@ -107,10 +106,6 @@ public partial class Player : CharacterBody2D, IKitchenObjectParent {
 	}
 
 	public override void _EnterTree() {
-
-		if (Instance != null) {
-			GD.PrintErr("There's more than one player instance");
-		}
 		Instance = this;
 	}
 

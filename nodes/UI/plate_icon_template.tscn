@@ -1,27 +1,27 @@
 [gd_scene load_steps=4 format=3 uid="uid://cg80fnapbpgfe"]
 
-[ext_resource type="Script" path="res://scripts/UI/PlateIconSingleUI.cs" id="1_5gam0"]
-[ext_resource type="Texture2D" uid="uid://d00mryqa8mw0q" path="res://assets/UI/circle.aseprite" id="2_twfyl"]
-[ext_resource type="Texture2D" uid="uid://dmoa8vlgqjaph" path="res://assets/sprites/sliced_tomato.aseprite" id="3_v1bxx"]
+[ext_resource type="Script" path="res://scripts/UI/PlateIconSingleUI.cs" id="1_1e5b5"]
+[ext_resource type="Texture2D" uid="uid://d00mryqa8mw0q" path="res://assets/UI/circle.aseprite" id="2_18lwj"]
+[ext_resource type="Texture2D" uid="uid://dmoa8vlgqjaph" path="res://assets/sprites/sliced_tomato.aseprite" id="3_n2xsn"]
 
 [node name="plate_icon_template" type="Control" node_paths=PackedStringArray("image")]
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("1_5gam0")
+script = ExtResource("1_1e5b5")
 image = NodePath("icon")
 
 [node name="background" type="TextureRect" parent="."]
 modulate = Color(0, 0, 0, 0.317647)
 custom_minimum_size = Vector2(4, 4)
 layout_mode = 0
-texture = ExtResource("2_twfyl")
+texture = ExtResource("2_18lwj")
 expand_mode = 1
 
 [node name="icon" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(4, 4)
 layout_mode = 0
-texture = ExtResource("3_v1bxx")
+texture = ExtResource("3_n2xsn")
 expand_mode = 1
 stretch_mode = 4

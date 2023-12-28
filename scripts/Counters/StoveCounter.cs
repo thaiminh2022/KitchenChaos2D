@@ -194,4 +194,8 @@ public sealed partial class StoveCounter : BaseCounter, IHasProgress {
 		OnStateChanged?.Invoke(this, state);
 	}
 
+	public override void _ExitTree() {
+		fryingTimer.Timeout -= OnFried;
+		burningTimer.Timeout -= OnBurned;
+	}
 }

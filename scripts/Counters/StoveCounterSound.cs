@@ -18,4 +18,9 @@ public partial class StoveCounterSound : AudioStreamPlayer2D {
 			Stop();
 		}
 	}
+
+	public override void _ExitTree() {
+		stoveCounter.OnStateChanged -= StoveCounter_OnStateChanged;
+
+	}
 }

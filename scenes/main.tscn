@@ -2,13 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://dgxncuk7lio5i" path="res://nodes/Counters/clearCounterDown.tscn" id="2_oatpm"]
 [ext_resource type="PackedScene" uid="uid://dkvbnwkxtb3d3" path="res://nodes/player.tscn" id="2_xcenc"]
-[ext_resource type="PackedScene" uid="uid://dk3gm68lae3v3" path="res://nodes/gameplay_clock_UI.tscn" id="3_7nswy"]
-[ext_resource type="PackedScene" uid="uid://mkusfgxx17f3" path="res://nodes/game_start_countdown_ui.tscn" id="3_im5tc"]
+[ext_resource type="PackedScene" uid="uid://dk3gm68lae3v3" path="res://nodes/UI/gameplay_clock_UI.tscn" id="3_7nswy"]
+[ext_resource type="PackedScene" uid="uid://mkusfgxx17f3" path="res://nodes/UI/game_start_countdown_ui.tscn" id="3_im5tc"]
 [ext_resource type="PackedScene" uid="uid://xlvq32ylesv8" path="res://nodes/Counters/clearCounterUp.tscn" id="3_oyuy4"]
 [ext_resource type="PackedScene" uid="uid://cxa2rrmprvrdv" path="res://nodes/Counters/ContainerCounterDown_Cabbage.tscn" id="4_5m3c4"]
-[ext_resource type="PackedScene" uid="uid://d1v2mrn733e8p" path="res://nodes/game_over_ui.tscn" id="4_rbyle"]
+[ext_resource type="PackedScene" uid="uid://d1v2mrn733e8p" path="res://nodes/UI/game_over_ui.tscn" id="4_rbyle"]
 [ext_resource type="PackedScene" uid="uid://cdbrhaqktqped" path="res://nodes/Counters/ContainerCounterDown_Cheese.tscn" id="5_i5sh2"]
-[ext_resource type="PackedScene" uid="uid://bs863i835rryy" path="res://nodes/pause_menu_ui.tscn" id="6_j6h1e"]
+[ext_resource type="PackedScene" uid="uid://bs863i835rryy" path="res://nodes/UI/pause_menu_ui.tscn" id="6_j6h1e"]
 [ext_resource type="PackedScene" uid="uid://bgtbuyvllund0" path="res://nodes/Counters/ContainerCounterTown_Tomato.tscn" id="6_lb6hv"]
 [ext_resource type="PackedScene" uid="uid://dwcmh7fdqy4n1" path="res://nodes/Counters/ContainerCounterUp_RawMeat.tscn" id="7_ernq7"]
 [ext_resource type="PackedScene" uid="uid://bbpaifyk66rdy" path="res://nodes/Counters/delivery_counter.tscn" id="7_s474c"]
@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://cfkw2cspxe5xr" path="res://nodes/Counters/clearCounterRight.tscn" id="13_aw6wd"]
 [ext_resource type="PackedScene" uid="uid://cxxx11dgwhvo0" path="res://nodes/managers/delivery_manager.tscn" id="14_aceaa"]
 [ext_resource type="PackedScene" uid="uid://d2s4dx6lavk6i" path="res://nodes/Counters/clearCounterLeft.tscn" id="14_grne8"]
-[ext_resource type="PackedScene" uid="uid://b0k8sgxbka2b7" path="res://nodes/delivery_manger_ui.tscn" id="18_8qoms"]
+[ext_resource type="PackedScene" uid="uid://b0k8sgxbka2b7" path="res://nodes/UI/delivery_manger_ui.tscn" id="18_8qoms"]
 [ext_resource type="PackedScene" uid="uid://bu5kx7ihbgobp" path="res://nodes/managers/music_manager.tscn" id="19_6ah70"]
 [ext_resource type="PackedScene" uid="uid://16yhofw8o5j7" path="res://nodes/managers/sound_manager.tscn" id="20_0831m"]
 [ext_resource type="Texture2D" uid="uid://d0xahgh4nt5o" path="res://assets/sprites/floor.aseprite" id="21_c5nh7"]
@@ -59,6 +59,7 @@ sources/1 = SubResource("TileSetScenesCollectionSource_bmmnj")
 
 [node name="main" type="Node2D"]
 y_sort_enabled = true
+metadata/_edit_vertical_guides_ = [144.0]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(11, 11)
@@ -89,6 +90,7 @@ visible = false
 [node name="GameOverUI" parent="UICanvas" instance=ExtResource("4_rbyle")]
 
 [node name="PauseMenuUI" parent="UICanvas" instance=ExtResource("6_j6h1e")]
+visible = false
 
 [node name="MusicManager" parent="." instance=ExtResource("19_6ah70")]
 autoplay = true

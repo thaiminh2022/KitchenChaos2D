@@ -90,4 +90,10 @@ public partial class GameManager : Node {
 		}
 	}
 
+	public override void _ExitTree() {
+		waitingToStartTimer.Timeout -= WaitingToStartTimer_Timeout;
+		countdownToStart.Timeout -= CountdownToStartTimer_Timeout;
+		gamePlayingTimer.Timeout -= GamePlayingTimer_Timeout;
+	}
+
 }

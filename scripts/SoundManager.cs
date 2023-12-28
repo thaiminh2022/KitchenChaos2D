@@ -44,7 +44,8 @@ public partial class SoundManager : Node
 
 	// Singletons
 	private void Player_OnPlayerPickUpKitchenObject(object sender, EventArgs e) {
-		PlaySound(audioClipRefRes.objectPickup, Player.Instance.GlobalPosition);
+		var player = sender as Player;
+		PlaySound(audioClipRefRes.objectPickup, player.GlobalPosition);
 	}
 
 	private void DeliveryManager_OnRecipeFailed(object sender, EventArgs e) {
@@ -75,6 +76,18 @@ public partial class SoundManager : Node
 		var stream = streamArr[GD.RandRange(0, streamArr.Length - 1)];
 
 		PlaySound(stream, position, boostVolumeDB);
+	}
+
+	public override void _ExitTree() {
+
+		DeliveryManager.Instance.OnRecipeSucceeded -= DeliveryManager_OnRecipeSucceeded;
+		DeliveryManager.Instance.OnRecipeFailed -= DeliveryManager_OnRecipeFailed;
+		Player.Instance.OnPlayerPickUpKitchenObject -= Player_OnPlayerPickUpKitchenObject;
+
+		CuttingCounter.OnAnyCut -= CuttingCounter_OnAnyCut;
+		BaseCounter.OnAnyObjectPlaced -= BaseCounter_OnAnyObjectPlaced;
+		TrashCounter.OnAnyTrashed -= TrashCounter_OnAnyObjectPlaced;
+		PlayerSound.OnPlayerMoved -= PlayerSound_OnPlayerMoved;
 	}
 
 }

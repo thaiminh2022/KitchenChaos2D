@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dk3gm68lae3v3"]
 
-[ext_resource type="Script" path="res://scripts/UI/GameplayClockUI.cs" id="1_gm5r0"]
-[ext_resource type="Texture2D" uid="uid://cfp2urvi2gqwi" path="res://assets/UI/gameplay_progressbar.png" id="2_pfm2x"]
-[ext_resource type="Texture2D" uid="uid://ch1pdpe3h36xx" path="res://assets/UI/gameplay_progressbar_outline.png" id="3_dfl1g"]
+[ext_resource type="Script" path="res://scripts/UI/GameplayClockUI.cs" id="1_30wk2"]
+[ext_resource type="Texture2D" uid="uid://cfp2urvi2gqwi" path="res://assets/UI/gameplay_progressbar.png" id="2_ixb7j"]
+[ext_resource type="Texture2D" uid="uid://ch1pdpe3h36xx" path="res://assets/UI/gameplay_progressbar_outline.png" id="3_jkg3u"]
 
 [node name="GameClock" type="Control" node_paths=PackedStringArray("clockBar")]
 layout_mode = 3
@@ -14,7 +14,7 @@ offset_top = 20.0
 offset_right = -20.0
 offset_bottom = 220.0
 grow_horizontal = 0
-script = ExtResource("1_gm5r0")
+script = ExtResource("1_30wk2")
 clockBar = NodePath("ClockProgress")
 
 [node name="ClockShadow" type="TextureRect" parent="."]
@@ -29,7 +29,7 @@ offset_right = 5.0
 offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_pfm2x")
+texture = ExtResource("2_ixb7j")
 expand_mode = 1
 stretch_mode = 4
 
@@ -44,8 +44,8 @@ max_value = 1.0
 step = 0.001
 fill_mode = 4
 nine_patch_stretch = true
-texture_under = ExtResource("2_pfm2x")
-texture_over = ExtResource("3_dfl1g")
-texture_progress = ExtResource("2_pfm2x")
+texture_under = ExtResource("2_ixb7j")
+texture_over = ExtResource("3_jkg3u")
+texture_progress = ExtResource("2_ixb7j")
 tint_under = Color(0.203922, 0.203922, 0.203922, 1)
 tint_progress = Color(0, 0.309804, 0.898039, 1)

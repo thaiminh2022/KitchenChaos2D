@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://mkusfgxx17f3"]
 
-[ext_resource type="Script" path="res://scripts/UI/GameStartCountDownUI.cs" id="1_ue75v"]
+[ext_resource type="Script" path="res://scripts/UI/GameStartCountDownUI.cs" id="1_wi7ye"]
 
 [node name="GameStartCountdownUI" type="Control" node_paths=PackedStringArray("countDownText")]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ue75v")
+script = ExtResource("1_wi7ye")
 countDownText = NodePath("CountdownText")
 
 [node name="CountdownText" type="Label" parent="."]

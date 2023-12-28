@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b0k8sgxbka2b7"]
 
 [ext_resource type="Script" path="res://scripts/UI/DeliveryManagerUI.cs" id="1_w3mgr"]
-[ext_resource type="PackedScene" uid="uid://clblm6sev4h0h" path="res://nodes/recipe_template.tscn" id="2_cvcn5"]
+[ext_resource type="PackedScene" uid="uid://clblm6sev4h0h" path="res://nodes/UI/recipe_template.tscn" id="2_cvcn5"]
 
 [node name="DeliveryManagerUI" type="Control" node_paths=PackedStringArray("container")]
 layout_mode = 3
