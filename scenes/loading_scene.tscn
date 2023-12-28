@@ -6,7 +6,6 @@
 [node name="LoadingScene" type="Node" node_paths=PackedStringArray("loadingSceneUI")]
 script = ExtResource("1_afpaq")
 loadingSceneUI = NodePath("CanvasLayer/Control")
-useAnimation = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 10

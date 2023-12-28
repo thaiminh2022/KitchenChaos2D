@@ -8,6 +8,7 @@ public static class Constants
 	public const string MOVE_DOWN = "move_down";
 	public const string INTEREACT = "interact";
 	public const string ALT_INTEREACT = "alt_interact";
+	public const string PAUSE = "pause";
 
 
 

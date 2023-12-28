@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ccmfdp4smdyss"]
+[gd_scene load_steps=32 format=3 uid="uid://ccmfdp4smdyss"]
 
 [ext_resource type="PackedScene" uid="uid://dgxncuk7lio5i" path="res://nodes/Counters/clearCounterDown.tscn" id="2_oatpm"]
 [ext_resource type="PackedScene" uid="uid://dkvbnwkxtb3d3" path="res://nodes/player.tscn" id="2_xcenc"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cxa2rrmprvrdv" path="res://nodes/Counters/ContainerCounterDown_Cabbage.tscn" id="4_5m3c4"]
 [ext_resource type="PackedScene" uid="uid://d1v2mrn733e8p" path="res://nodes/game_over_ui.tscn" id="4_rbyle"]
 [ext_resource type="PackedScene" uid="uid://cdbrhaqktqped" path="res://nodes/Counters/ContainerCounterDown_Cheese.tscn" id="5_i5sh2"]
+[ext_resource type="PackedScene" uid="uid://bs863i835rryy" path="res://nodes/pause_menu_ui.tscn" id="6_j6h1e"]
 [ext_resource type="PackedScene" uid="uid://bgtbuyvllund0" path="res://nodes/Counters/ContainerCounterTown_Tomato.tscn" id="6_lb6hv"]
 [ext_resource type="PackedScene" uid="uid://dwcmh7fdqy4n1" path="res://nodes/Counters/ContainerCounterUp_RawMeat.tscn" id="7_ernq7"]
 [ext_resource type="PackedScene" uid="uid://bbpaifyk66rdy" path="res://nodes/Counters/delivery_counter.tscn" id="7_s474c"]
@@ -81,14 +82,16 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 
 [node name="GameplayClockUI" parent="UICanvas" instance=ExtResource("3_7nswy")]
-process_mode = 4
 
 [node name="GameStartCountdownUI" parent="UICanvas" instance=ExtResource("3_im5tc")]
 visible = false
 
 [node name="GameOverUI" parent="UICanvas" instance=ExtResource("4_rbyle")]
 
+[node name="PauseMenuUI" parent="UICanvas" instance=ExtResource("6_j6h1e")]
+
 [node name="MusicManager" parent="." instance=ExtResource("19_6ah70")]
+autoplay = true
 
 [node name="SoundManager" parent="." instance=ExtResource("20_0831m")]
 
@@ -114,3 +117,4 @@ position = Vector2(25, 21)
 scale = Vector2(0.75, 0.75)
 
 [node name="GameManager" parent="." instance=ExtResource("24_f0565")]
+process_mode = 3

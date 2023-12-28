@@ -21,7 +21,10 @@ public partial class SceneManager : Node {
 	[Signal]
 	public delegate void SceneLoadFinishedEventHandler();
 
-
+	public enum Scene {
+		MainMenu, 
+		Game,
+	}
 
 
 	public override void _EnterTree() {
@@ -32,20 +35,8 @@ public partial class SceneManager : Node {
 
 	#region Switch Scene non interactive
 
-	public static void SwitchScene(int index) {
-		Instance.CallDeferred(MethodName.SwitchSceneDeferred, index);
-	}
-	public static void SwitchScene(string name) {
-
-		for (int i = 0; i < Instance.scenes.Length; i++) {
-			PackedScene scene = Instance.scenes[i];
-
-			if (scene.ResourceName == name) {
-				SwitchScene(i);
-				break;
-			}
-		}
-
+	public static void SwitchScene(Scene scene) {
+		Instance.CallDeferred(MethodName.SwitchSceneDeferred, (int)scene);
 	}
 
 	private void SwitchSceneDeferred(int index) {
@@ -59,8 +50,8 @@ public partial class SceneManager : Node {
 
 	#endregion
 
-	public void SwitchSceneInteractive(int index) {
-		scenePath = scenes[index].ResourcePath;
+	public void SwitchSceneInteractive(Scene scene) {
+		scenePath = scenes[(int)scene].ResourcePath;
 
 		currentLoadingScene = loadingScene.Instantiate<LoadingScene>();
 		GetTree().Root.AddChild(currentLoadingScene);

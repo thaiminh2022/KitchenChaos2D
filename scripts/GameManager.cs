@@ -1,12 +1,15 @@
 using Godot;
 using System;
-using System.Diagnostics;
 
 public partial class GameManager : Node {
 
 	public static GameManager Instance { get; private set; }
 
 	public event EventHandler OnStateChanged;
+	public event EventHandler OnGamePaused;
+	public event EventHandler OnGameResumed;
+
+
 
 	private enum State {
 		WaitingToStart,
@@ -36,7 +39,11 @@ public partial class GameManager : Node {
 		gamePlayingTimer.Timeout += GamePlayingTimer_Timeout;
 	}
 
-
+	public override void _Process(double delta) {
+		if (Input.IsActionJustPressed(Constants.PAUSE)) {
+			TogglePausing();
+		}
+	}
 
 	private void WaitingToStartTimer_Timeout() {
 		SwitchState(State.CountdownToStart);
@@ -64,10 +71,23 @@ public partial class GameManager : Node {
 	private void SwitchState(State newState) {
 		state = newState;
 		OnStateChanged?.Invoke(this, EventArgs.Empty);
-		
+
 		GD.Print(newState);
 
 	}
 
-	
+	public void TogglePausing() {
+		GetTree().Paused = !GetTree().Paused;
+
+		// Set the timescale so any shader with time will stop
+		if (Engine.TimeScale == 1) {
+			OnGamePaused?.Invoke(this, EventArgs.Empty);
+
+			Engine.TimeScale = 0;
+		} else {
+			OnGameResumed?.Invoke(this, EventArgs.Empty);
+			Engine.TimeScale = 1;
+		}
+	}
+
 }
