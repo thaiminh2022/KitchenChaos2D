@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxa2rrmprvrdv"]
+[gd_scene load_steps=7 format=3 uid="uid://cxa2rrmprvrdv"]
 
 [ext_resource type="PackedScene" uid="uid://cuuf7i733h2d6" path="res://nodes/Counters/containerCounterDown.tscn" id="1_bfodo"]
-[ext_resource type="Texture2D" uid="uid://cn5re28yoskp1" path="res://assets/cabbage.aseprite" id="2_8lc8e"]
+[ext_resource type="Texture2D" uid="uid://cn5re28yoskp1" path="res://assets/sprites/cabbage.aseprite" id="2_8lc8e"]
 [ext_resource type="PackedScene" uid="uid://b44l1ntcx61uk" path="res://nodes/Kitchen Objects/cabbage.tscn" id="3_0tj2c"]
 [ext_resource type="Script" path="res://scripts/CustomResources/KitchenObjectRes.cs" id="4_oue5j"]
+[ext_resource type="Texture2D" uid="uid://by3m7uf2328ls" path="res://assets/sprites/delivery_counter.aseprite" id="5_fv4r0"]
 
 [sub_resource type="Resource" id="Resource_bc8pr"]
 script = ExtResource("4_oue5j")
@@ -13,6 +14,12 @@ objectName = "Cabbage"
 
 [node name="ContainerCounterDown_Cabbage" instance=ExtResource("1_bfodo")]
 kitchenObjectRes = SubResource("Resource_bc8pr")
+
+[node name="CounterTopPoint" parent="." index="0"]
+position = Vector2(0, -2)
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("5_fv4r0")
 
 [node name="visual" parent="." index="2"]
 speed_scale = 3.0

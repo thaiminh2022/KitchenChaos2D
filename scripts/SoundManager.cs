@@ -1,14 +1,38 @@
 using Godot;
 using System;
-using System.Diagnostics;
 
 public partial class SoundManager : Node
 {
+	const string SOUNDMANAGER_SECTION = "volume";
+
+	public static SoundManager Instance { get; private set; }
+	public static void ResetStatic() {
+		Instance = null;
+	}
+
 	[Export] AudioClipRefRes audioClipRefRes;
 	[Export] AudioStreamPlayer2D template;
 
+	public enum VolumeBus {
+		Master,
+		Background,
+		VFX,
+	}
 
+	private ConfigFile configFile;
+
+
+	public override void _EnterTree() {
+		Instance = this;
+		configFile = Constants.GetSettingsConfigFile();
+		
+		LoadVolume();
+
+	}
 	public override void _Ready() {
+		LoadVolume();
+
+
 		DeliveryManager.Instance.OnRecipeSucceeded += DeliveryManager_OnRecipeSucceeded;
 		DeliveryManager.Instance.OnRecipeFailed += DeliveryManager_OnRecipeFailed;
 		Player.Instance.OnPlayerPickUpKitchenObject += Player_OnPlayerPickUpKitchenObject;
@@ -21,9 +45,7 @@ public partial class SoundManager : Node
 
 	private void PlayerSound_OnPlayerMoved(object sender, EventArgs e) {
 		var playerSound = sender as PlayerSound;
-
-		float boostVolumeDB = 0f;
-		PlaySound(audioClipRefRes.footsteps, playerSound.GlobalPosition, boostVolumeDB);
+		PlaySound(audioClipRefRes.footsteps, playerSound.GlobalPosition);
 	}
 
 	private void TrashCounter_OnAnyObjectPlaced(object sender, EventArgs e) {
@@ -59,12 +81,11 @@ public partial class SoundManager : Node
 
 	}
 
-	private void PlaySound(AudioStream stream, Vector2 position, float boostVolumeDB = 0) {
+	private void PlaySound(AudioStream stream, Vector2 position) {
 		var streamPlayer = template.Duplicate() as AudioStreamPlayer2D;
 
 		streamPlayer.Stream = stream;
 		streamPlayer.GlobalPosition = position;
-		streamPlayer.VolumeDb = boostVolumeDB;
 
 
 		streamPlayer.Finished += () => streamPlayer.QueueFree();
@@ -73,10 +94,32 @@ public partial class SoundManager : Node
 		streamPlayer.Play();
 	}
 
-	private void PlaySound(AudioStream[] streamArr, Vector2 position, float boostVolumeDB = 0f) {
+	private void PlaySound(AudioStream[] streamArr, Vector2 position) {
 		var stream = streamArr[GD.RandRange(0, streamArr.Length - 1)];
 
-		PlaySound(stream, position, boostVolumeDB);
+		PlaySound(stream, position);
 	}
 
+
+	public void ChangeVolume(VolumeBus bus, float volumeDB) {
+		AudioServer.SetBusVolumeDb((int)bus, volumeDB);
+
+		// Save the volume for user
+		configFile.SetValue(SOUNDMANAGER_SECTION, bus.ToString(), volumeDB);
+		configFile.Save(Constants.GAME_SETTING_SAVE_PATH);
+	}
+
+	private void LoadVolume() {
+		float defaultVolumeDB = 0;
+
+		foreach (var bus in Enum.GetValues(typeof(VolumeBus))) {
+			float volumeDB = (float)configFile.GetValue(SOUNDMANAGER_SECTION, bus.ToString(), defaultVolumeDB);
+
+			AudioServer.SetBusVolumeDb((int)bus, volumeDB);
+		}
+	}
+
+	public float GetVolume(VolumeBus bus) {
+		return AudioServer.GetBusVolumeDb((int)bus);
+	}
 }

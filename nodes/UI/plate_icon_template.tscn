@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/UI/PlateIconSingleUI.cs" id="1_1e5b5"]
 [ext_resource type="Texture2D" uid="uid://d00mryqa8mw0q" path="res://assets/UI/circle.aseprite" id="2_18lwj"]
-[ext_resource type="Texture2D" uid="uid://dmoa8vlgqjaph" path="res://assets/sprites/sliced_tomato.aseprite" id="3_n2xsn"]
+[ext_resource type="Texture2D" uid="uid://q8sevrfrkdxm" path="res://assets/sprites/burger_bun.aseprite" id="3_mbn55"]
 
 [node name="plate_icon_template" type="Control" node_paths=PackedStringArray("image")]
 layout_mode = 3
@@ -22,6 +22,6 @@ expand_mode = 1
 [node name="icon" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(4, 4)
 layout_mode = 0
-texture = ExtResource("3_n2xsn")
+texture = ExtResource("3_mbn55")
 expand_mode = 1
-stretch_mode = 4
+stretch_mode = 5

@@ -3,8 +3,19 @@ using System;
 
 public partial class PauseMenuUI : Control {
 
+	public static PauseMenuUI Instance { get; private set; }
+	public static void ResetStatic() {
+		Instance = null;
+	}
+
 	[Export] private Button resumeBtn;
+	[Export] private Button settingsBtn;
 	[Export] private Button mainMenuBtn;
+
+
+	public override void _EnterTree() {
+		Instance = this;
+	}
 
 	public override void _Ready() {
 		GameManager.Instance.OnGamePaused += GameManager_OnGamePaused;
@@ -16,6 +27,12 @@ public partial class PauseMenuUI : Control {
 
 		mainMenuBtn.Pressed += () => {
 			SceneManager.SwitchScene(SceneManager.Scene.MainMenu);
+		};
+
+		settingsBtn.Pressed += () => {
+			SettingsUI.Instance.Show();
+			Hide();
+
 		};
 
 		Hide();

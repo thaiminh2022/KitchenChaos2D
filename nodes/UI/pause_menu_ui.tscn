@@ -1,18 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bs863i835rryy"]
+[gd_scene load_steps=5 format=3 uid="uid://bs863i835rryy"]
 
 [ext_resource type="Script" path="res://scripts/UI/PauseMenuUI.cs" id="1_gk57a"]
+[ext_resource type="FontFile" uid="uid://g88p5r2uu7xg" path="res://assets/fonts/OdibeeSans-Regular.ttf" id="2_ifrec"]
+[ext_resource type="StyleBox" uid="uid://cvoj1osbny5x1" path="res://styles/btn_normal.tres" id="3_5lgfh"]
+[ext_resource type="StyleBox" uid="uid://cbuif6544gah0" path="res://styles/btn_hover.tres" id="4_0gopr"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ro8um"]
-bg_color = Color(0.203922, 0.203922, 0.203922, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0, 0, 0, 1)
-shadow_size = 2
-shadow_offset = Vector2(5, 5)
-
-[node name="PauseMenuUI" type="Control" node_paths=PackedStringArray("resumeBtn", "mainMenuBtn")]
+[node name="PauseMenuUI" type="Control" node_paths=PackedStringArray("resumeBtn", "settingsBtn", "mainMenuBtn")]
 process_mode = 2
 layout_mode = 3
 anchors_preset = 15
@@ -22,6 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gk57a")
 resumeBtn = NodePath("VBoxContainer/ResumeBtn")
+settingsBtn = NodePath("VBoxContainer/SettingsBtn")
 mainMenuBtn = NodePath("VBoxContainer/MainMenuBtn")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -37,15 +31,17 @@ color = Color(0, 0, 0, 0.521569)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 87.0
-offset_bottom = 295.0
+offset_top = 29.0
+offset_bottom = 293.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.666667, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
-theme_override_font_sizes/font_size = 150
+theme_override_fonts/font = ExtResource("2_ifrec")
+theme_override_font_sizes/font_size = 200
 text = "PAUSED"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -65,20 +61,26 @@ theme_override_constants/separation = 50
 [node name="ResumeBtn" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
-theme_override_font_sizes/font_size = 80
-theme_override_styles/normal = SubResource("StyleBoxFlat_ro8um")
+theme_override_fonts/font = ExtResource("2_ifrec")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = ExtResource("3_5lgfh")
+theme_override_styles/hover = ExtResource("4_0gopr")
 text = "Resume"
 
 [node name="SettingsBtn" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
-theme_override_font_sizes/font_size = 80
-theme_override_styles/normal = SubResource("StyleBoxFlat_ro8um")
+theme_override_fonts/font = ExtResource("2_ifrec")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = ExtResource("3_5lgfh")
+theme_override_styles/hover = ExtResource("4_0gopr")
 text = "Settings"
 
 [node name="MainMenuBtn" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
-theme_override_font_sizes/font_size = 80
-theme_override_styles/normal = SubResource("StyleBoxFlat_ro8um")
+theme_override_fonts/font = ExtResource("2_ifrec")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = ExtResource("3_5lgfh")
+theme_override_styles/hover = ExtResource("4_0gopr")
 text = "Main Menu"

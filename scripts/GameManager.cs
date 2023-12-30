@@ -44,7 +44,7 @@ public partial class GameManager : Node {
 	}
 
 	public override void _Process(double delta) {
-		if (Input.IsActionJustPressed(Constants.PAUSE)) {
+		if (Input.IsActionJustPressed(Constants.Bindings.Pause.ToString())) {
 			TogglePausing();
 		}
 	}

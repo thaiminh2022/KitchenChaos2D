@@ -11,6 +11,11 @@ public partial class ResetStaticManager : Node {
         TrashCounter.ResetStatic();
         PlayerSound.ResetStatic();
 
+        SettingsUI.ResetStatic();
+        PauseMenuUI.ResetStatic();
+
         GameManager.ResetStatic();
+        SoundManager.ResetStatic();
+        InputManager.ResetStatic();
     }
 }

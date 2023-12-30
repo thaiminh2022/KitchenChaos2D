@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ccmfdp4smdyss"]
+[gd_scene load_steps=34 format=3 uid="uid://ccmfdp4smdyss"]
 
 [ext_resource type="PackedScene" uid="uid://dgxncuk7lio5i" path="res://nodes/Counters/clearCounterDown.tscn" id="2_oatpm"]
 [ext_resource type="PackedScene" uid="uid://dkvbnwkxtb3d3" path="res://nodes/player.tscn" id="2_xcenc"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cxa2rrmprvrdv" path="res://nodes/Counters/ContainerCounterDown_Cabbage.tscn" id="4_5m3c4"]
 [ext_resource type="PackedScene" uid="uid://d1v2mrn733e8p" path="res://nodes/UI/game_over_ui.tscn" id="4_rbyle"]
 [ext_resource type="PackedScene" uid="uid://cdbrhaqktqped" path="res://nodes/Counters/ContainerCounterDown_Cheese.tscn" id="5_i5sh2"]
+[ext_resource type="PackedScene" uid="uid://rx5l4qs2y3kv" path="res://nodes/UI/setting_menu.tscn" id="6_73arp"]
 [ext_resource type="PackedScene" uid="uid://bs863i835rryy" path="res://nodes/UI/pause_menu_ui.tscn" id="6_j6h1e"]
 [ext_resource type="PackedScene" uid="uid://bgtbuyvllund0" path="res://nodes/Counters/ContainerCounterTown_Tomato.tscn" id="6_lb6hv"]
 [ext_resource type="PackedScene" uid="uid://dwcmh7fdqy4n1" path="res://nodes/Counters/ContainerCounterUp_RawMeat.tscn" id="7_ernq7"]
@@ -28,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://ccwsc4cd6xcsv" path="res://nodes/Counters/containerCounterUp.tscn" id="22_4tj8j"]
 [ext_resource type="PackedScene" uid="uid://cuuf7i733h2d6" path="res://nodes/Counters/containerCounterDown.tscn" id="23_rnbo2"]
 [ext_resource type="PackedScene" uid="uid://begpkbtitiv3a" path="res://nodes/managers/game_manager.tscn" id="24_f0565"]
+[ext_resource type="PackedScene" uid="uid://dwphx3nfngod2" path="res://nodes/managers/input_manager.tscn" id="30_66d87"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o4abs"]
 texture = ExtResource("21_c5nh7")
@@ -88,38 +90,9 @@ visible = false
 [node name="GameOverUI" parent="UICanvas" instance=ExtResource("4_rbyle")]
 
 [node name="PauseMenuUI" parent="UICanvas" instance=ExtResource("6_j6h1e")]
+visible = false
 
-[node name="SettingMenu" type="Control" parent="UICanvas"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="UICanvas/SettingMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.521569)
-
-[node name="SettingText" type="Label" parent="UICanvas/SettingMenu"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 87.0
-offset_bottom = 295.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 0.666667, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 30
-theme_override_font_sizes/font_size = 150
-text = "Settings"
-horizontal_alignment = 1
-uppercase = true
+[node name="SettingMenu" parent="UICanvas" instance=ExtResource("6_73arp")]
 
 [node name="MusicManager" parent="." instance=ExtResource("19_6ah70")]
 autoplay = true
@@ -139,7 +112,7 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = true
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array(-65539, 1, 262144, -3, 1, 262144, 65533, 1, 262144, 131069, 1, 1048576, -131074, 1, 131072, -131073, 1, 458752, -196608, 1, 589824, -196607, 1, 524288, -196606, 1, 1048576, -131069, 1, 983040, -65533, 1, 1048576, 3, 1, 196608, 65539, 1, 196608, 196606, 1, 1179648, 196607, 1, 786432, 131072, 1, 720896, 131073, 1, 327680, 131074, 1, 1048576, 65535, 1, 1114112, 0, 1, 851968, 1, 1, 131072, -1, 1, 917504, -65536, 1, 917504, -65535, 1, 327680)
+layer_1/tile_data = PackedInt32Array(-65539, 1, 262144, -3, 1, 262144, 65533, 1, 262144, 131069, 1, 1048576, -131074, 1, 131072, -131073, 1, 458752, -196608, 1, 589824, -196607, 1, 524288, -196606, 1, 1048576, -131069, 1, 983040, -65533, 1, 1048576, 3, 1, 196608, 65539, 1, 196608, 196606, 1, 1179648, 196607, 1, 786432, 131072, 1, 720896, 131073, 1, 327680, 131074, 1, 1048576, 65535, 1, 1114112, 0, 1, 1114112, 1, 1, 131072, -1, 1, 917504, -65536, 1, 917504, -65535, 1, 327680)
 
 [node name="Player" parent="TileMap" instance=ExtResource("2_xcenc")]
 position = Vector2(25, 21)
@@ -151,3 +124,5 @@ scale = Vector2(0.75, 0.75)
 
 [node name="GameManager" parent="." instance=ExtResource("24_f0565")]
 process_mode = 3
+
+[node name="InputManager" parent="." instance=ExtResource("30_66d87")]

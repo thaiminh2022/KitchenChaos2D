@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1v2mrn733e8p"]
+[gd_scene load_steps=3 format=3 uid="uid://d1v2mrn733e8p"]
 
 [ext_resource type="Script" path="res://scripts/UI/GameOverUI.cs" id="1_mr03g"]
+[ext_resource type="FontFile" uid="uid://g88p5r2uu7xg" path="res://assets/fonts/OdibeeSans-Regular.ttf" id="2_tb1cd"]
 
 [node name="GameOverUI" type="Control" node_paths=PackedStringArray("recipeDeliveredAmountText")]
 visible = false
@@ -26,13 +27,14 @@ color = Color(0, 0, 0, 0.521569)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 108.0
-offset_bottom = 296.0
+offset_top = 74.0
+offset_bottom = 338.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0.984314, 0.47451, 0, 1)
-theme_override_colors/font_outline_color = Color(0.984314, 0.47451, 0, 1)
+theme_override_colors/font_color = Color(1, 0.666667, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0.666667, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 135
+theme_override_fonts/font = ExtResource("2_tb1cd")
+theme_override_font_sizes/font_size = 200
 text = "Game Over"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -44,8 +46,9 @@ anchor_right = 1.0
 offset_top = 361.0
 offset_bottom = 467.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_tb1cd")
 theme_override_font_sizes/font_size = 69
-text = "Recipe Delivered"
+text = "Recipe Delivered:"
 horizontal_alignment = 1
 uppercase = true
 
@@ -53,11 +56,13 @@ uppercase = true
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 466.0
-offset_bottom = 606.0
+offset_top = 480.0
+offset_bottom = 678.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 100
+theme_override_fonts/font = ExtResource("2_tb1cd")
+theme_override_font_sizes/font_size = 150
 text = "10"
 horizontal_alignment = 1
+vertical_alignment = 1
 uppercase = true

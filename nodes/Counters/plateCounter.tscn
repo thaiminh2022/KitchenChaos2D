@@ -18,11 +18,15 @@ wait_time = 4.0
 autostart = true
 
 [node name="plate_counter" parent="." index="3" node_paths=PackedStringArray("plateCounter") instance=ExtResource("3_idr35")]
+position = Vector2(0, -0.75)
+scale = Vector2(1, 1.02941)
+animation = &"plate_4"
 script = ExtResource("5_dknfy")
 plateCounter = NodePath("..")
 
 [node name="selected" parent="." index="4" node_paths=PackedStringArray("clearCounter") instance=ExtResource("3_idr35")]
 visible = false
 modulate = Color(0.0705882, 0.164706, 1, 0.309804)
+position = Vector2(0, -1)
 script = ExtResource("4_o74s4")
 clearCounter = NodePath("..")

@@ -21,8 +21,8 @@ texture = ExtResource("2_udwxq")
 [node name="moving_arrows" type="Sprite2D" parent="visual" index="0"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_4hj1m")
-position = Vector2(0, -1)
-scale = Vector2(0.45, 0.45)
+position = Vector2(0, -2.15152)
+scale = Vector2(0.625, 0.48882)
 texture = ExtResource("3_wa6js")
 offset = Vector2(0, -1.5528)
 

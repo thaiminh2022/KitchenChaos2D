@@ -6,7 +6,7 @@ public partial class CuttingCounter : BaseCounter, IHasProgress {
 
 	public static event EventHandler OnAnyCut;
 
-	public static void ResetStatic() {
+	new public static void ResetStatic() {
 		OnAnyCut = null;
 	}
 	

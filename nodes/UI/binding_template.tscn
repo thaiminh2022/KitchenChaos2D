@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8wfolfx105t5"]
+
+[ext_resource type="Script" path="res://scripts/UI/BindingSingleUI.cs" id="1_ad1bv"]
+[ext_resource type="FontFile" uid="uid://g88p5r2uu7xg" path="res://assets/fonts/OdibeeSans-Regular.ttf" id="2_njxqc"]
+
+[node name="BindingTemplate" type="HBoxContainer" node_paths=PackedStringArray("bindingText", "bindingBtn")]
+theme_override_constants/separation = 20
+script = ExtResource("1_ad1bv")
+bindingText = NodePath("Label")
+bindingBtn = NodePath("RemapBtn")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_njxqc")
+theme_override_font_sizes/font_size = 59
+text = "walk_up"
+vertical_alignment = 1
+
+[node name="RemapBtn" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_njxqc")
+theme_override_font_sizes/font_size = 50
+toggle_mode = true
+text = "W"
+flat = true

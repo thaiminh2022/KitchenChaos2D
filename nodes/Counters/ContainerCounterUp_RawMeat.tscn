@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwcmh7fdqy4n1"]
+[gd_scene load_steps=7 format=3 uid="uid://dwcmh7fdqy4n1"]
 
 [ext_resource type="PackedScene" uid="uid://ccwsc4cd6xcsv" path="res://nodes/Counters/containerCounterUp.tscn" id="1_8nawi"]
-[ext_resource type="Texture2D" uid="uid://d0hfv3428xcii" path="res://assets/meat_raw.aseprite" id="2_kt63y"]
+[ext_resource type="Texture2D" uid="uid://d0hfv3428xcii" path="res://assets/sprites/meat_raw.aseprite" id="2_kt63y"]
 [ext_resource type="PackedScene" uid="uid://bveek8agejnxk" path="res://nodes/Kitchen Objects/meat_raw.tscn" id="3_lp1ko"]
 [ext_resource type="Script" path="res://scripts/CustomResources/KitchenObjectRes.cs" id="4_6xnut"]
+[ext_resource type="Texture2D" uid="uid://by3m7uf2328ls" path="res://assets/sprites/delivery_counter.aseprite" id="5_cbays"]
 
 [sub_resource type="Resource" id="Resource_fov2m"]
 script = ExtResource("4_6xnut")
@@ -16,7 +17,11 @@ kitchenObjectRes = SubResource("Resource_fov2m")
 
 [node name="CounterTopPoint" parent="." index="0"]
 z_index = 0
+position = Vector2(0, -2)
 scale = Vector2(0.75, 0.75)
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("5_cbays")
 
 [node name="visual" parent="." index="2"]
 y_sort_enabled = false

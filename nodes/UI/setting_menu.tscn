@@ -1,0 +1,164 @@
+[gd_scene load_steps=6 format=3 uid="uid://rx5l4qs2y3kv"]
+
+[ext_resource type="Script" path="res://scripts/UI/SettingsUI.cs" id="1_jiwd7"]
+[ext_resource type="FontFile" uid="uid://g88p5r2uu7xg" path="res://assets/fonts/OdibeeSans-Regular.ttf" id="2_h1fpn"]
+[ext_resource type="PackedScene" uid="uid://b8wfolfx105t5" path="res://nodes/UI/binding_template.tscn" id="3_ifq23"]
+[ext_resource type="StyleBox" uid="uid://cvoj1osbny5x1" path="res://styles/btn_normal.tres" id="3_m6onw"]
+[ext_resource type="StyleBox" uid="uid://cbuif6544gah0" path="res://styles/btn_hover.tres" id="4_7u1si"]
+
+[node name="SettingMenu" type="Control" node_paths=PackedStringArray("closeBtn", "musicVolumeSlider", "musicVolumeDisplayText", "vfxVolumeSlider", "vfxVolumeDisplayText", "bindingHolder")]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jiwd7")
+closeBtn = NodePath("CloseButton")
+musicVolumeSlider = NodePath("Settings/SoundSettingsContainer/MusicSettings/MusicSlider")
+musicVolumeDisplayText = NodePath("Settings/SoundSettingsContainer/MusicSettings/MusicSoundLevelLabel")
+vfxVolumeSlider = NodePath("Settings/SoundSettingsContainer/SFXSettings/VFXSlider")
+vfxVolumeDisplayText = NodePath("Settings/SoundSettingsContainer/SFXSettings/VFXSoundLevelLabel")
+bindingTemplate = ExtResource("3_ifq23")
+bindingHolder = NodePath("Settings/BindingSettings/KeymapRebinding")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.521569)
+
+[node name="SettingText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 37.0
+offset_bottom = 301.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.666667, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("2_h1fpn")
+theme_override_font_sizes/font_size = 200
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Settings" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -915.0
+offset_top = -754.0
+offset_right = 915.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="SoundSettingsContainer" type="VBoxContainer" parent="Settings"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="SoundSettingLabel" type="Label" parent="Settings/SoundSettingsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_h1fpn")
+theme_override_font_sizes/font_size = 80
+text = "Sound Settings"
+vertical_alignment = 1
+
+[node name="SFXSettings" type="HBoxContainer" parent="Settings/SoundSettingsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VFXLabel" type="Label" parent="Settings/SoundSettingsContainer/SFXSettings"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_h1fpn")
+theme_override_font_sizes/font_size = 60
+text = "SFX   "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VFXSlider" type="HSlider" parent="Settings/SoundSettingsContainer/SFXSettings"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="VFXSoundLevelLabel" type="Label" parent="Settings/SoundSettingsContainer/SFXSettings"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_h1fpn")
+theme_override_font_sizes/font_size = 60
+text = "100"
+
+[node name="MusicSettings" type="HBoxContainer" parent="Settings/SoundSettingsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="MusicLabel" type="Label" parent="Settings/SoundSettingsContainer/MusicSettings"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_h1fpn")
+theme_override_font_sizes/font_size = 60
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="Settings/SoundSettingsContainer/MusicSettings"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MusicSoundLevelLabel" type="Label" parent="Settings/SoundSettingsContainer/MusicSettings"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_h1fpn")
+theme_override_font_sizes/font_size = 60
+text = "100"
+
+[node name="BindingSettings" type="ScrollContainer" parent="Settings"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="KeymapRebinding" type="VBoxContainer" parent="Settings/BindingSettings"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Settings/BindingSettings/KeymapRebinding"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_h1fpn")
+theme_override_font_sizes/font_size = 80
+text = "Bindings"
+vertical_alignment = 1
+
+[node name="CloseButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 142.0
+offset_top = -253.0
+offset_right = 642.0
+offset_bottom = -101.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_h1fpn")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = ExtResource("3_m6onw")
+theme_override_styles/hover = ExtResource("4_7u1si")
+text = "Close"

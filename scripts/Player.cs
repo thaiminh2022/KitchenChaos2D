@@ -36,7 +36,7 @@ public partial class Player : CharacterBody2D, IKitchenObjectParent {
 
 	private void HandleInteract() {
 
-		if (Input.IsActionJustPressed(Constants.INTEREACT)) {
+		if (Input.IsActionJustPressed(Constants.Bindings.Interact.ToString())) {
 			if (!GameManager.Instance.IsGamePlaying())
 				return;
 
@@ -45,7 +45,7 @@ public partial class Player : CharacterBody2D, IKitchenObjectParent {
 	}
 	private void HandleAltInteract() {
 
-		if (Input.IsActionJustPressed(Constants.ALT_INTEREACT)) {
+		if (Input.IsActionJustPressed(Constants.Bindings.Alt_Interact.ToString())) {
 			if (!GameManager.Instance.IsGamePlaying())
 				return;
 
@@ -82,10 +82,10 @@ public partial class Player : CharacterBody2D, IKitchenObjectParent {
 	private void HandleMove() {
 		Vector2 velocity = Velocity;
 		Vector2 direction = Input.GetVector(
-			Constants.MOVE_LEFT,
-			Constants.MOVE_RIGHT,
-			Constants.MOVE_UP,
-			Constants.MOVE_DOWN
+			Constants.Bindings.Move_Left.ToString(),
+				Constants.Bindings.Move_Right.ToString() ,
+			Constants.Bindings.Move_Up.ToString(),
+			Constants.Bindings.Move_Down.ToString()
 		).Normalized();
 
 

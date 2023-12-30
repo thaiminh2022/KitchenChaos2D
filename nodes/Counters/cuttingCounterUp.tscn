@@ -16,8 +16,8 @@ cuttingRecipes = Array[Object]([ExtResource("3_i22jh"), ExtResource("4_ab57m"), 
 counterTopPoint = NodePath("CounterTopPoint")
 
 [node name="ProgressBar" parent="." index="2" node_paths=PackedStringArray("hasProgressObject") instance=ExtResource("9_ykinx")]
-offset_top = -10.0
-offset_bottom = -8.0
+offset_top = -12.0
+offset_bottom = -10.0
 hasProgressObject = NodePath("..")
 
 [node name="cutting_counter_up" parent="." index="3" node_paths=PackedStringArray("cuttingCounter") instance=ExtResource("7_v5n78")]

@@ -1,17 +1,15 @@
 [gd_scene load_steps=2 format=3 uid="uid://o42dk2t8dngk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdf83"]
-size = Vector2(8, 9.33333)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvx4a"]
+size = Vector2(16, 16)
 
 [node name="Counter" type="StaticBody2D"]
 collision_layer = 7
 
 [node name="CounterTopPoint" type="Marker2D" parent="."]
 z_index = 1
-position = Vector2(0, -2)
+position = Vector2(0, -4)
 scale = Vector2(0.5, 0.5)
 
-[node name="PlayerCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
-scale = Vector2(1.5, 1.5)
-shape = SubResource("RectangleShape2D_wdf83")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wvx4a")

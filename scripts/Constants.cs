@@ -1,14 +1,34 @@
 using Godot;
+using static Constants;
+using static Godot.RenderingDevice;
 
 public static class Constants
 {
-	public const string MOVE_LEFT = "move_left";
-	public const string MOVE_RIGHT = "move_right";
-	public const string MOVE_UP = "move_up";
-	public const string MOVE_DOWN = "move_down";
-	public const string INTEREACT = "interact";
-	public const string ALT_INTEREACT = "alt_interact";
-	public const string PAUSE = "pause";
+
+	public enum Bindings {
+		Move_Left,
+		Move_Right,
+		Move_Up,
+		Move_Down,
+		Interact,
+		Alt_Interact,
+		Pause,
+	}
+
+
+	public static string GAME_SETTING_SAVE_PATH = "user://settings.cfg";
+	
+	public static ConfigFile GetSettingsConfigFile() {
+		ConfigFile configFile = new ConfigFile();
+
+		var err = configFile.Load(GAME_SETTING_SAVE_PATH);
+		
+		if(err != Error.Ok) {
+			configFile.Save(GAME_SETTING_SAVE_PATH);
+		}
+
+		return configFile;
+	}
 
 
 
@@ -26,7 +46,8 @@ public static class Constants
 	public static double GetTimeProgressNormalized(this Timer timer)
 	{
 		return timer.TimeLeft / timer.WaitTime;
-
 	}
 
+
 }
+

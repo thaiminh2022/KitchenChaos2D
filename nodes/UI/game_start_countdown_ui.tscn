@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://mkusfgxx17f3"]
+[gd_scene load_steps=3 format=3 uid="uid://mkusfgxx17f3"]
 
 [ext_resource type="Script" path="res://scripts/UI/GameStartCountDownUI.cs" id="1_wi7ye"]
+[ext_resource type="FontFile" uid="uid://g88p5r2uu7xg" path="res://assets/fonts/OdibeeSans-Regular.ttf" id="2_uhfpu"]
 
 [node name="GameStartCountdownUI" type="Control" node_paths=PackedStringArray("countDownText")]
 layout_mode = 3
@@ -21,7 +22,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0.576471, 0.960784, 1)
 theme_override_constants/outline_size = 75
+theme_override_fonts/font = ExtResource("2_uhfpu")
 theme_override_font_sizes/font_size = 350
-text = "3"
+text = "GO!"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://o42dk2t8dngk" path="res://nodes/Counters/_baseCounter.tscn" id="1_yf5w0"]
 [ext_resource type="Script" path="res://scripts/Counters/ContainerCounter.cs" id="2_pcy5i"]
-[ext_resource type="PackedScene" uid="uid://bx3j43q5e7fiw" path="res://assets/container.aseprite" id="3_ka37s"]
+[ext_resource type="PackedScene" uid="uid://bx3j43q5e7fiw" path="res://assets/sprites/container.aseprite" id="3_ka37s"]
 [ext_resource type="Script" path="res://scripts/Counters/ContainerCounterVisual.cs" id="4_u5wmo"]
 [ext_resource type="Script" path="res://scripts/Counters/SelectedCounterVisual.cs" id="5_rphj3"]
 
