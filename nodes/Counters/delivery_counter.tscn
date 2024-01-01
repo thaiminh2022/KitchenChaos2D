@@ -1,24 +1,156 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbpaifyk66rdy"]
+[gd_scene load_steps=23 format=3 uid="uid://bbpaifyk66rdy"]
 
 [ext_resource type="PackedScene" uid="uid://o42dk2t8dngk" path="res://nodes/Counters/_baseCounter.tscn" id="1_lyihn"]
 [ext_resource type="Script" path="res://scripts/Counters/DeliveryCounter.cs" id="2_iydoh"]
-[ext_resource type="Texture2D" uid="uid://by3m7uf2328ls" path="res://assets/sprites/delivery_counter.aseprite" id="2_udwxq"]
+[ext_resource type="PackedScene" uid="uid://by3m7uf2328ls" path="res://assets/sprites/delivery_counter.aseprite" id="2_udwxq"]
 [ext_resource type="Shader" path="res://shaders/moving_visual.gdshader" id="3_dityj"]
-[ext_resource type="Script" path="res://scripts/Counters/SelectedCounterVisual.cs" id="3_re6ns"]
 [ext_resource type="Texture2D" uid="uid://kbubg7vmuctc" path="res://assets/sprites/right_arrow.aseprite" id="3_wa6js"]
+[ext_resource type="Script" path="res://scripts/Counters/SelectedCounterVisual.cs" id="6_4obfk"]
+[ext_resource type="Script" path="res://scripts/UI/DeliveryResultUI.cs" id="7_0hx57"]
+[ext_resource type="Texture2D" uid="uid://biqfkton81les" path="res://assets/UI/DELIVERY SUCCESS.png" id="7_gxofm"]
+[ext_resource type="Texture2D" uid="uid://bwhnqhiomd844" path="res://assets/UI/DELIVERY FAILED.png" id="9_ecen6"]
+[ext_resource type="Texture2D" uid="uid://eu4dvf5gqq54" path="res://assets/UI/icon SUCCESS.png" id="10_2qdcw"]
+[ext_resource type="Texture2D" uid="uid://dhd6eoxgr1y8v" path="res://assets/UI/icon FAILED.png" id="10_s1r6d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4hj1m"]
 shader = ExtResource("3_dityj")
 shader_parameter/offset_speed = Vector2(-1, 0)
 
-[node name="Delivery_Counter" node_paths=PackedStringArray("counterTopPoint") instance=ExtResource("1_lyihn")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hf2nm"]
+shader = ExtResource("3_dityj")
+shader_parameter/offset_speed = Vector2(-1, 0)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iln2l"]
+load_path = "res://.godot/imported/delivery_counter.aseprite.png-0cdb3b2480fb574656c169d350095ef9.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0ngo"]
+atlas = SubResource("CompressedTexture2D_iln2l")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7s37c"]
+atlas = SubResource("CompressedTexture2D_iln2l")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fksmo"]
+animations = [{
+"frames": [{
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_q0ngo")
+}],
+"loop": true,
+"name": &"body",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_7s37c")
+}],
+"loop": true,
+"name": &"no_body",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hwx24"]
+size = Vector2(13, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqh8m"]
+bg_color = Color(0.0980392, 0.580392, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="Animation" id="Animation_yilmw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6w7p5"]
+resource_name = "popup"
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.183333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1.2, 1.2), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.183333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-0.261799, 0.261799, 0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.75, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uvkxd"]
+_data = {
+"RESET": SubResource("Animation_yilmw"),
+"popup": SubResource("Animation_6w7p5")
+}
+
+[node name="Delivery_Counter" instance=ExtResource("1_lyihn")]
 script = ExtResource("2_iydoh")
-counterTopPoint = NodePath("CounterTopPoint")
 
-[node name="visual" type="Sprite2D" parent="." index="2"]
-texture = ExtResource("2_udwxq")
-
-[node name="moving_arrows" type="Sprite2D" parent="visual" index="0"]
+[node name="moving_arrows" type="Sprite2D" parent="." index="0"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_4hj1m")
 position = Vector2(0, -2.15152)
@@ -26,9 +158,97 @@ scale = Vector2(0.625, 0.48882)
 texture = ExtResource("3_wa6js")
 offset = Vector2(0, -1.5528)
 
-[node name="selected" type="Sprite2D" parent="." index="3" node_paths=PackedStringArray("clearCounter")]
+[node name="delivery_counter" parent="." index="1" instance=ExtResource("2_udwxq")]
+animation = &"no_body"
+
+[node name="Sprite2D" type="Sprite2D" parent="delivery_counter" index="0"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_hf2nm")
+position = Vector2(1.5, 1.78814e-07)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_wa6js")
+
+[node name="selected" parent="." index="2" node_paths=PackedStringArray("clearCounter") instance=ExtResource("2_udwxq")]
 visible = false
 modulate = Color(0.0705882, 0.164706, 1, 0.309804)
-texture = ExtResource("2_udwxq")
-script = ExtResource("3_re6ns")
+sprite_frames = SubResource("SpriteFrames_fksmo")
+animation = &"no_body"
+script = ExtResource("6_4obfk")
 clearCounter = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_hwx24")
+
+[node name="DeliveryResultUI" type="Control" parent="." index="4" node_paths=PackedStringArray("deliveryTexure", "icon", "panel", "anim")]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -9.0
+offset_right = 18.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(18, 8)
+script = ExtResource("7_0hx57")
+deliveryTexure = NodePath("Panel/MarginContainer/HBoxContainer/DeliveryTex")
+icon = NodePath("Panel/MarginContainer/HBoxContainer/CheckIcon")
+panel = NodePath("Panel")
+anim = NodePath("AnimationPlayer")
+deliverySuccessTexture = ExtResource("7_gxofm")
+successIcon = ExtResource("10_2qdcw")
+sucessColor = Color(0.0966667, 0.58, 0, 1)
+deliveryFailedTextture = ExtResource("9_ecen6")
+failedIcon = ExtResource("10_s1r6d")
+failedColor = Color(0.745098, 0, 0, 1)
+
+[node name="Panel" type="Panel" parent="DeliveryResultUI" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(18, 8)
+tooltip_text = "Recipe correct"
+theme_override_styles/panel = SubResource("StyleBoxFlat_iqh8m")
+
+[node name="MarginContainer" type="MarginContainer" parent="DeliveryResultUI/Panel" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DeliveryResultUI/Panel/MarginContainer" index="0"]
+layout_mode = 2
+alignment = 1
+
+[node name="DeliveryTex" type="TextureRect" parent="DeliveryResultUI/Panel/MarginContainer/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("7_gxofm")
+expand_mode = 1
+
+[node name="CheckIcon" type="TextureRect" parent="DeliveryResultUI/Panel/MarginContainer/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("10_2qdcw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DeliveryResultUI" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_uvkxd")
+}

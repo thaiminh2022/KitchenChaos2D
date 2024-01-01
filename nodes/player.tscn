@@ -1,15 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkvbnwkxtb3d3"]
+[gd_scene load_steps=8 format=3 uid="uid://dkvbnwkxtb3d3"]
 
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_hi7lg"]
 [ext_resource type="PackedScene" uid="uid://b1uiigwy1bylq" path="res://assets/sprites/player.aseprite" id="2_g4cc5"]
 [ext_resource type="Script" path="res://scripts/PlayerAnimator.cs" id="3_vjadu"]
 [ext_resource type="Script" path="res://scripts/PlayerSound.cs" id="4_lf3gf"]
+[ext_resource type="Texture2D" uid="uid://d00mryqa8mw0q" path="res://assets/UI/circle.aseprite" id="4_qfmgi"]
+
+[sub_resource type="Curve" id="Curve_g2kgx"]
+_data = [Vector2(0.002, 0.968421), 0.0, 0.0, 0, 0, Vector2(0.474, 0.126316), 0.0, 0.0, 0, 0, Vector2(0.992, 0.0315789), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hbwqn"]
 size = Vector2(14, 11)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("rayCast", "playerHoldingPoint")]
 y_sort_enabled = true
+position = Vector2(1, 0)
 collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_hi7lg")
@@ -17,15 +23,31 @@ moveSpeed = 50.0
 rayCast = NodePath("RayCast2D")
 playerHoldingPoint = NodePath("PlayerAnimator/PlayerHoldingPoint")
 
-[node name="PlayerAnimator" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_g4cc5")]
+[node name="PlayerAnimator" parent="." node_paths=PackedStringArray("movingParticle", "player") instance=ExtResource("2_g4cc5")]
 animation = &"walk"
 script = ExtResource("3_vjadu")
+movingParticle = NodePath("walk_particle")
 player = NodePath("..")
 
 [node name="PlayerHoldingPoint" type="Marker2D" parent="PlayerAnimator"]
 z_index = 1
 position = Vector2(-9, 5)
 scale = Vector2(0.75, 0.75)
+
+[node name="walk_particle" type="CPUParticles2D" parent="PlayerAnimator"]
+z_index = -1
+position = Vector2(-1, 12)
+amount = 5
+texture = ExtResource("4_qfmgi")
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 5.0
+linear_accel_min = 10.0
+linear_accel_max = 10.0
+scale_amount_min = 0.01
+scale_amount_max = 0.01
+scale_amount_curve = SubResource("Curve_g2kgx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 2

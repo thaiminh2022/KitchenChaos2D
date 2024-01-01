@@ -9,6 +9,8 @@ public partial class SettingsUI : Control {
 	}
 
 	[Export] private Button closeBtn;
+	[Export] private Button loadDefaultBtn;
+
 
 	[ExportGroup("Volume")]
 	[Export] private HSlider musicVolumeSlider;
@@ -26,19 +28,31 @@ public partial class SettingsUI : Control {
 	}
 
 	public override void _Ready() {
-		LoadDefault();
-		Hide();
+		LoadUserSoundSettingUI();
+		LoadUserBindingUI();
 
 		GameManager.Instance.OnGameResumed += GameManager_OnGameResumed;
 
 		musicVolumeSlider.ValueChanged += MusicVolumeSlider_ValueChanged;
 		vfxVolumeSlider.ValueChanged += VfxVolumeSLider_ValueChanged;
+		
 		closeBtn.Pressed += () => {
-			PauseMenuUI.Instance.Show();
+			PauseMenuUI.Instance.ShowUI();
 			Hide();
 		};
+
+		loadDefaultBtn.Pressed += () => {
+			InputManager.Instance.LoadDefault();
+			LoadUserBindingUI();
+		};
+
+		Hide();
 	}
 
+	public void ShowUI() {
+		Show();
+		musicVolumeSlider.GrabFocus();
+	}
 
 	private void GameManager_OnGameResumed(object sender, EventArgs e) {
 		Hide();
@@ -60,12 +74,9 @@ public partial class SettingsUI : Control {
 		musicVolumeDisplayText.Text = ConvertValueToDisplay(value);
 
 	}
-	private void LoadDefault() {
-		LoadSoundDefault();
-		LoadBindingDefault();
-	}
 
-	private void LoadSoundDefault() {
+
+	private void LoadUserSoundSettingUI() {
 		// Background
 		float backgroundVolume = SoundManager.Instance.GetVolume(SoundManager.VolumeBus.Background);
 		float volumeEnergy = Mathf.DbToLinear(backgroundVolume);
@@ -81,15 +92,28 @@ public partial class SettingsUI : Control {
 		vfxVolumeDisplayText.Text = ConvertValueToDisplay(vfxVolumeEnergy);
 	}
 
-	private void LoadBindingDefault() {
+	private void LoadUserBindingUI() {
+		foreach (var child in bindingHolder.GetChildren()) {
+			if(child is not BindingSingleUI) {
+				continue;
+			}
+			
+			child.QueueFree();
+		}
+		
 		foreach (string action in InputMap.GetActions()) {
 			if (action.StartsWith("ui"))
 				continue;
 
 			foreach (InputEvent keyEvent in InputMap.ActionGetEvents(action)) {
+				
+				// Hide unnessesary bindings
+				if(!InputManager.Instance.MatchCurrentDevice(keyEvent)) {
+					continue;
+				}
+				
+				
 				var instance = bindingTemplate.Instantiate<BindingSingleUI>();
-				instance.SetbindingText(action);
-				instance.SetBindingBtnText(keyEvent.AsText());
 				instance.SetBindingData(action, keyEvent);
 					
 				bindingHolder.AddChild(instance);

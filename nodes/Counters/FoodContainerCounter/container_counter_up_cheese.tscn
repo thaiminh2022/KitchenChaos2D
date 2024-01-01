@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dur4mi2sddei6"]
+
+[ext_resource type="PackedScene" uid="uid://ccwsc4cd6xcsv" path="res://nodes/Counters/_container_counter_up_base.tscn" id="1_0o87a"]
+[ext_resource type="Resource" uid="uid://ccvea7kn83j08" path="res://ScriptableObjects/KitchenObjectRes/cheese.tres" id="2_yd65k"]
+[ext_resource type="Texture2D" uid="uid://m5jkve6klfen" path="res://assets/sprites/cheese.aseprite" id="3_p6d5r"]
+
+[node name="ContainerCounterUp_Cheese" instance=ExtResource("1_0o87a")]
+kitchenObjectRes = ExtResource("2_yd65k")
+
+[node name="CounterTopPoint" type="Marker2D" parent="." index="0"]
+z_index = 1
+position = Vector2(0, -4)
+scale = Vector2(0.5, 0.5)
+
+[node name="food" type="Sprite2D" parent="visual" index="0"]
+position = Vector2(0, 5)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_p6d5r")

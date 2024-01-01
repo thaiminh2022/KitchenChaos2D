@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://55w405tyqco8"]
+
+[ext_resource type="PackedScene" uid="uid://o42dk2t8dngk" path="res://nodes/Counters/_baseCounter.tscn" id="1_1uos1"]
+[ext_resource type="Script" path="res://scripts/Counters/ClearCounter.cs" id="2_lfy0c"]
+[ext_resource type="PackedScene" uid="uid://cr1jyfo6eyeqg" path="res://assets/sprites/cabinet_1.aseprite" id="3_4ttno"]
+[ext_resource type="Script" path="res://scripts/Counters/SelectedCounterVisual.cs" id="4_bbgqa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qymlh"]
+size = Vector2(16, 16)
+
+[node name="ClearCounterLeftNobody" node_paths=PackedStringArray("counterTopPoint") instance=ExtResource("1_1uos1")]
+script = ExtResource("2_lfy0c")
+counterTopPoint = NodePath("Toppoint")
+
+[node name="visual" parent="." index="0" instance=ExtResource("3_4ttno")]
+animation = &"left_no_body"
+
+[node name="selected" parent="." index="1" node_paths=PackedStringArray("clearCounter") instance=ExtResource("3_4ttno")]
+visible = false
+modulate = Color(0.0705882, 0.164706, 1, 0.309804)
+animation = &"left_no_body"
+script = ExtResource("4_bbgqa")
+clearCounter = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+shape = SubResource("RectangleShape2D_qymlh")
+
+[node name="Toppoint" type="Marker2D" parent="." index="3"]
+z_index = 1
+position = Vector2(2, -2.38419e-07)
+scale = Vector2(0.5, 0.5)

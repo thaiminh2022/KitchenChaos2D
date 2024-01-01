@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://rx5l4qs2y3kv"]
+[gd_scene load_steps=7 format=3 uid="uid://rx5l4qs2y3kv"]
 
 [ext_resource type="Script" path="res://scripts/UI/SettingsUI.cs" id="1_jiwd7"]
 [ext_resource type="FontFile" uid="uid://g88p5r2uu7xg" path="res://assets/fonts/OdibeeSans-Regular.ttf" id="2_h1fpn"]
 [ext_resource type="PackedScene" uid="uid://b8wfolfx105t5" path="res://nodes/UI/binding_template.tscn" id="3_ifq23"]
 [ext_resource type="StyleBox" uid="uid://cvoj1osbny5x1" path="res://styles/btn_normal.tres" id="3_m6onw"]
 [ext_resource type="StyleBox" uid="uid://cbuif6544gah0" path="res://styles/btn_hover.tres" id="4_7u1si"]
+[ext_resource type="Script" path="res://scripts/UI/FocusToParentOnVisible.cs" id="6_uj1s4"]
 
-[node name="SettingMenu" type="Control" node_paths=PackedStringArray("closeBtn", "musicVolumeSlider", "musicVolumeDisplayText", "vfxVolumeSlider", "vfxVolumeDisplayText", "bindingHolder")]
+[node name="SettingMenu" type="Control" node_paths=PackedStringArray("closeBtn", "loadDefaultBtn", "musicVolumeSlider", "musicVolumeDisplayText", "vfxVolumeSlider", "vfxVolumeDisplayText", "bindingHolder")]
 process_mode = 2
 layout_mode = 3
 anchors_preset = 15
@@ -16,6 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jiwd7")
 closeBtn = NodePath("CloseButton")
+loadDefaultBtn = NodePath("Settings/BindingSettings/KeymapRebinding/HBoxContainer/ResetBindingBtn")
 musicVolumeSlider = NodePath("Settings/SoundSettingsContainer/MusicSettings/MusicSlider")
 musicVolumeDisplayText = NodePath("Settings/SoundSettingsContainer/MusicSettings/MusicSoundLevelLabel")
 vfxVolumeSlider = NodePath("Settings/SoundSettingsContainer/SFXSettings/VFXSlider")
@@ -135,17 +137,30 @@ text = "100"
 [node name="BindingSettings" type="ScrollContainer" parent="Settings"]
 layout_mode = 2
 size_flags_horizontal = 3
+follow_focus = true
 
 [node name="KeymapRebinding" type="VBoxContainer" parent="Settings/BindingSettings"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Settings/BindingSettings/KeymapRebinding"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/BindingSettings/KeymapRebinding"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="Settings/BindingSettings/KeymapRebinding/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_h1fpn")
 theme_override_font_sizes/font_size = 80
 text = "Bindings"
 vertical_alignment = 1
+
+[node name="ResetBindingBtn" type="Button" parent="Settings/BindingSettings/KeymapRebinding/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_h1fpn")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = ExtResource("3_m6onw")
+theme_override_styles/hover = ExtResource("4_7u1si")
+text = "Reset Bindings"
 
 [node name="CloseButton" type="Button" parent="."]
 layout_mode = 1
@@ -162,3 +177,9 @@ theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = ExtResource("3_m6onw")
 theme_override_styles/hover = ExtResource("4_7u1si")
 text = "Close"
+
+[node name="FocusToParentOnVisible" type="Control" parent="CloseButton"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_uj1s4")

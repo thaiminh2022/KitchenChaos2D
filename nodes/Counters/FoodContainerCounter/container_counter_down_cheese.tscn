@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce0ngybkqf7fl"]
+
+[ext_resource type="PackedScene" uid="uid://cuuf7i733h2d6" path="res://nodes/Counters/_container_counter_down_base.tscn" id="1_t34xi"]
+[ext_resource type="Resource" uid="uid://ccvea7kn83j08" path="res://ScriptableObjects/KitchenObjectRes/cheese.tres" id="2_dqd1j"]
+[ext_resource type="Texture2D" uid="uid://m5jkve6klfen" path="res://assets/sprites/cheese.aseprite" id="3_5ar67"]
+
+[node name="ContainerCounterDown_Cheese" instance=ExtResource("1_t34xi")]
+kitchenObjectRes = ExtResource("2_dqd1j")
+
+[node name="food" type="Sprite2D" parent="visual" index="0"]
+position = Vector2(0, 5)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_5ar67")

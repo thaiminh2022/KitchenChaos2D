@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://cuuf7i733h2d6"]
+
+[ext_resource type="PackedScene" uid="uid://o42dk2t8dngk" path="res://nodes/Counters/_baseCounter.tscn" id="1_jxh6k"]
+[ext_resource type="Script" path="res://scripts/Counters/ContainerCounter.cs" id="2_16qri"]
+[ext_resource type="PackedScene" uid="uid://qasls1bamqy0" path="res://assets/sprites/container_down.aseprite" id="3_uqrrd"]
+[ext_resource type="Script" path="res://scripts/Counters/ContainerCounterVisual.cs" id="4_b3pjq"]
+[ext_resource type="Script" path="res://scripts/Counters/SelectedCounterVisual.cs" id="5_x8nh6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vl643"]
+size = Vector2(16, 16)
+
+[node name="ContainerCounterDown" instance=ExtResource("1_jxh6k")]
+script = ExtResource("2_16qri")
+
+[node name="visual" parent="." index="0" node_paths=PackedStringArray("containerCounter") instance=ExtResource("3_uqrrd")]
+speed_scale = 3.0
+script = ExtResource("4_b3pjq")
+containerCounter = NodePath("..")
+
+[node name="selected" parent="." index="1" node_paths=PackedStringArray("clearCounter") instance=ExtResource("3_uqrrd")]
+visible = false
+modulate = Color(0.0705882, 0.164706, 1, 0.309804)
+speed_scale = 3.0
+script = ExtResource("5_x8nh6")
+clearCounter = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+shape = SubResource("RectangleShape2D_vl643")

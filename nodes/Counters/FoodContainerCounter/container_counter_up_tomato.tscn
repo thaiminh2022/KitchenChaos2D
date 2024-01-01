@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ceea6bmo7yv2k"]
+
+[ext_resource type="PackedScene" uid="uid://ccwsc4cd6xcsv" path="res://nodes/Counters/_container_counter_up_base.tscn" id="1_ptprx"]
+[ext_resource type="Texture2D" uid="uid://by3kdiyj35bgv" path="res://assets/sprites/tomato.aseprite" id="2_18w1a"]
+[ext_resource type="Resource" uid="uid://bg4k3sv3h5cy5" path="res://ScriptableObjects/KitchenObjectRes/tomato.tres" id="2_d12ea"]
+
+[node name="ContainerCounterUp_Tomato" instance=ExtResource("1_ptprx")]
+kitchenObjectRes = ExtResource("2_d12ea")
+
+[node name="CounterTopPoint" type="Marker2D" parent="." index="0"]
+z_index = 1
+position = Vector2(0, -4)
+scale = Vector2(0.5, 0.5)
+
+[node name="food" type="Sprite2D" parent="visual" index="0"]
+position = Vector2(0, 5)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_18w1a")

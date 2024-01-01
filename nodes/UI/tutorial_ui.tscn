@@ -1,0 +1,179 @@
+[gd_scene load_steps=5 format=3 uid="uid://jllfwyicf74n"]
+
+[ext_resource type="Texture2D" uid="uid://chpf7vcnfg7ry" path="res://assets/UI/Tutorial.png" id="1_j0pi7"]
+[ext_resource type="Script" path="res://scripts/UI/TutorialUI.cs" id="1_oqkkp"]
+[ext_resource type="FontFile" uid="uid://g88p5r2uu7xg" path="res://assets/fonts/OdibeeSans-Regular.ttf" id="2_ixwb7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7w7i"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 300
+corner_radius_top_right = 300
+corner_radius_bottom_right = 300
+corner_radius_bottom_left = 300
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[node name="TutorialUI" type="Control" node_paths=PackedStringArray("moveText", "interactText", "altInteractText", "pauseText")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oqkkp")
+moveText = NodePath("KeySetup/Move/Panel/MoveLabel")
+interactText = NodePath("KeySetup/Interact/Panel/InteractLabel")
+altInteractText = NodePath("KeySetup/AltInteract/Panel/AltInteractLabel")
+pauseText = NodePath("KeySetup/Pause/Panel/PauseLabel")
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.219608)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Tutorial" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_j0pi7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="KeySetup" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -347.0
+offset_top = -91.0
+offset_right = -73.0
+offset_bottom = 319.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 51
+
+[node name="Move" type="Control" parent="KeySetup"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="KeySetup/Move"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7w7i")
+
+[node name="MoveLabel" type="Label" parent="KeySetup/Move/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_ixwb7")
+theme_override_font_sizes/font_size = 40
+text = "WASD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Interact" type="Control" parent="KeySetup"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="KeySetup/Interact"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7w7i")
+
+[node name="InteractLabel" type="Label" parent="KeySetup/Interact/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_ixwb7")
+theme_override_font_sizes/font_size = 45
+text = "F"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="AltInteract" type="Control" parent="KeySetup"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="KeySetup/AltInteract"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7w7i")
+
+[node name="AltInteractLabel" type="Label" parent="KeySetup/AltInteract/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_ixwb7")
+theme_override_font_sizes/font_size = 45
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Pause" type="Control" parent="KeySetup"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="KeySetup/Pause"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7w7i")
+
+[node name="PauseLabel" type="Label" parent="KeySetup/Pause/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_ixwb7")
+theme_override_font_sizes/font_size = 45
+text = "ESC"
+horizontal_alignment = 1
+vertical_alignment = 2

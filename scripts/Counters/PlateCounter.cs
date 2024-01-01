@@ -17,11 +17,19 @@ public partial class PlateCounter : BaseCounter
 	public override void _Ready()
 	{
 		SpawnPlateTimer.Timeout += SpawnPlate;
+
+		// Invoke so the UI auto updated
+		//OnPlateSpawn?.Invoke(this, EventArgs.Empty);
 	}
 
 	private void SpawnPlate()
 	{
-		if(plateSpawnAmount < plateSpawnAmountMax)
+		if (!GameManager.Instance.IsGamePlaying()) {
+			return;
+		}
+
+
+		if (plateSpawnAmount < plateSpawnAmountMax)
 		{
 			plateSpawnAmount++;
 			OnPlateSpawn?.Invoke(this, EventArgs.Empty);

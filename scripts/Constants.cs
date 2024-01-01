@@ -47,6 +47,22 @@ public static class Constants
 	{
 		return timer.TimeLeft / timer.WaitTime;
 	}
+    public static string GetPrettyText(this InputEvent inputEvent) {
+
+        if (inputEvent is InputEventKey k) {
+            return k.AsTextKeycode();
+        }
+        if (inputEvent is InputEventJoypadMotion j) {
+
+            return j.Axis.ToString();
+        }
+        if (inputEvent is InputEventJoypadButton b) {
+            return b.ButtonIndex.ToString();
+        }
+
+        // If this other type, return the default.
+        return inputEvent.AsText();
+    }
 
 
 }

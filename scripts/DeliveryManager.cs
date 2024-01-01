@@ -34,6 +34,10 @@ public partial class DeliveryManager : Node {
 	}
 
 	private void SpawnRecipe() {
+		if(!GameManager.Instance.IsGamePlaying()) {
+			return;
+		}
+
 
 		var recipeResList = recipeListRes.recipeResList;
 
@@ -53,7 +57,7 @@ public partial class DeliveryManager : Node {
 		RecipeRes matchedRecipe = null;
 
 		// Checking if we have the same recipe
-		foreach (var recipeRes in recipeListRes.recipeResList) {
+		foreach (var recipeRes in waitingRecipeList) {
 			var plateKitchenObjectResList = plate.GetKitchenObjectResList();
 			var recipeKitchenObjectResList = recipeRes.kitchenObjectResList;
 

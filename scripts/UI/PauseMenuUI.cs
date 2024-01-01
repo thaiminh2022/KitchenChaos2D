@@ -30,7 +30,7 @@ public partial class PauseMenuUI : Control {
 		};
 
 		settingsBtn.Pressed += () => {
-			SettingsUI.Instance.Show();
+			SettingsUI.Instance.ShowUI();
 			Hide();
 
 		};
@@ -43,7 +43,11 @@ public partial class PauseMenuUI : Control {
 	}
 
 	private void GameManager_OnGamePaused(object sender, EventArgs e) {
-		Show();
+		ShowUI();
 	}
-
+	
+	public void ShowUI() {
+		Show();
+		resumeBtn.GrabFocus();
+	}
 }

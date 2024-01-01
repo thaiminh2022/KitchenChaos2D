@@ -137,6 +137,8 @@ public sealed partial class StoveCounter : BaseCounter, IHasProgress {
 			
 		}
 	}
+	public bool IsFried() => state == State.Fried;
+
 
 	private void ResetState() {
 		// Reset all timers since the player picked the item up

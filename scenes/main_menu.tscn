@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cuav4sq7obsyx"]
+[gd_scene load_steps=12 format=3 uid="uid://cuav4sq7obsyx"]
 
 [ext_resource type="Script" path="res://scripts/UI/MainMenuUI.cs" id="1_oefg3"]
 [ext_resource type="FontFile" uid="uid://g88p5r2uu7xg" path="res://assets/fonts/OdibeeSans-Regular.ttf" id="2_7fw8a"]
@@ -7,6 +7,8 @@
 [ext_resource type="Shader" path="res://shaders/player_shader.gdshader" id="3_yjxhy"]
 [ext_resource type="Script" path="res://scripts/ResetStaticManager.cs" id="4_2l670"]
 [ext_resource type="StyleBox" uid="uid://cbuif6544gah0" path="res://styles/btn_hover.tres" id="4_yr58u"]
+[ext_resource type="Script" path="res://scripts/UI/FocusToParentOnVisible.cs" id="5_jgeir"]
+[ext_resource type="Texture2D" uid="uid://bnsbgfvxtcpxm" path="res://banner_nobackground.aseprite" id="6_sjppa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cfmoy"]
 shader = ExtResource("3_yjxhy")
@@ -50,6 +52,12 @@ theme_override_styles/hover = ExtResource("4_yr58u")
 text = "Play
 "
 
+[node name="FocusToParentOnVisible" type="Control" parent="MainMenuCanvas/MainMenuUI/PlayButton"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_jgeir")
+
 [node name="QuitButton" type="Button" parent="MainMenuCanvas/MainMenuUI"]
 layout_mode = 1
 anchors_preset = 2
@@ -66,62 +74,15 @@ theme_override_styles/normal = ExtResource("3_trn3f")
 theme_override_styles/hover = ExtResource("4_yr58u")
 text = "Quit"
 
-[node name="Title" type="Label" parent="MainMenuCanvas/MainMenuUI"]
+[node name="TextureRect" type="TextureRect" parent="MainMenuCanvas/MainMenuUI"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 264.0
+offset_bottom = 359.0
 grow_horizontal = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 10
-theme_override_constants/shadow_outline_size = 10
-theme_override_fonts/font = ExtResource("2_7fw8a")
-theme_override_font_sizes/font_size = 200
-text = "KITCHENCHAOS"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Made with Godot" type="Label" parent="MainMenuCanvas/MainMenuUI"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = -4.0
-offset_top = 212.0
-offset_right = -4.0
-offset_bottom = 344.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0.647059, 0.760784, 0.996078, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 10
-theme_override_constants/shadow_outline_size = 10
-theme_override_fonts/font = ExtResource("2_7fw8a")
-theme_override_font_sizes/font_size = 100
-text = "made with Godot"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Dimension" type="Label" parent="MainMenuCanvas/MainMenuUI"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 535.0
-offset_top = -404.0
-offset_right = 683.0
-offset_bottom = -206.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0.666667, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 50
-theme_override_fonts/font = ExtResource("2_7fw8a")
-theme_override_font_sizes/font_size = 150
-text = "2D"
-horizontal_alignment = 1
+texture = ExtResource("6_sjppa")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="PlayerIcon" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_cfmoy")

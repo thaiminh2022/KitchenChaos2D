@@ -80,8 +80,15 @@ public partial class SoundManager : Node
 		PlaySound(audioClipRefRes.deliverySucceeded, DeliveryCounter.Instance.GlobalPosition);
 
 	}
+	public void PlayCountdownSound() {
+		PlaySound(audioClipRefRes.warning, Vector2.Zero);
+	}
+	public void PlayWarningSound() {
+        PlaySound(audioClipRefRes.warning, Vector2.Zero);
+    }
 
-	private void PlaySound(AudioStream stream, Vector2 position) {
+
+    private void PlaySound(AudioStream stream, Vector2 position) {
 		var streamPlayer = template.Duplicate() as AudioStreamPlayer2D;
 
 		streamPlayer.Stream = stream;

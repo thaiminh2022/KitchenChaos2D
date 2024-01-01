@@ -6,16 +6,14 @@ public partial class BindingSingleUI : HBoxContainer {
 	private string action;
 	private InputEvent currentInputEvent;
 
-	public void SetbindingText(string text) {
-		bindingText.Text = text;
-	}
-	public void SetBindingBtnText(string text) {
-		bindingBtn.Text = text;
-	}
 	public void SetBindingData(string action, InputEvent inputEvent) {
 		this.action = action;
 		this.currentInputEvent = inputEvent;
-	}
+
+		bindingText.Text = action;
+		bindingBtn.Text = inputEvent.GetPrettyText();
+		 
+    }
 	public override void _Ready() {
 		bindingBtn.Toggled += BindingBtn_Toggled;
 		bindingBtn.GuiInput += BindingBtn_GuiInput;
@@ -35,7 +33,7 @@ public partial class BindingSingleUI : HBoxContainer {
 		if (@event is InputEventKey newEvent) {
 			InputManager.Instance.SetKeybind(action, currentInputEvent, newEvent);
 
-			currentInputEvent = newEvent;
+			SetBindingData(action, newEvent);
 			bindingBtn.ButtonPressed = false;
 		}
 	}
@@ -45,10 +43,10 @@ public partial class BindingSingleUI : HBoxContainer {
 
 		if (buttonPressed) {
 			GD.Print("Binding button: ", action, " ", currentInputEvent.AsText());
-			SetBindingBtnText("...Awaiting Input...");
+
+			bindingBtn.Text = "...Awaiting Input...";
 			ReleaseFocus();
 		} else {
-			SetBindingBtnText(currentInputEvent.AsText());
 			GrabFocus();
 		}
 	}

@@ -1,0 +1,43 @@
+[gd_scene load_steps=11 format=3 uid="uid://xceu5wqxpnjy"]
+
+[ext_resource type="PackedScene" uid="uid://o42dk2t8dngk" path="res://nodes/Counters/_baseCounter.tscn" id="1_3xlp4"]
+[ext_resource type="Script" path="res://scripts/Counters/CuttingCounter.cs" id="2_2t1jc"]
+[ext_resource type="Resource" uid="uid://chah8m45gesr8" path="res://ScriptableObjects/CuttingRecipeRes/Cabbage-CabbageSlices.tres" id="3_um8fi"]
+[ext_resource type="Resource" uid="uid://44up3pm8nxhs" path="res://ScriptableObjects/CuttingRecipeRes/Cheese-ChesseSlices.tres" id="4_564td"]
+[ext_resource type="Resource" uid="uid://bnojfq8u1shye" path="res://ScriptableObjects/CuttingRecipeRes/Tomato-TomatoSlices.tres" id="5_exsjr"]
+[ext_resource type="PackedScene" uid="uid://cekh08eiiw143" path="res://nodes/UI/progress_bar.tscn" id="6_ascd2"]
+[ext_resource type="PackedScene" uid="uid://drux7sfq4syod" path="res://assets/sprites/cutting_counter_up.aseprite" id="7_wk42w"]
+[ext_resource type="Script" path="res://scripts/Counters/CuttingCounterVisual.cs" id="8_4lp4a"]
+[ext_resource type="Script" path="res://scripts/Counters/SelectedCounterVisual.cs" id="9_fk64y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xi0yv"]
+size = Vector2(16, 16)
+
+[node name="CuttingCounterUp" instance=ExtResource("1_3xlp4")]
+script = ExtResource("2_2t1jc")
+cuttingRecipes = Array[Object]([ExtResource("3_um8fi"), ExtResource("4_564td"), ExtResource("5_exsjr")])
+
+[node name="ProgressBar" parent="." index="0" node_paths=PackedStringArray("hasProgressObject") instance=ExtResource("6_ascd2")]
+offset_top = -12.0
+offset_bottom = -10.0
+hasProgressObject = NodePath("..")
+
+[node name="cutting_counter_up" parent="." index="1" node_paths=PackedStringArray("cuttingCounter") instance=ExtResource("7_wk42w")]
+speed_scale = 2.0
+script = ExtResource("8_4lp4a")
+cuttingCounter = NodePath("..")
+
+[node name="selected" parent="." index="2" node_paths=PackedStringArray("clearCounter") instance=ExtResource("7_wk42w")]
+visible = false
+modulate = Color(0.0705882, 0.164706, 1, 0.309804)
+speed_scale = 2.0
+script = ExtResource("9_fk64y")
+clearCounter = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+shape = SubResource("RectangleShape2D_xi0yv")
+
+[node name="toppoint" type="Marker2D" parent="." index="4"]
+z_index = 1
+position = Vector2(0, -3)
+scale = Vector2(0.5, 0.5)

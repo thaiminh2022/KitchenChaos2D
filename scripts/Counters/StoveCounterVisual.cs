@@ -10,6 +10,7 @@ public partial class StoveCounterVisual : AnimatedSprite2D
 
 	[Export] private StoveCounter stoveCoutner;
 	[Export] private CpuParticles2D fryingParticles;
+	[Export] private PointLight2D pointLight;
 
 	public override void _Ready()
 	{
@@ -25,10 +26,13 @@ public partial class StoveCounterVisual : AnimatedSprite2D
 		{
 			Play(FRYING);
 			fryingParticles.Show();
+			pointLight.Show();
 		}else
 		{
 			Play(IDLE);
 			fryingParticles.Hide();
+			pointLight.Hide();
+			
 		}
 	}
 

@@ -13,8 +13,6 @@ public partial class GameManager : Node {
 	public event EventHandler OnGamePaused;
 	public event EventHandler OnGameResumed;
 
-
-
 	private enum State {
 		WaitingToStart,
 		CountdownToStart,
@@ -24,7 +22,6 @@ public partial class GameManager : Node {
 
 	private State state;
 
-	[Export] private Timer waitingToStartTimer;
 	[Export] private Timer countdownToStart;
 	[Export] private Timer gamePlayingTimer;
 
@@ -38,21 +35,24 @@ public partial class GameManager : Node {
 
 	public override void _Ready() {
 
-		waitingToStartTimer.Timeout += WaitingToStartTimer_Timeout;
 		countdownToStart.Timeout += CountdownToStartTimer_Timeout;
 		gamePlayingTimer.Timeout += GamePlayingTimer_Timeout;
 	}
 
-	public override void _Process(double delta) {
+
+	public override void _Input(InputEvent @event) {
 		if (Input.IsActionJustPressed(Constants.Bindings.Pause.ToString())) {
 			TogglePausing();
 		}
+
+		if(Input.IsActionJustPressed(Constants.Bindings.Interact.ToString())) {
+			if(state == State.WaitingToStart) {
+				countdownToStart.Start();
+				SwitchState(State.CountdownToStart);
+			}
+		}
 	}
 
-	private void WaitingToStartTimer_Timeout() {
-		SwitchState(State.CountdownToStart);
-		countdownToStart.Start();
-	}
 	private void CountdownToStartTimer_Timeout() {
 
 		SwitchState(State.GamePlaying);
@@ -64,7 +64,7 @@ public partial class GameManager : Node {
 	}
 
 	public bool IsGamePlaying() => state == State.GamePlaying;
-	public bool CountdownToStartActive() => state == State.CountdownToStart;
+	public bool IsCountdownToStartActive() => state == State.CountdownToStart;
 	public bool IsGameOver() => state == State.GameOver;
 
 

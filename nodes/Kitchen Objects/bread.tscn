@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://scripts/KitchenObject.cs" id="2_3o517"]
 
 [node name="bread" type="Sprite2D"]
-position = Vector2(0, -1)
 texture = ExtResource("1_1wctk")
 
 [node name="KitchenObject" type="Node2D" parent="."]

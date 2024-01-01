@@ -1,70 +1,118 @@
-[gd_scene load_steps=34 format=3 uid="uid://ccmfdp4smdyss"]
+[gd_scene load_steps=46 format=3 uid="uid://ccmfdp4smdyss"]
 
-[ext_resource type="PackedScene" uid="uid://dgxncuk7lio5i" path="res://nodes/Counters/clearCounterDown.tscn" id="2_oatpm"]
 [ext_resource type="PackedScene" uid="uid://dkvbnwkxtb3d3" path="res://nodes/player.tscn" id="2_xcenc"]
 [ext_resource type="PackedScene" uid="uid://dk3gm68lae3v3" path="res://nodes/UI/gameplay_clock_UI.tscn" id="3_7nswy"]
 [ext_resource type="PackedScene" uid="uid://mkusfgxx17f3" path="res://nodes/UI/game_start_countdown_ui.tscn" id="3_im5tc"]
-[ext_resource type="PackedScene" uid="uid://xlvq32ylesv8" path="res://nodes/Counters/clearCounterUp.tscn" id="3_oyuy4"]
-[ext_resource type="PackedScene" uid="uid://cxa2rrmprvrdv" path="res://nodes/Counters/ContainerCounterDown_Cabbage.tscn" id="4_5m3c4"]
 [ext_resource type="PackedScene" uid="uid://d1v2mrn733e8p" path="res://nodes/UI/game_over_ui.tscn" id="4_rbyle"]
-[ext_resource type="PackedScene" uid="uid://cdbrhaqktqped" path="res://nodes/Counters/ContainerCounterDown_Cheese.tscn" id="5_i5sh2"]
 [ext_resource type="PackedScene" uid="uid://rx5l4qs2y3kv" path="res://nodes/UI/setting_menu.tscn" id="6_73arp"]
 [ext_resource type="PackedScene" uid="uid://bs863i835rryy" path="res://nodes/UI/pause_menu_ui.tscn" id="6_j6h1e"]
-[ext_resource type="PackedScene" uid="uid://bgtbuyvllund0" path="res://nodes/Counters/ContainerCounterTown_Tomato.tscn" id="6_lb6hv"]
-[ext_resource type="PackedScene" uid="uid://dwcmh7fdqy4n1" path="res://nodes/Counters/ContainerCounterUp_RawMeat.tscn" id="7_ernq7"]
-[ext_resource type="PackedScene" uid="uid://bbpaifyk66rdy" path="res://nodes/Counters/delivery_counter.tscn" id="7_s474c"]
-[ext_resource type="PackedScene" uid="uid://gutp4i82t86q" path="res://nodes/Counters/ContainerCounterUp_BurgerBun.tscn" id="8_2gcql"]
-[ext_resource type="PackedScene" uid="uid://db7ga4i7s18vt" path="res://nodes/Counters/cuttingCounterDown.tscn" id="9_56qdx"]
-[ext_resource type="PackedScene" uid="uid://xceu5wqxpnjy" path="res://nodes/Counters/cuttingCounterUp.tscn" id="10_6kw6a"]
-[ext_resource type="PackedScene" uid="uid://dtkphuogtaclf" path="res://nodes/Counters/stoveCounter.tscn" id="11_icagi"]
-[ext_resource type="PackedScene" uid="uid://diqnyotlt8kej" path="res://nodes/Counters/plateCounter.tscn" id="12_1h2rd"]
-[ext_resource type="PackedScene" uid="uid://ds7cyaqwupx22" path="res://nodes/Counters/trashCounter.tscn" id="12_s8jd0"]
-[ext_resource type="PackedScene" uid="uid://cfkw2cspxe5xr" path="res://nodes/Counters/clearCounterRight.tscn" id="13_aw6wd"]
+[ext_resource type="PackedScene" uid="uid://jllfwyicf74n" path="res://nodes/UI/tutorial_ui.tscn" id="7_ip8ai"]
+[ext_resource type="PackedScene" uid="uid://hx4lrmbf6wt5" path="res://nodes/Counters/ClearCounters/clear_counter_left.tscn" id="10_s7okj"]
+[ext_resource type="PackedScene" uid="uid://55w405tyqco8" path="res://nodes/Counters/ClearCounters/clear_counter_left_no_body.tscn" id="11_vgbo8"]
+[ext_resource type="PackedScene" uid="uid://c3m6555dn4jmu" path="res://nodes/Counters/ClearCounters/clear_counter_right.tscn" id="12_kwvdu"]
+[ext_resource type="PackedScene" uid="uid://bd3tvkytyox71" path="res://nodes/Counters/ClearCounters/clear_counter_right_no_body.tscn" id="13_lgjik"]
 [ext_resource type="PackedScene" uid="uid://cxxx11dgwhvo0" path="res://nodes/managers/delivery_manager.tscn" id="14_aceaa"]
-[ext_resource type="PackedScene" uid="uid://d2s4dx6lavk6i" path="res://nodes/Counters/clearCounterLeft.tscn" id="14_grne8"]
+[ext_resource type="PackedScene" uid="uid://db7ga4i7s18vt" path="res://nodes/Counters/CuttingCounters/cutting_counter_down.tscn" id="15_xeokf"]
+[ext_resource type="PackedScene" uid="uid://xceu5wqxpnjy" path="res://nodes/Counters/CuttingCounters/cutting_counter_up.tscn" id="16_aopic"]
+[ext_resource type="PackedScene" uid="uid://8jt0sfl2s75h" path="res://nodes/Counters/CuttingCounters/cutting_counter_up_no_body.tscn" id="17_pmugw"]
 [ext_resource type="PackedScene" uid="uid://b0k8sgxbka2b7" path="res://nodes/UI/delivery_manger_ui.tscn" id="18_8qoms"]
+[ext_resource type="PackedScene" uid="uid://dx47cihbtkcjn" path="res://nodes/Counters/FoodContainerCounter/container_counter_down_bread.tscn" id="18_txbry"]
 [ext_resource type="PackedScene" uid="uid://bu5kx7ihbgobp" path="res://nodes/managers/music_manager.tscn" id="19_6ah70"]
+[ext_resource type="PackedScene" uid="uid://ceea6bmo7yv2k" path="res://nodes/Counters/FoodContainerCounter/container_counter_up_tomato.tscn" id="19_38r2p"]
 [ext_resource type="PackedScene" uid="uid://16yhofw8o5j7" path="res://nodes/managers/sound_manager.tscn" id="20_0831m"]
+[ext_resource type="PackedScene" uid="uid://57il735x3lly" path="res://nodes/Counters/FoodContainerCounter/container_counter_down_cabbage.tscn" id="20_jmwin"]
+[ext_resource type="PackedScene" uid="uid://dgxncuk7lio5i" path="res://nodes/Counters/ClearCounters/clear_counter_down.tscn" id="21_8ttyi"]
+[ext_resource type="PackedScene" uid="uid://ce0ngybkqf7fl" path="res://nodes/Counters/FoodContainerCounter/container_counter_down_cheese.tscn" id="21_8y7rg"]
 [ext_resource type="Texture2D" uid="uid://d0xahgh4nt5o" path="res://assets/sprites/floor.aseprite" id="21_c5nh7"]
-[ext_resource type="PackedScene" uid="uid://ccwsc4cd6xcsv" path="res://nodes/Counters/containerCounterUp.tscn" id="22_4tj8j"]
-[ext_resource type="PackedScene" uid="uid://cuuf7i733h2d6" path="res://nodes/Counters/containerCounterDown.tscn" id="23_rnbo2"]
+[ext_resource type="PackedScene" uid="uid://o0mf6mb1vl3g" path="res://nodes/Counters/FoodContainerCounter/container_counter_down_meat.tscn" id="22_b1201"]
+[ext_resource type="PackedScene" uid="uid://korn3bkdwpqb" path="res://nodes/Counters/FoodContainerCounter/container_counter_down_tomato.tscn" id="23_dh5oq"]
 [ext_resource type="PackedScene" uid="uid://begpkbtitiv3a" path="res://nodes/managers/game_manager.tscn" id="24_f0565"]
+[ext_resource type="PackedScene" uid="uid://dmdma0uelrt5k" path="res://nodes/Counters/FoodContainerCounter/container_counter_up_bread.tscn" id="24_s2ngl"]
+[ext_resource type="PackedScene" uid="uid://6onj2tojbxuq" path="res://nodes/Counters/FoodContainerCounter/container_counter_up_cabbage.tscn" id="25_iuaxd"]
+[ext_resource type="PackedScene" uid="uid://dur4mi2sddei6" path="res://nodes/Counters/FoodContainerCounter/container_counter_up_cheese.tscn" id="26_n7oqu"]
+[ext_resource type="PackedScene" uid="uid://xlvq32ylesv8" path="res://nodes/Counters/ClearCounters/clear_counter_up.tscn" id="26_uveyt"]
+[ext_resource type="PackedScene" uid="uid://dpfqmaddw6fkb" path="res://nodes/Counters/FoodContainerCounter/container_counter_up_meat.tscn" id="27_7kx6d"]
+[ext_resource type="PackedScene" uid="uid://bbpaifyk66rdy" path="res://nodes/Counters/delivery_counter.tscn" id="28_6f5jp"]
+[ext_resource type="PackedScene" uid="uid://diqnyotlt8kej" path="res://nodes/Counters/plate_counter.tscn" id="29_dpmj3"]
+[ext_resource type="PackedScene" uid="uid://dtkphuogtaclf" path="res://nodes/Counters/stove_counter.tscn" id="30_3bg7t"]
 [ext_resource type="PackedScene" uid="uid://dwphx3nfngod2" path="res://nodes/managers/input_manager.tscn" id="30_66d87"]
+[ext_resource type="PackedScene" uid="uid://ds7cyaqwupx22" path="res://nodes/Counters/trash_counter.tscn" id="31_xmom2"]
+[ext_resource type="Texture2D" uid="uid://bojf0osbqbcq8" path="res://assets/sprites/wall_tiles.aseprite" id="32_oqh50"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o4abs"]
 texture = ExtResource("21_c5nh7")
 0:0/0 = 0
+1:0/0 = 0
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_bmmnj"]
-resource_name = "Counters"
-scenes/2/scene = ExtResource("2_oatpm")
-scenes/3/scene = ExtResource("14_grne8")
-scenes/4/scene = ExtResource("13_aw6wd")
-scenes/5/scene = ExtResource("3_oyuy4")
-scenes/6/scene = ExtResource("23_rnbo2")
-scenes/7/scene = ExtResource("4_5m3c4")
-scenes/8/scene = ExtResource("5_i5sh2")
-scenes/9/scene = ExtResource("6_lb6hv")
-scenes/10/scene = ExtResource("22_4tj8j")
-scenes/11/scene = ExtResource("8_2gcql")
-scenes/12/scene = ExtResource("7_ernq7")
-scenes/13/scene = ExtResource("9_56qdx")
-scenes/14/scene = ExtResource("10_6kw6a")
-scenes/15/scene = ExtResource("7_s474c")
-scenes/16/scene = ExtResource("12_1h2rd")
-scenes/17/scene = ExtResource("11_icagi")
-scenes/18/scene = ExtResource("12_s8jd0")
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_xwxin"]
+resource_name = "ClearCounters"
+scenes/1/scene = ExtResource("21_8ttyi")
+scenes/2/scene = ExtResource("10_s7okj")
+scenes/3/scene = ExtResource("11_vgbo8")
+scenes/4/scene = ExtResource("12_kwvdu")
+scenes/5/scene = ExtResource("13_lgjik")
+scenes/6/scene = ExtResource("26_uveyt")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_hotxl"]
+resource_name = "CuttingCounters"
+scenes/1/scene = ExtResource("15_xeokf")
+scenes/2/scene = ExtResource("16_aopic")
+scenes/3/scene = ExtResource("17_pmugw")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_7olbl"]
+resource_name = "FoodContainer"
+scenes/1/scene = ExtResource("18_txbry")
+scenes/2/scene = ExtResource("20_jmwin")
+scenes/3/scene = ExtResource("21_8y7rg")
+scenes/4/scene = ExtResource("22_b1201")
+scenes/5/scene = ExtResource("23_dh5oq")
+scenes/6/scene = ExtResource("24_s2ngl")
+scenes/7/scene = ExtResource("25_iuaxd")
+scenes/8/scene = ExtResource("26_n7oqu")
+scenes/9/scene = ExtResource("27_7kx6d")
+scenes/10/scene = ExtResource("19_38r2p")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_k23ts"]
+resource_name = "Others"
+scenes/1/scene = ExtResource("28_6f5jp")
+scenes/2/scene = ExtResource("29_dpmj3")
+scenes/3/scene = ExtResource("30_3bg7t")
+scenes/4/scene = ExtResource("31_xmom2")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3j524"]
+resource_name = "walls"
+texture = ExtResource("32_oqh50")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:0/0 = 0
+3:1/0 = 0
+3:2/0 = 0
+3:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_b2sxr"]
 sources/0 = SubResource("TileSetAtlasSource_o4abs")
-sources/1 = SubResource("TileSetScenesCollectionSource_bmmnj")
+sources/1 = SubResource("TileSetScenesCollectionSource_xwxin")
+sources/2 = SubResource("TileSetScenesCollectionSource_hotxl")
+sources/3 = SubResource("TileSetScenesCollectionSource_7olbl")
+sources/4 = SubResource("TileSetScenesCollectionSource_k23ts")
+sources/6 = SubResource("TileSetAtlasSource_3j524")
 
 [node name="main" type="Node2D"]
 y_sort_enabled = true
 metadata/_edit_vertical_guides_ = [144.0]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(11, 11)
+offset = Vector2(0, -3)
+zoom = Vector2(10, 10)
 
 [node name="UICanvas" type="CanvasLayer" parent="."]
 
@@ -94,28 +142,39 @@ visible = false
 
 [node name="SettingMenu" parent="UICanvas" instance=ExtResource("6_73arp")]
 
+[node name="TutorialUI" parent="UICanvas" instance=ExtResource("7_ip8ai")]
+
 [node name="MusicManager" parent="." instance=ExtResource("19_6ah70")]
 autoplay = true
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -1
 y_sort_enabled = true
+position = Vector2(-16, -16)
+rotation = 0.00161847
 tile_set = SubResource("TileSet_b2sxr")
 format = 2
 layer_0/name = "Floor"
 layer_0/modulate = Color(1, 1, 1, 0.901961)
-layer_0/z_index = -1
-layer_0/tile_data = PackedInt32Array(-65537, 0, 0, -65538, 0, 0, -2, 0, 0, 65534, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, -65533, 0, 0, -65534, 0, 0, -65535, 0, 0, -65536, 0, 0, -1, 0, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -196604, 0, 0, -196605, 0, 0, -196606, 0, 0, -196607, 0, 0, -196608, 0, 0, -131073, 0, 0, -131074, 0, 0, -131075, 0, 0, -131076, 0, 0, -131077, 0, 0, -65541, 0, 0, -5, 0, 0, 65531, 0, 0, 131067, 0, 0, 196603, 0, 0, 196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 131068, 0, 0, 131069, 0, 0, 65532, 0, 0, 65533, 0, 0, -3, 0, 0, -4, 0, 0, -65540, 0, 0, -65539, 0, 0, -65532, 0, 0, 4, 0, 0, 65540, 0, 0, 131076, 0, 0, 131075, 0, 0, 131074, 0, 0, 131073, 0, 0, 131072, 0, 0, 196607, 0, 0, 65538, 0, 0, 65539, 0, 0, 196612, 0, 0, 196611, 0, 0, 196610, 0, 0, 196609, 0, 0, 196608, 0, 0, 262143, 0, 0, 262142, 0, 0, 262141, 0, 0, 262140, 0, 0, 262139, 0, 0, -196613, 0, 0, -196612, 0, 0, -196611, 0, 0, -196610, 0, 0, -196609, 0, 0, -262144, 0, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -262140, 0, 0)
+layer_0/z_index = -2
+layer_0/tile_data = PackedInt32Array(-65537, 0, 0, -65538, 0, 0, -2, 0, 0, 65534, 0, 0, 131070, 0, 0, 131071, 0, 0, 65537, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, -65533, 0, 0, -65534, 0, 0, -65535, 0, 0, -65536, 0, 0, -1, 0, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, 196605, 0, 0, 196606, 0, 0, 131069, 0, 0, 65533, 0, 0, -3, 0, 0, -65532, 0, 0, 4, 0, 0, 65540, 0, 0, 131076, 0, 0, 131075, 0, 0, 131074, 0, 0, 131073, 0, 0, 131072, 0, 0, 196607, 0, 0, 65538, 0, 0, 65539, 0, 0, 196611, 0, 0, 196610, 0, 0, 196609, 0, 0, 196608, 0, 0, 262143, 0, 0, 262142, 0, 0, 65536, 0, 0, -4, 65536, 0, 65532, 65536, 0, 131068, 65536, 0, 196604, 65536, 0, 262140, 65536, 0, 262141, 65536, 0, 327676, 65536, 0, 327677, 65536, 0, 327678, 65536, 0, 327679, 65536, 0, 262144, 65536, 0, 262145, 65536, 0, 262146, 65536, 0, 262147, 65536, 0, 262148, 65536, 0, 196612, 65536, 0, 196613, 65536, 0, 131077, 65536, 0, 262149, 65536, 0, 65541, 65536, 0, 5, 65536, 0, -65531, 65536, 0, -131067, 65536, 0, -131068, 65536, 0, -196603, 65536, 0, -196604, 65536, 0, -196605, 65536, 0, -196606, 65536, 0, -196607, 65536, 0, -196608, 65536, 0, -131073, 65536, 0, -131074, 65536, 0, -131075, 65536, 0, -131076, 65536, 0, -131077, 65536, 0, -131078, 65536, 0, -65541, 65536, 0, -5, 65536, 0, -65540, 65536, 0, -65539, 65536, 0, 65531, 65536, 0, 131067, 65536, 0, 196603, 65536, 0, 262139, 65536, 0, 327675, 65536, 0, 262150, 65536, 0, 196614, 65536, 0, 131078, 65536, 0, 65542, 65536, 0, 6, 65536, 0, -65530, 65536, 0, -131066, 65536, 0, -196602, 65536, 0, -196601, 65536, 0, -131065, 65536, 0, -65529, 65536, 0, 7, 65536, 0, 65543, 65536, 0, 131079, 65536, 0, 196615, 65536, 0, 262151, 65536, 0, -65542, 65536, 0, -6, 65536, 0, 65530, 65536, 0, 131066, 65536, 0, 196602, 65536, 0, 262138, 65536, 0, 327674, 65536, 0)
 layer_1/name = "Counter"
 layer_1/enabled = true
 layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = true
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array(-65539, 1, 262144, -3, 1, 262144, 65533, 1, 262144, 131069, 1, 1048576, -131074, 1, 131072, -131073, 1, 458752, -196608, 1, 589824, -196607, 1, 524288, -196606, 1, 1048576, -131069, 1, 983040, -65533, 1, 1048576, 3, 1, 196608, 65539, 1, 196608, 196606, 1, 1179648, 196607, 1, 786432, 131072, 1, 720896, 131073, 1, 327680, 131074, 1, 1048576, 65535, 1, 1114112, 0, 1, 1114112, 1, 1, 131072, -1, 1, 917504, -65536, 1, 917504, -65535, 1, 327680)
+layer_1/tile_data = PackedInt32Array(-65538, 3, 131072, -65537, 3, 196608, -131072, 3, 327680, -131071, 2, 65536, -131070, 4, 131072, -131069, 1, 65536, 196611, 1, 393216, 196610, 3, 589824, 196609, 3, 393216, 262142, 1, 393216, 65536, 4, 196608, 0, 2, 196608, -65532, 4, 65536, 4, 1, 196608, 65540, 1, 196608, 131076, 4, 131072, -3, 1, 327680, 65533, 1, 327680, 131069, 1, 327680, 196605, 4, 131072, 196608, 4, 131072, 262143, 4, 262144, 65537, 4, 196608, 1, 2, 196608)
+layer_2/name = "Wall"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = -1
+layer_2/tile_data = PackedInt32Array(131068, 6, 2, 196604, 6, 2, 262140, 6, 3, 65532, 6, 2, -4, 6, 2, -65540, 6, 1, -65531, 131078, 2, 5, 131078, 2, 65541, 131078, 2, 131077, 131078, 2, -131075, 6, 1, -131074, 65542, 1, -131073, 65542, 1, -196608, 65542, 1, -196607, 65542, 1, -196606, 65542, 1, -196605, 65542, 1, -196604, 131078, 1, -65539, 196614, 1, -131068, 196614, 3, 196612, 196614, 2, 196613, 131078, 3, 262141, 196614, 0, -131067, 131078, 1, 327678, 65542, 3, 327679, 65542, 3, 262144, 65542, 3, 262145, 65542, 3, 262146, 65542, 3, 262147, 65542, 3, 327677, 6, 3, 262148, 131078, 3)
 
 [node name="Player" parent="TileMap" instance=ExtResource("2_xcenc")]
-position = Vector2(25, 21)
+position = Vector2(47, 21)
 scale = Vector2(0.75, 0.75)
 
 [node name="DeliveryManager" parent="." instance=ExtResource("14_aceaa")]
@@ -126,3 +185,9 @@ scale = Vector2(0.75, 0.75)
 process_mode = 3
 
 [node name="InputManager" parent="." instance=ExtResource("30_66d87")]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+process_mode = 4
+visible = false
+color = Color(0.305882, 0.333333, 0.411765, 1)
+blend_mode = 2

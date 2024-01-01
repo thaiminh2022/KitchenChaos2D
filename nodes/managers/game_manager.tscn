@@ -2,20 +2,15 @@
 
 [ext_resource type="Script" path="res://scripts/GameManager.cs" id="1_8o0r2"]
 
-[node name="GameManager" type="Node" node_paths=PackedStringArray("waitingToStartTimer", "countdownToStart", "gamePlayingTimer")]
+[node name="GameManager" type="Node" node_paths=PackedStringArray("countdownToStart", "gamePlayingTimer")]
 script = ExtResource("1_8o0r2")
-waitingToStartTimer = NodePath("WaitingToStartTimer")
 countdownToStart = NodePath("CountDownToStartTimer")
 gamePlayingTimer = NodePath("GameplayTimer")
-
-[node name="WaitingToStartTimer" type="Timer" parent="."]
-one_shot = true
-autostart = true
 
 [node name="CountDownToStartTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
 
 [node name="GameplayTimer" type="Timer" parent="."]
-wait_time = 60.0
+wait_time = 180.0
 one_shot = true

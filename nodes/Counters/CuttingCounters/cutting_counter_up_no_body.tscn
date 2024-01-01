@@ -1,0 +1,44 @@
+[gd_scene load_steps=11 format=3 uid="uid://8jt0sfl2s75h"]
+
+[ext_resource type="PackedScene" uid="uid://o42dk2t8dngk" path="res://nodes/Counters/_baseCounter.tscn" id="1_fqrwd"]
+[ext_resource type="Script" path="res://scripts/Counters/CuttingCounter.cs" id="2_ar7ht"]
+[ext_resource type="Resource" uid="uid://chah8m45gesr8" path="res://ScriptableObjects/CuttingRecipeRes/Cabbage-CabbageSlices.tres" id="3_0se2o"]
+[ext_resource type="Resource" uid="uid://44up3pm8nxhs" path="res://ScriptableObjects/CuttingRecipeRes/Cheese-ChesseSlices.tres" id="4_iprv1"]
+[ext_resource type="Resource" uid="uid://bnojfq8u1shye" path="res://ScriptableObjects/CuttingRecipeRes/Tomato-TomatoSlices.tres" id="5_kukie"]
+[ext_resource type="PackedScene" uid="uid://cekh08eiiw143" path="res://nodes/UI/progress_bar.tscn" id="6_qf472"]
+[ext_resource type="PackedScene" uid="uid://be8cjbgxxlvi" path="res://assets/sprites/cutting_counter_up_no_body.aseprite" id="7_ab28b"]
+[ext_resource type="Script" path="res://scripts/Counters/CuttingCounterVisual.cs" id="8_7reqe"]
+[ext_resource type="Script" path="res://scripts/Counters/SelectedCounterVisual.cs" id="9_7aor3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5bg2v"]
+size = Vector2(16, 9)
+
+[node name="CuttingCounterUpNoBody" node_paths=PackedStringArray("counterTopPoint") instance=ExtResource("1_fqrwd")]
+script = ExtResource("2_ar7ht")
+cuttingRecipes = Array[Object]([ExtResource("3_0se2o"), ExtResource("4_iprv1"), ExtResource("5_kukie")])
+counterTopPoint = NodePath("toppoint")
+
+[node name="ProgressBar" parent="." index="0" node_paths=PackedStringArray("hasProgressObject") instance=ExtResource("6_qf472")]
+offset_top = -5.0
+offset_bottom = -3.0
+hasProgressObject = NodePath("..")
+
+[node name="cutting_counter_up_no_body" parent="." index="1" node_paths=PackedStringArray("cuttingCounter") instance=ExtResource("7_ab28b")]
+speed_scale = 2.0
+script = ExtResource("8_7reqe")
+cuttingCounter = NodePath("..")
+
+[node name="selected" parent="." index="2" node_paths=PackedStringArray("clearCounter") instance=ExtResource("7_ab28b")]
+visible = false
+modulate = Color(0.0705882, 0.164706, 1, 0.309804)
+script = ExtResource("9_7aor3")
+clearCounter = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_5bg2v")
+
+[node name="toppoint" type="Marker2D" parent="." index="4"]
+z_index = 1
+position = Vector2(0, 3)
+scale = Vector2(0.5, 0.5)

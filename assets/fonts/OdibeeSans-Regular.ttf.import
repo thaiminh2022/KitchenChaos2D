@@ -13,8 +13,8 @@ dest_files=["res://.godot/imported/OdibeeSans-Regular.ttf-8bafb0386a5fc18f2b9fc9
 [params]
 
 Rendering=null
-antialiasing=1
-generate_mipmaps=false
+antialiasing=2
+generate_mipmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
@@ -22,7 +22,7 @@ allow_system_fallback=true
 force_autohinter=false
 hinting=1
 subpixel_positioning=1
-oversampling=0.0
+oversampling=1.0
 Fallbacks=null
 fallbacks=[Object(SystemFont,"resource_local_to_scene":false,"resource_name":"","font_names":PackedStringArray("JetBrainsMono Nerd Font"),"font_italic":false,"font_weight":400,"font_stretch":100,"antialiasing":1,"generate_mipmaps":false,"allow_system_fallback":true,"force_autohinter":false,"hinting":1,"subpixel_positioning":1,"multichannel_signed_distance_field":false,"msdf_pixel_range":16,"msdf_size":48,"oversampling":0.0,"fallbacks":Array[Font]([]),"script":null)
 ]
@@ -32,7 +32,8 @@ preload=[{
 "chars": [],
 "glyphs": [],
 "name": "New Configuration",
-"size": Vector2i(16, 0)
+"size": Vector2i(16, 0),
+"variation_embolden": 0.0
 }]
 language_support={}
 script_support={}

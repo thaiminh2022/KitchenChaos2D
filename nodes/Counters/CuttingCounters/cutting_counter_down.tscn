@@ -1,0 +1,45 @@
+[gd_scene load_steps=11 format=3 uid="uid://db7ga4i7s18vt"]
+
+[ext_resource type="PackedScene" uid="uid://o42dk2t8dngk" path="res://nodes/Counters/_baseCounter.tscn" id="1_7tjub"]
+[ext_resource type="Script" path="res://scripts/Counters/CuttingCounter.cs" id="2_r5wub"]
+[ext_resource type="Resource" uid="uid://chah8m45gesr8" path="res://ScriptableObjects/CuttingRecipeRes/Cabbage-CabbageSlices.tres" id="3_5l776"]
+[ext_resource type="Resource" uid="uid://44up3pm8nxhs" path="res://ScriptableObjects/CuttingRecipeRes/Cheese-ChesseSlices.tres" id="4_vg3mq"]
+[ext_resource type="Resource" uid="uid://bnojfq8u1shye" path="res://ScriptableObjects/CuttingRecipeRes/Tomato-TomatoSlices.tres" id="5_votpj"]
+[ext_resource type="PackedScene" uid="uid://bu3tfea3k1ivb" path="res://assets/sprites/cutting_counter_down.aseprite" id="6_yhd2a"]
+[ext_resource type="Script" path="res://scripts/Counters/CuttingCounterVisual.cs" id="7_7iitk"]
+[ext_resource type="Script" path="res://scripts/Counters/SelectedCounterVisual.cs" id="8_itmh6"]
+[ext_resource type="PackedScene" uid="uid://cekh08eiiw143" path="res://nodes/UI/progress_bar.tscn" id="9_7sjch"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bwfjp"]
+size = Vector2(16, 16)
+
+[node name="CuttingCounterDown" node_paths=PackedStringArray("counterTopPoint") instance=ExtResource("1_7tjub")]
+script = ExtResource("2_r5wub")
+cuttingRecipes = Array[Object]([ExtResource("3_5l776"), ExtResource("4_vg3mq"), ExtResource("5_votpj")])
+counterTopPoint = NodePath("toppoint")
+
+[node name="visual" parent="." index="0" node_paths=PackedStringArray("cuttingCounter") instance=ExtResource("6_yhd2a")]
+y_sort_enabled = true
+speed_scale = 2.0
+script = ExtResource("7_7iitk")
+cuttingCounter = NodePath("..")
+
+[node name="selected" parent="." index="1" node_paths=PackedStringArray("clearCounter") instance=ExtResource("6_yhd2a")]
+visible = false
+modulate = Color(0.0705882, 0.164706, 1, 0.309804)
+y_sort_enabled = true
+script = ExtResource("8_itmh6")
+clearCounter = NodePath("..")
+
+[node name="ProgressBar" parent="." index="2" node_paths=PackedStringArray("hasProgressObject") instance=ExtResource("9_7sjch")]
+offset_top = -12.0
+offset_bottom = -10.0
+hasProgressObject = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+shape = SubResource("RectangleShape2D_bwfjp")
+
+[node name="toppoint" type="Marker2D" parent="." index="4"]
+z_index = 1
+position = Vector2(0, -3)
+scale = Vector2(0.5, 0.5)

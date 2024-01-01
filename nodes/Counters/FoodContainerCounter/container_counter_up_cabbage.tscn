@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://6onj2tojbxuq"]
+
+[ext_resource type="PackedScene" uid="uid://ccwsc4cd6xcsv" path="res://nodes/Counters/_container_counter_up_base.tscn" id="1_0xtct"]
+[ext_resource type="Resource" uid="uid://cqf2w5bavoexc" path="res://ScriptableObjects/KitchenObjectRes/cabbage.tres" id="2_f7kmv"]
+[ext_resource type="Texture2D" uid="uid://cn5re28yoskp1" path="res://assets/sprites/cabbage.aseprite" id="3_but6f"]
+
+[node name="ContainerCounterUp_Cabbage" instance=ExtResource("1_0xtct")]
+kitchenObjectRes = ExtResource("2_f7kmv")
+
+[node name="CounterTopPoint" type="Marker2D" parent="." index="0"]
+z_index = 1
+position = Vector2(0, -4)
+scale = Vector2(0.5, 0.5)
+
+[node name="food" type="Sprite2D" parent="visual" index="0"]
+position = Vector2(0, 5)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_but6f")
