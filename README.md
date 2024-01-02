@@ -242,8 +242,6 @@ This should be the better way. However it's only recommended to use Timer node i
 
 ## ⚠️ License
 
-If you are resuing the arts in the project, please note that there is a seperate license.
-
 MIT License
 
 Copyright (c) 2023 Thaiminh2022
