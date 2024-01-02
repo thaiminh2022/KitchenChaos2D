@@ -22,6 +22,9 @@ A port of the famous [**CodeMonkey**][CodeMonkey] 10 hours Unity tutorial: Kitch
   - [📰 About](#-about)
   - [🔰 Get Started](#-get-started)
   - [💻 Code Changes](#-code-changes)
+    - [Singleton vs Autoload](#singleton-vs-autoload)
+      - [C# Singleton](#c-singleton)
+      - [Autoload](#autoload)
     - [GetComponent() vs GetNode()](#getcomponent-vs-getnode)
       - [GetComponent](#getcomponent)
       - [GetNode](#getnode)
@@ -68,6 +71,50 @@ gh repo clone thaiminh2022/KitchenChaos2D
 ## 💻 Code Changes
 
 ***If you think you have better ideas for these listed problem, see contributing.***
+
+### Singleton vs Autoload
+
+In short, if you want to use singleton for only a scene, use normal C# singleton. If you want your singleton to persist after scene change, use autoload.
+
+#### C# Singleton
+
+```cs
+public class ClassName {
+  public static ClassName Instance {get; private set;} 
+
+  // Enter tree get calls when this node enter scene tree, or change it's parents.
+  public override void _EnterTree() {
+    Instance = this;
+  }
+}
+```
+
+If you are using this method, you **HAVE TO** reset the singleton everytime you re-enter your scene, since godot does not do that automatically for you.
+One method is to have a reseter that automatically reset everytime before you enter the scene that contains the singleton.
+
+```cs
+public class ClassName {
+  public static ClassName Instance {get; private set;} 
+  
+  public static void ResetStatic() {
+    Instance = null
+  }
+  // Enter tree get calls when this node enter scene tree, or change it's parents.
+  public override void _EnterTree() {
+    Instance = this;
+  }
+}
+
+public class AnotherClassInAnotherScene {
+  public override void _Ready() {
+    ClassName.Instance.ResetStatic();
+  }
+}
+```
+
+#### Autoload
+
+Autoload in godot is better explained using the [docs][autoload_docs]
 
 ### GetComponent() vs GetNode()
 
@@ -137,7 +184,8 @@ private event EventHandler<EventArgs> OnEventHappend;
 I originally use signal as it was more conventional for Godot, however CodeMonkey later use EventHandler in an interface, which sinal can't so I switched back to EventHandler. </br>
 
 >**Warning** </br>
-> If you are planning to use EventHandler, you **HAVE TO** unsubcribe before the object go out of scope. Most common way is in the _ExitTree method.
+> If you are using a static event, you **HAVE TO** unsubcribe before the object goes out of scope. Most common way is do it in the _ExitTree override method. </br>
+> Another good option is to have a ResetScript that does that automaticly everytime before you enter the game scene.
 
 ### In-script counter vs Timer node
 
@@ -153,7 +201,6 @@ using Godot;
 float counter = 0; // The counting time (in seconds)
 float counterMax = 3; // The maxium time (in seconds)
 
-// This will do some actions after 3 seconds. 
 public override void _Process(delta) {
   counter += delta;
 
@@ -195,7 +242,29 @@ This should be the better way. However it's only recommended to use Timer node i
 
 ## ⚠️ License
 
-MIT
+If you are resuing the arts in the project, please note that there is a seperate license.
+
+MIT License
+
+Copyright (c) 2023 Thaiminh2022
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 <!-- Game links -->
 [godot_version_img]: https://img.shields.io/badge/Godot-4.2+-00ADD8?style=for-the-badge&logo=godotengine
@@ -215,3 +284,4 @@ MIT
 
 <!-- Godot links -->
 [timer_docs]: https://docs.godotengine.org/en/stable/classes/class_timer.html
+[autoload_docs]: https://docs.godotengine.org/en/stable/tutorials/scripting/singletons_autoload.html
