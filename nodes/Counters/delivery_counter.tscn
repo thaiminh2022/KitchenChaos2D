@@ -54,7 +54,7 @@ animations = [{
 size = Vector2(13, 16)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqh8m"]
-bg_color = Color(0.0980392, 0.580392, 0, 1)
+bg_color = Color(0, 0.470588, 0.6, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -181,7 +181,6 @@ position = Vector2(1.5, 0)
 shape = SubResource("RectangleShape2D_hwx24")
 
 [node name="DeliveryResultUI" type="Control" parent="." index="4" node_paths=PackedStringArray("deliveryTexure", "icon", "panel", "anim")]
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -202,10 +201,10 @@ panel = NodePath("Panel")
 anim = NodePath("AnimationPlayer")
 deliverySuccessTexture = ExtResource("7_gxofm")
 successIcon = ExtResource("10_2qdcw")
-sucessColor = Color(0.0966667, 0.58, 0, 1)
+sucessColor = Color(0, 0.470588, 0.6, 1)
 deliveryFailedTextture = ExtResource("9_ecen6")
 failedIcon = ExtResource("10_s1r6d")
-failedColor = Color(0.745098, 0, 0, 1)
+failedColor = Color(0.552941, 0.176471, 0.305882, 1)
 
 [node name="Panel" type="Panel" parent="DeliveryResultUI" index="0"]
 layout_mode = 1
@@ -239,6 +238,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("7_gxofm")
 expand_mode = 1
+stretch_mode = 5
 
 [node name="CheckIcon" type="TextureRect" parent="DeliveryResultUI/Panel/MarginContainer/HBoxContainer" index="1"]
 custom_minimum_size = Vector2(8, 0)

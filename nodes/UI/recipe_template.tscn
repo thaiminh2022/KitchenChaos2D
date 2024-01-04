@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://clblm6sev4h0h"]
 
 [ext_resource type="Script" path="res://scripts/UI/DeliveryManagerSingleUI.cs" id="1_u7k1e"]
-[ext_resource type="FontFile" uid="uid://g88p5r2uu7xg" path="res://assets/fonts/OdibeeSans-Regular.ttf" id="2_kecqh"]
+[ext_resource type="FontFile" uid="uid://i8ux4upssvu0" path="res://assets/fonts/monogram.ttf" id="2_rnkut"]
 [ext_resource type="Texture2D" uid="uid://dmoa8vlgqjaph" path="res://assets/sprites/sliced_tomato.aseprite" id="2_sq1am"]
 
 [node name="RecipeTemplate" type="Control" node_paths=PackedStringArray("recipeNameText", "iconContainer", "iconTemplate")]
@@ -28,8 +28,8 @@ offset_left = 5.0
 offset_top = 5.0
 offset_right = 69.0
 offset_bottom = 36.0
-theme_override_fonts/font = ExtResource("2_kecqh")
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("2_rnkut")
+theme_override_font_sizes/font_size = 40
 text = "Recipe"
 vertical_alignment = 1
 

@@ -9,3 +9,4 @@ script = ExtResource("3_8i2is")
 node = ExtResource("2_apqjq")
 icon = ExtResource("1_2f610")
 objectName = "Cabbage"
+itemCost = 1

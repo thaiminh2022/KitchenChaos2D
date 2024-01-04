@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccwsc4cd6xcsv"]
+[gd_scene load_steps=10 format=3 uid="uid://ccwsc4cd6xcsv"]
 
 [ext_resource type="PackedScene" uid="uid://o42dk2t8dngk" path="res://nodes/Counters/_baseCounter.tscn" id="1_cg3fd"]
 [ext_resource type="Script" path="res://scripts/Counters/ContainerCounter.cs" id="2_0fgl4"]
 [ext_resource type="PackedScene" uid="uid://bx3j43q5e7fiw" path="res://assets/sprites/container.aseprite" id="3_vfdcn"]
 [ext_resource type="Script" path="res://scripts/Counters/ContainerCounterVisual.cs" id="4_tqlgy"]
 [ext_resource type="Script" path="res://scripts/Counters/SelectedCounterVisual.cs" id="5_04le1"]
+[ext_resource type="Script" path="res://scripts/Counters/ContainerMoneyVisual.cs" id="6_movcr"]
+[ext_resource type="Texture2D" uid="uid://d3kjvg6l5umr5" path="res://assets/sprites/coin.aseprite" id="7_qrp2o"]
+[ext_resource type="FontFile" uid="uid://i8ux4upssvu0" path="res://assets/fonts/monogram.ttf" id="8_hf2fp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ffftr"]
 size = Vector2(16, 16)
@@ -32,3 +35,54 @@ shape = SubResource("RectangleShape2D_ffftr")
 [node name="Toppoint" type="Marker2D" parent="." index="3"]
 position = Vector2(0, -5)
 scale = Vector2(0.4, 0.4)
+
+[node name="ContainerMoneyVisual" type="Control" parent="." index="4" node_paths=PackedStringArray("clearCounter", "moneyText")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = -6.0
+offset_right = 21.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+script = ExtResource("6_movcr")
+clearCounter = NodePath("..")
+moneyText = NodePath("HBoxContainer/MoneyText")
+
+[node name="ColorRect" type="ColorRect" parent="ContainerMoneyVisual" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.533333)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ContainerMoneyVisual" index="1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CoinRect" type="TextureRect" parent="ContainerMoneyVisual/HBoxContainer" index="0"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("7_qrp2o")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MoneyText" type="Label" parent="ContainerMoneyVisual/HBoxContainer" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("8_hf2fp")
+theme_override_font_sizes/font_size = 16
+text = "01"
+horizontal_alignment = 2

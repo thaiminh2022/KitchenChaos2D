@@ -11,3 +11,4 @@
 script = ExtResource("3_fjy4k")
 kitchenObjectResList = Array[Object]([ExtResource("1_46r3b"), ExtResource("2_y6c5g"), ExtResource("3_lcmjw"), ExtResource("4_qsy54"), ExtResource("5_ore5r")])
 recipeName = "Mega Burger"
+recipeWorth = 18

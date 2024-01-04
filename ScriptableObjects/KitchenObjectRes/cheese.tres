@@ -9,3 +9,4 @@ script = ExtResource("3_3gd3q")
 node = ExtResource("2_8irfr")
 icon = ExtResource("1_mdjwb")
 objectName = "Cheese"
+itemCost = 3

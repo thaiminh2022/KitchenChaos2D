@@ -17,5 +17,6 @@ public partial class ResetStaticManager : Node {
         GameManager.ResetStatic();
         SoundManager.ResetStatic();
         InputManager.ResetStatic();
+        MoneyManager.ResetStatic();
     }
 }

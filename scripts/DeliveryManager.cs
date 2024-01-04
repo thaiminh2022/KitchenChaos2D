@@ -16,18 +16,24 @@ public partial class DeliveryManager : Node {
 		Instance = null;
 	}
 
-	[Export] private int waitingRecipeMax = 4;
+	[Export] private int waitingRecipeMax = 6;
+	[Export] private int uniqueRecipeInTurnMax = 3;
 
 	[Export] private RecipeListRes recipeListRes;
 	[Export] private Timer spawnRecipeTimer;
 
 	private List<RecipeRes> waitingRecipeList;
+    private List<RecipeRes> lastRecipeList;
+
+
 	private int successfulRecipeDeliveredAmount = 0;
 
 	public override void _EnterTree() {
 		Instance = this;
 		waitingRecipeList = new();
-	}
+        lastRecipeList = new();
+
+    }
 
 	public override void _Ready() {
 		spawnRecipeTimer.Timeout += SpawnRecipe;
@@ -45,14 +51,32 @@ public partial class DeliveryManager : Node {
 
 			int randomIndex = GD.RandRange(0, recipeResList.Length - 1);
 			RecipeRes recipe = recipeResList[randomIndex];
+			
+			// Suffle through recipe to not get too much same recipe
+			while(lastRecipeList.Contains(recipe)) {
+                randomIndex = GD.RandRange(0, recipeResList.Length - 1);
+                recipe = recipeResList[randomIndex];
+            }
+			
+			
+			if(lastRecipeList.Count >= uniqueRecipeInTurnMax) {
+				lastRecipeList.RemoveAt(0);
+				lastRecipeList.Add(recipe);
+			}
+			
 			waitingRecipeList.Add(recipe);
-
+            
 			OnRecipeSpawn?.Invoke(this, EventArgs.Empty);
 
 		}
 
 	}
-	public void DeliverRecipe(PlateKitchenObject plate) {
+	/// <summary>
+	/// Find the correct reipe from the user-wanted's recipe list, check if it's correct.
+	/// </summary>
+	/// <param name="plate">The plate the player holding</param>
+	/// <returns>A boolean to determind if the plate was correct</returns>
+	public bool DeliverRecipe(PlateKitchenObject plate, out RecipeRes inputRecipe) {
 
 		RecipeRes matchedRecipe = null;
 
@@ -85,13 +109,17 @@ public partial class DeliveryManager : Node {
 
 			OnRecipeComplete?.Invoke(this, EventArgs.Empty);
 			OnRecipeSucceeded?.Invoke(this, EventArgs.Empty);
+
+			inputRecipe = matchedRecipe;
+            return true;
 		} else {
 			// Player did not deliver a correct recipe
 			OnRecipeFailed?.Invoke(this, EventArgs.Empty);
+			inputRecipe = null;
+            return false;
+        }
 
-		}
-
-	}
+    }
 
 	public List<RecipeRes> GetWaitingRecipeResList() {
 		return waitingRecipeList;

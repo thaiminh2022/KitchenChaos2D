@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://8b0xsbll3y7k"]
+
+[ext_resource type="Script" path="res://scripts/UI/MoneyCounterUI.cs" id="1_bi3a5"]
+[ext_resource type="Texture2D" uid="uid://d3kjvg6l5umr5" path="res://assets/sprites/coin.aseprite" id="2_nve5c"]
+[ext_resource type="FontFile" uid="uid://i8ux4upssvu0" path="res://assets/fonts/monogram.ttf" id="3_kce5m"]
+
+[node name="MoneyCounterUI" type="Control" node_paths=PackedStringArray("moneyText")]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_bottom = 100.0
+grow_horizontal = 0
+script = ExtResource("1_bi3a5")
+moneyText = NodePath("MarginContainer/HBoxContainer/MoneyLabel")
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.568627)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("2_nve5c")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MoneyLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_kce5m")
+theme_override_font_sizes/font_size = 100
+text = "10"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true

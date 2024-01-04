@@ -8,4 +8,6 @@ public partial class KitchenObjectRes : Resource
 	[Export] public Texture2D icon;
 
 	[Export] public string objectName;
+
+	[Export] public int itemCost;
 }

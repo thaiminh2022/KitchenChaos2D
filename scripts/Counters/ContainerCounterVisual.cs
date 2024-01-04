@@ -13,10 +13,14 @@ public partial class ContainerCounterVisual : AnimatedSprite2D
 
 	public override void _Ready()
 	{
-		containerCounter.PlayerGrabbedObject += OnPlayerGrabbedObject;
+		containerCounter.OnPlayerGrabbedObject += ContainerCounter_OnPlayerGrabbedObject; ;
 		AnimationFinished += OnAnimationFinished;
 
 		PlayAnimation(IDLE);
+	}
+
+	private void ContainerCounter_OnPlayerGrabbedObject(object sender, System.EventArgs e) {
+		PlayAnimation(OPEN);
 	}
 
 	private void OnAnimationFinished()
@@ -29,11 +33,6 @@ public partial class ContainerCounterVisual : AnimatedSprite2D
 		{
 			PlayAnimation(IDLE);
 		}
-	}
-
-	private void OnPlayerGrabbedObject()
-	{
-		PlayAnimation(OPEN);
 	}
 
 	private void PlayAnimation(string name)

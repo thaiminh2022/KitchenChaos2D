@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/Counters/SelectedCounterVisual.cs" id="4_2id6x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7umbo"]
-size = Vector2(16, 16)
+size = Vector2(12, 16)
 
 [node name="ClearCounterRight" node_paths=PackedStringArray("counterTopPoint") instance=ExtResource("1_mx4de")]
 script = ExtResource("2_vdyqx")
@@ -23,6 +23,7 @@ script = ExtResource("4_2id6x")
 clearCounter = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_7umbo")
 
 [node name="Toppoint" type="Marker2D" parent="." index="3"]

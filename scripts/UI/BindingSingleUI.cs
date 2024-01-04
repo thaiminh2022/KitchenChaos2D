@@ -13,7 +13,7 @@ public partial class BindingSingleUI : HBoxContainer {
 		bindingText.Text = action;
 		bindingBtn.Text = inputEvent.GetPrettyText();
 		 
-    }
+	}
 	public override void _Ready() {
 		bindingBtn.Toggled += BindingBtn_Toggled;
 		bindingBtn.GuiInput += BindingBtn_GuiInput;

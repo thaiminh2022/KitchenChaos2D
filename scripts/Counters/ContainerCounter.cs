@@ -1,12 +1,13 @@
 using Godot;
+using System;
 
 
 public sealed partial class ContainerCounter : BaseCounter, IKitchenObjectParent
 {
 	[Export] private KitchenObjectRes kitchenObjectRes;
 
+	public event EventHandler OnPlayerGrabbedObject;
 
-	[Signal] public delegate void PlayerGrabbedObjectEventHandler();
 
 
 	public override void Interact(Player player)
@@ -15,10 +16,14 @@ public sealed partial class ContainerCounter : BaseCounter, IKitchenObjectParent
 		{
 			// Player is carrying nothing
 			KitchenObject.SpawnKitchenObject(kitchenObjectRes, player);
-
-			EmitSignal(SignalName.PlayerGrabbedObject);
+			MoneyManager.Instance.ReduceMoney(kitchenObjectRes.itemCost);
+			
+			OnPlayerGrabbedObject?.Invoke(this, EventArgs.Empty);
 		}
 
 	}
+
+	public KitchenObjectRes GetKitchenObjectRes() => kitchenObjectRes;
+	
 }
 

@@ -8,3 +8,4 @@
 script = ExtResource("3_flxi4")
 kitchenObjectResList = Array[Object]([ExtResource("1_ma20i"), ExtResource("2_em5bv")])
 recipeName = "Salad"
+recipeWorth = 4

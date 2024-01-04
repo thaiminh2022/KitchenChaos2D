@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://4xd8dj2ft1fl"]
+
+[ext_resource type="Script" path="res://scripts/MoneyManager.cs" id="1_1lv5v"]
+
+[node name="MoneyManager" type="Node"]
+script = ExtResource("1_1lv5v")
+moneyAmount = 10
