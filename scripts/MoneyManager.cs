@@ -13,20 +13,27 @@ public partial class MoneyManager : Node
 	[Export]
 	private int moneyAmount;
 
+	private int moneyEarned;
+	private int moneySpent;
+
 	public override void _EnterTree() {
 		Instance = this;
 	}
 
 	public void AddMoney(int amount) {
 		moneyAmount += amount;
+		moneyEarned += amount;
 		OnMoneyChange?.Invoke(this, EventArgs.Empty);
 
 	}
 	public void ReduceMoney(int amount) {
 		moneyAmount -= amount;
+		moneySpent += amount;
 		OnMoneyChange?.Invoke(this, EventArgs.Empty);
 	}
 
 
 	public int GetMoneyAmount() => moneyAmount;
+	public int GetMoneyEarned() => moneyEarned;
+	public int GetMoneySpent() => moneySpent;
 }

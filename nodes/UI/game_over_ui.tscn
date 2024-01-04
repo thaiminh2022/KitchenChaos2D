@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1v2mrn733e8p"]
+[gd_scene load_steps=5 format=3 uid="uid://d1v2mrn733e8p"]
 
 [ext_resource type="Script" path="res://scripts/UI/GameOverUI.cs" id="1_mr03g"]
 [ext_resource type="FontFile" uid="uid://i8ux4upssvu0" path="res://assets/fonts/monogram.ttf" id="2_4nr7y"]
+[ext_resource type="StyleBox" uid="uid://cvoj1osbny5x1" path="res://styles/btn_normal.tres" id="3_korar"]
+[ext_resource type="StyleBox" uid="uid://cbuif6544gah0" path="res://styles/btn_hover.tres" id="4_18ikj"]
 
 [node name="GameOverUI" type="Control" node_paths=PackedStringArray("recipeDeliveredAmountText")]
 layout_mode = 3
@@ -11,7 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mr03g")
-recipeDeliveredAmountText = NodePath("RecipeDeliveredAmountLabel")
+recipeDeliveredAmountText = NodePath("StatHolder/StatContainer/RecipeDeliveredInfo/RecipeDeliveredAmountLabel")
 
 [node name="Bacvkground" type="ColorRect" parent="."]
 layout_mode = 1
@@ -38,31 +40,100 @@ text = "Game Over"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RecipeDeliveredLabel" type="Label" parent="."]
+[node name="StatHolder" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
-offset_top = 361.0
-offset_bottom = 467.0
+anchor_bottom = 1.0
+offset_top = -700.0
+offset_bottom = -2.0
 grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 40
+
+[node name="StatContainer" type="VBoxContainer" parent="StatHolder"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="RecipeDeliveredInfo" type="HBoxContainer" parent="StatHolder/StatContainer"]
+layout_mode = 2
+
+[node name="RecipeDeliveredLabel" type="Label" parent="StatHolder/StatContainer/RecipeDeliveredInfo"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_4nr7y")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 125
 text = "Recipe Delivered:"
-horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="RecipeDeliveredAmountLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 480.0
-offset_bottom = 678.0
-grow_horizontal = 2
+[node name="RecipeDeliveredAmountLabel" type="Label" parent="StatHolder/StatContainer/RecipeDeliveredInfo"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_4nr7y")
-theme_override_font_sizes/font_size = 200
+theme_override_font_sizes/font_size = 125
 text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="MoneyEarnedInfo" type="HBoxContainer" parent="StatHolder/StatContainer"]
+layout_mode = 2
+
+[node name="MoneyEarnedText" type="Label" parent="StatHolder/StatContainer/MoneyEarnedInfo"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_4nr7y")
+theme_override_font_sizes/font_size = 125
+text = "Money earned:"
+vertical_alignment = 1
+uppercase = true
+
+[node name="MoneyEarnedAmountText" type="Label" parent="StatHolder/StatContainer/MoneyEarnedInfo"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_4nr7y")
+theme_override_font_sizes/font_size = 125
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="MoneySpentText" type="HBoxContainer" parent="StatHolder/StatContainer"]
+layout_mode = 2
+
+[node name="MoneySpentText" type="Label" parent="StatHolder/StatContainer/MoneySpentText"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_4nr7y")
+theme_override_font_sizes/font_size = 125
+text = "Money spent:"
+vertical_alignment = 1
+uppercase = true
+
+[node name="MoneySpentAmountText" type="Label" parent="StatHolder/StatContainer/MoneySpentText"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_4nr7y")
+theme_override_font_sizes/font_size = 125
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="RestartBtn" type="Button" parent="StatHolder"]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_4nr7y")
+theme_override_font_sizes/font_size = 150
+theme_override_styles/normal = ExtResource("3_korar")
+theme_override_styles/hover = ExtResource("4_18ikj")
+text = "Restart"

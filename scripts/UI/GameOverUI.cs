@@ -4,12 +4,22 @@ using System;
 public partial class GameOverUI : Control
 {
 	[Export] Label recipeDeliveredAmountText;
+    [Export] Label moneyEarnedAmountText;
+	[Export] Label moneySpendAmountText;
 
-	public override void _Ready() {
+	[Export] Button restartBtn;
+
+    public override void _Ready() {
 		GameManager.Instance.OnStateChanged += GameManager_OnStateChanged;
-	}
 
-	public override void _ExitTree() {
+        restartBtn.Pressed += () => { }
+			
+		;
+
+    }
+
+
+    public override void _ExitTree() {
 		GameManager.Instance.OnStateChanged -= GameManager_OnStateChanged;
 
 	}
@@ -17,13 +27,20 @@ public partial class GameOverUI : Control
 	private void GameManager_OnStateChanged(object sender, EventArgs e) {
 		if (GameManager.Instance.IsGameOver()) {
 			int  successfuldeliveriesAmount = DeliveryManager.Instance.GetSuccessFulRecipeDeliveredAmount();
+			
 			recipeDeliveredAmountText.Text = successfuldeliveriesAmount.ToString();
+            moneyEarnedAmountText.Text = MoneyManager.Instance.GetMoneyEarned().ToString();
+            moneySpendAmountText.Text = MoneyManager.Instance.GetMoneySpent().ToString();
 
-			Show();
-		} else {
+			ShowUI();
+        } else {
 			Hide();
 		}
 	}
 
+	private void ShowUI() {
+		restartBtn.GrabFocus();
+        Show();
+    }
 
 }

@@ -8,8 +8,6 @@ public sealed partial class ContainerCounter : BaseCounter, IKitchenObjectParent
 
 	public event EventHandler OnPlayerGrabbedObject;
 
-
-
 	public override void Interact(Player player)
 	{
 		if (!player.HasKitchenObject())
