@@ -32,4 +32,5 @@ offset_bottom = 336.0
 theme_override_constants/separation = 30
 
 [node name="RecipeTemplate" parent="Container" instance=ExtResource("2_cvcn5")]
+visible = false
 layout_mode = 2

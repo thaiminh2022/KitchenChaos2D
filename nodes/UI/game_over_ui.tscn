@@ -5,7 +5,7 @@
 [ext_resource type="StyleBox" uid="uid://cvoj1osbny5x1" path="res://styles/btn_normal.tres" id="3_korar"]
 [ext_resource type="StyleBox" uid="uid://cbuif6544gah0" path="res://styles/btn_hover.tres" id="4_18ikj"]
 
-[node name="GameOverUI" type="Control" node_paths=PackedStringArray("recipeDeliveredAmountText")]
+[node name="GameOverUI" type="Control" node_paths=PackedStringArray("recipeDeliveredAmountText", "moneyEarnedAmountText", "moneySpendAmountText", "mainMenuBtn")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +14,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mr03g")
 recipeDeliveredAmountText = NodePath("StatHolder/StatContainer/RecipeDeliveredInfo/RecipeDeliveredAmountLabel")
+moneyEarnedAmountText = NodePath("StatHolder/StatContainer/MoneyEarnedInfo/MoneyEarnedAmountText")
+moneySpendAmountText = NodePath("StatHolder/StatContainer/MoneySpentText/MoneySpentAmountText")
+mainMenuBtn = NodePath("StatHolder/MainMenu")
 
 [node name="Bacvkground" type="ColorRect" parent="."]
 layout_mode = 1
@@ -127,8 +130,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="RestartBtn" type="Button" parent="StatHolder"]
-custom_minimum_size = Vector2(500, 200)
+[node name="MainMenu" type="Button" parent="StatHolder"]
+custom_minimum_size = Vector2(600, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -136,4 +139,4 @@ theme_override_fonts/font = ExtResource("2_4nr7y")
 theme_override_font_sizes/font_size = 150
 theme_override_styles/normal = ExtResource("3_korar")
 theme_override_styles/hover = ExtResource("4_18ikj")
-text = "Restart"
+text = "Main Menu"

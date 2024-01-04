@@ -3,6 +3,10 @@
 public partial class ResetStaticManager : Node {
     
     public override void _EnterTree() {
+        ResetAllStatic();
+    }
+
+    public static void ResetAllStatic() {
         DeliveryManager.ResetStatic();
         Player.ResetStatic();
 

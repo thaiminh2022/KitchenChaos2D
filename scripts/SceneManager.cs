@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System.IO;
+using System.Linq;
 
 public partial class SceneManager : Node {
 
@@ -25,6 +26,7 @@ public partial class SceneManager : Node {
 	public delegate void SceneLoadFinishedEventHandler();
 
 	public enum Scene {
+		Unknow = -1,
 		MainMenu, 
 		Game,
 	}
@@ -61,9 +63,12 @@ public partial class SceneManager : Node {
 		
 	}
 
-	#endregion
+    #endregion
 
-	public void SwitchSceneInteractive(Scene scene) {
+    #region Switch Scene Interactive
+
+
+    public void SwitchSceneInteractive(Scene scene) {
 		scenePath = scenes[(int)scene].ResourcePath;
 
 		currentLoadingScene = loadingScene.Instantiate<LoadingScene>();
@@ -108,4 +113,6 @@ public partial class SceneManager : Node {
 		}
 
 	}
+    #endregion
+
 }

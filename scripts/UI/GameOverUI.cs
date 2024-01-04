@@ -4,22 +4,23 @@ using System;
 public partial class GameOverUI : Control
 {
 	[Export] Label recipeDeliveredAmountText;
-    [Export] Label moneyEarnedAmountText;
+	[Export] Label moneyEarnedAmountText;
 	[Export] Label moneySpendAmountText;
 
-	[Export] Button restartBtn;
+	[Export] Button mainMenuBtn;
 
-    public override void _Ready() {
+	public override void _Ready() {
 		GameManager.Instance.OnStateChanged += GameManager_OnStateChanged;
 
-        restartBtn.Pressed += () => { }
+		mainMenuBtn.Pressed += () => {
+			SceneManager.SwitchScene(SceneManager.Scene.MainMenu);
+		};
 			
-		;
 
-    }
+	}
 
 
-    public override void _ExitTree() {
+	public override void _ExitTree() {
 		GameManager.Instance.OnStateChanged -= GameManager_OnStateChanged;
 
 	}
@@ -29,18 +30,18 @@ public partial class GameOverUI : Control
 			int  successfuldeliveriesAmount = DeliveryManager.Instance.GetSuccessFulRecipeDeliveredAmount();
 			
 			recipeDeliveredAmountText.Text = successfuldeliveriesAmount.ToString();
-            moneyEarnedAmountText.Text = MoneyManager.Instance.GetMoneyEarned().ToString();
-            moneySpendAmountText.Text = MoneyManager.Instance.GetMoneySpent().ToString();
+			moneyEarnedAmountText.Text = MoneyManager.Instance.GetMoneyEarned().ToString();
+			moneySpendAmountText.Text = MoneyManager.Instance.GetMoneySpent().ToString();
 
 			ShowUI();
-        } else {
+		} else {
 			Hide();
 		}
 	}
 
 	private void ShowUI() {
-		restartBtn.GrabFocus();
-        Show();
-    }
+		mainMenuBtn.GrabFocus();
+		Show();
+	}
 
 }
