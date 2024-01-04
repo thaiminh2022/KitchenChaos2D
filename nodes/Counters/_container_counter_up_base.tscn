@@ -53,6 +53,9 @@ scale = Vector2(0.5, 0.5)
 script = ExtResource("6_movcr")
 clearCounter = NodePath("..")
 moneyText = NodePath("HBoxContainer/MoneyText")
+warningColor = Color(0.94902, 0.65098, 0.368627, 1)
+errorColor = Color(0.78, 0.2496, 0.25844, 1)
+goodColor = Color(1, 1, 0.960784, 1)
 
 [node name="ColorRect" type="ColorRect" parent="ContainerMoneyVisual" index="0"]
 layout_mode = 1

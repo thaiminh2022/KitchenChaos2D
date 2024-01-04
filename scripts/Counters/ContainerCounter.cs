@@ -14,12 +14,17 @@ public sealed partial class ContainerCounter : BaseCounter, IKitchenObjectParent
 	{
 		if (!player.HasKitchenObject())
 		{
+			MoneyManager.Instance.ReduceMoney(kitchenObjectRes.itemCost);
+			
 			// Player is carrying nothing
 			KitchenObject.SpawnKitchenObject(kitchenObjectRes, player);
-			MoneyManager.Instance.ReduceMoney(kitchenObjectRes.itemCost);
 			
 			OnPlayerGrabbedObject?.Invoke(this, EventArgs.Empty);
 		}
+
+	}
+	public int GetMoneyDifferences() {
+		return MoneyManager.Instance.GetMoneyAmount() - kitchenObjectRes.itemCost;
 
 	}
 
