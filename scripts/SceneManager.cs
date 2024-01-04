@@ -26,7 +26,6 @@ public partial class SceneManager : Node {
 	public delegate void SceneLoadFinishedEventHandler();
 
 	public enum Scene {
-		Unknow = -1,
 		MainMenu, 
 		Game,
 	}
