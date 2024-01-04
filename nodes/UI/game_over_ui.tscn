@@ -5,7 +5,7 @@
 [ext_resource type="StyleBox" uid="uid://cvoj1osbny5x1" path="res://styles/btn_normal.tres" id="3_korar"]
 [ext_resource type="StyleBox" uid="uid://cbuif6544gah0" path="res://styles/btn_hover.tres" id="4_18ikj"]
 
-[node name="GameOverUI" type="Control" node_paths=PackedStringArray("recipeDeliveredAmountText", "moneyEarnedAmountText", "moneySpendAmountText", "mainMenuBtn")]
+[node name="GameOverUI" type="Control" node_paths=PackedStringArray("recipeDeliveredAmountText", "unsucessfulRecipeDeliveredAmountText", "moneyEarnedAmountText", "moneySpendAmountText", "mainMenuBtn")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mr03g")
 recipeDeliveredAmountText = NodePath("StatHolder/StatContainer/RecipeDeliveredInfo/RecipeDeliveredAmountLabel")
+unsucessfulRecipeDeliveredAmountText = NodePath("StatHolder/StatContainer/MoneySpentText2/UnsuccessfulDeliveryAmountText")
 moneyEarnedAmountText = NodePath("StatHolder/StatContainer/MoneyEarnedInfo/MoneyEarnedAmountText")
 moneySpendAmountText = NodePath("StatHolder/StatContainer/MoneySpentText/MoneySpentAmountText")
 mainMenuBtn = NodePath("StatHolder/MainMenu")
@@ -69,7 +70,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_4nr7y")
 theme_override_font_sizes/font_size = 125
-text = "Recipe Delivered:"
+text = "SUCCESSFUL DELIVERIES:"
 vertical_alignment = 1
 uppercase = true
 
@@ -80,7 +81,30 @@ theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_4nr7y")
 theme_override_font_sizes/font_size = 125
 text = "10"
-horizontal_alignment = 1
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+
+[node name="MoneySpentText2" type="HBoxContainer" parent="StatHolder/StatContainer"]
+layout_mode = 2
+
+[node name="UnsuccessfulDeliveryText" type="Label" parent="StatHolder/StatContainer/MoneySpentText2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_4nr7y")
+theme_override_font_sizes/font_size = 125
+text = "UnSuccessful Deliveries:"
+vertical_alignment = 1
+uppercase = true
+
+[node name="UnsuccessfulDeliveryAmountText" type="Label" parent="StatHolder/StatContainer/MoneySpentText2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_4nr7y")
+theme_override_font_sizes/font_size = 125
+text = "10"
+horizontal_alignment = 2
 vertical_alignment = 1
 uppercase = true
 
@@ -99,11 +123,13 @@ uppercase = true
 [node name="MoneyEarnedAmountText" type="Label" parent="StatHolder/StatContainer/MoneyEarnedInfo"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.0627451, 0.823529, 0.458824, 1)
+theme_override_colors/font_outline_color = Color(0.0627451, 0.823529, 0.458824, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_4nr7y")
 theme_override_font_sizes/font_size = 125
 text = "10"
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 uppercase = true
 
@@ -122,21 +148,23 @@ uppercase = true
 [node name="MoneySpentAmountText" type="Label" parent="StatHolder/StatContainer/MoneySpentText"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.78, 0.2496, 0.25844, 1)
+theme_override_colors/font_outline_color = Color(0.78, 0.2496, 0.25844, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_4nr7y")
 theme_override_font_sizes/font_size = 125
 text = "10"
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 uppercase = true
 
 [node name="MainMenu" type="Button" parent="StatHolder"]
-custom_minimum_size = Vector2(600, 200)
+custom_minimum_size = Vector2(500, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("2_4nr7y")
-theme_override_font_sizes/font_size = 150
+theme_override_font_sizes/font_size = 125
 theme_override_styles/normal = ExtResource("3_korar")
 theme_override_styles/hover = ExtResource("4_18ikj")
 text = "Main Menu"

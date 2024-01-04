@@ -151,9 +151,6 @@ visible = false
 [node name="TutorialUI" parent="UICanvas" instance=ExtResource("7_ip8ai")]
 visible = false
 
-[node name="MusicManager" parent="." instance=ExtResource("19_6ah70")]
-autoplay = true
-
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -1
 y_sort_enabled = true
@@ -193,10 +190,13 @@ process_mode = 3
 
 [node name="InputManager" parent="." instance=ExtResource("30_66d87")]
 
+[node name="MoneyManager" parent="." instance=ExtResource("39_cycak")]
+
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 process_mode = 4
 visible = false
 color = Color(0.305882, 0.333333, 0.411765, 1)
 blend_mode = 2
 
-[node name="MoneyManager" parent="." instance=ExtResource("39_cycak")]
+[node name="MusicManager" parent="." instance=ExtResource("19_6ah70")]
+autoplay = true

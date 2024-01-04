@@ -33,7 +33,6 @@ public partial class SceneManager : Node {
 
 	public override void _EnterTree() {
 		Instance = this;
-
 	}
 
 	public override void _Ready() {

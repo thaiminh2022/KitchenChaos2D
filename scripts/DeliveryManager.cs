@@ -26,7 +26,9 @@ public partial class DeliveryManager : Node {
 	private List<RecipeRes> lastRecipeList;
 
 
-	private int successfulRecipeDeliveredAmount = 0;
+	private int successfulDeliveriesAmount = 0;
+	private int unsuccessfulDeliveriresAmount = 0;
+
 
 	public override void _EnterTree() {
 		Instance = this;
@@ -105,7 +107,7 @@ public partial class DeliveryManager : Node {
 		if (matchedRecipe is not null) {
 			// Player delivered a correct recipe
 			waitingRecipeList.Remove(matchedRecipe);
-			successfulRecipeDeliveredAmount++;
+			successfulDeliveriesAmount++;
 
 			OnRecipeComplete?.Invoke(this, EventArgs.Empty);
 			OnRecipeSucceeded?.Invoke(this, EventArgs.Empty);
@@ -115,6 +117,7 @@ public partial class DeliveryManager : Node {
 		} else {
 			// Player did not deliver a correct recipe
 			OnRecipeFailed?.Invoke(this, EventArgs.Empty);
+			unsuccessfulDeliveriresAmount++;
 			inputRecipe = null;
 			return false;
 		}
@@ -124,6 +127,6 @@ public partial class DeliveryManager : Node {
 	public List<RecipeRes> GetWaitingRecipeResList() {
 		return waitingRecipeList;
 	}
-	public int GetSuccessFulRecipeDeliveredAmount() => successfulRecipeDeliveredAmount;
-
+	public int GetSuccessFulDeliveriesAmount() => successfulDeliveriesAmount;
+	public int GetUnsuccessFulDeliveriesAmount() => unsuccessfulDeliveriresAmount;
 }

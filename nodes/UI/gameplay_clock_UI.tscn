@@ -50,5 +50,5 @@ nine_patch_stretch = true
 texture_under = ExtResource("2_ixb7j")
 texture_over = ExtResource("3_jkg3u")
 texture_progress = ExtResource("2_ixb7j")
-tint_under = Color(0.203922, 0.203922, 0.203922, 1)
-tint_progress = Color(0, 0.309804, 0.898039, 1)
+tint_under = Color(0.0705882, 0.054902, 0.137255, 1)
+tint_progress = Color(0, 0.470588, 0.6, 1)
