@@ -4,6 +4,8 @@ using System;
 public partial class DeliveryManagerSingleUI : Control
 {
 	[Export] Label recipeNameText;
+	[Export] Label recipeWorthText;
+
 	[Export] Control iconContainer;
 	[Export] TextureRect iconTemplate;
 
@@ -13,6 +15,8 @@ public partial class DeliveryManagerSingleUI : Control
 
 	public void SetRecipeRes(RecipeRes recipeRes) {
 		recipeNameText.Text = recipeRes.recipeName;
+		recipeWorthText.Text = recipeRes.recipeWorth.ToString();
+
 
 		foreach (var child in iconContainer.GetChildren()) {
 			if(child == iconTemplate) {

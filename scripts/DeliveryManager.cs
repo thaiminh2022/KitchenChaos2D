@@ -23,7 +23,7 @@ public partial class DeliveryManager : Node {
 	[Export] private Timer spawnRecipeTimer;
 
 	private List<RecipeRes> waitingRecipeList;
-    private List<RecipeRes> lastRecipeList;
+	private List<RecipeRes> lastRecipeList;
 
 
 	private int successfulRecipeDeliveredAmount = 0;
@@ -31,9 +31,9 @@ public partial class DeliveryManager : Node {
 	public override void _EnterTree() {
 		Instance = this;
 		waitingRecipeList = new();
-        lastRecipeList = new();
+		lastRecipeList = new();
 
-    }
+	}
 
 	public override void _Ready() {
 		spawnRecipeTimer.Timeout += SpawnRecipe;
@@ -54,9 +54,9 @@ public partial class DeliveryManager : Node {
 			
 			// Suffle through recipe to not get too much same recipe
 			while(lastRecipeList.Contains(recipe)) {
-                randomIndex = GD.RandRange(0, recipeResList.Length - 1);
-                recipe = recipeResList[randomIndex];
-            }
+				randomIndex = GD.RandRange(0, recipeResList.Length - 1);
+				recipe = recipeResList[randomIndex];
+			}
 			
 			
 			if(lastRecipeList.Count >= uniqueRecipeInTurnMax) {
@@ -65,7 +65,7 @@ public partial class DeliveryManager : Node {
 			}
 			
 			waitingRecipeList.Add(recipe);
-            
+			
 			OnRecipeSpawn?.Invoke(this, EventArgs.Empty);
 
 		}
@@ -111,15 +111,15 @@ public partial class DeliveryManager : Node {
 			OnRecipeSucceeded?.Invoke(this, EventArgs.Empty);
 
 			inputRecipe = matchedRecipe;
-            return true;
+			return true;
 		} else {
 			// Player did not deliver a correct recipe
 			OnRecipeFailed?.Invoke(this, EventArgs.Empty);
 			inputRecipe = null;
-            return false;
-        }
+			return false;
+		}
 
-    }
+	}
 
 	public List<RecipeRes> GetWaitingRecipeResList() {
 		return waitingRecipeList;

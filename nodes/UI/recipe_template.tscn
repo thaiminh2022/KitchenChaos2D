@@ -1,15 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://clblm6sev4h0h"]
+[gd_scene load_steps=5 format=3 uid="uid://clblm6sev4h0h"]
 
 [ext_resource type="Script" path="res://scripts/UI/DeliveryManagerSingleUI.cs" id="1_u7k1e"]
 [ext_resource type="FontFile" uid="uid://i8ux4upssvu0" path="res://assets/fonts/monogram.ttf" id="2_rnkut"]
 [ext_resource type="Texture2D" uid="uid://dmoa8vlgqjaph" path="res://assets/sprites/sliced_tomato.aseprite" id="2_sq1am"]
+[ext_resource type="Texture2D" uid="uid://d3kjvg6l5umr5" path="res://assets/sprites/coin.aseprite" id="3_j6iim"]
 
-[node name="RecipeTemplate" type="Control" node_paths=PackedStringArray("recipeNameText", "iconContainer", "iconTemplate")]
+[node name="RecipeTemplate" type="Control" node_paths=PackedStringArray("recipeNameText", "recipeWorthText", "iconContainer", "iconTemplate")]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_u7k1e")
-recipeNameText = NodePath("RecipeNameText")
+recipeNameText = NodePath("HBoxContainer/RecipeText")
+recipeWorthText = NodePath("HBoxContainer/HBoxContainer/RecipeWorth")
 iconContainer = NodePath("IconContainer")
 iconTemplate = NodePath("IconContainer/IngredientImage")
 
@@ -22,26 +24,44 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.317647)
 
-[node name="RecipeNameText" type="Label" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 69.0
-offset_bottom = 36.0
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="RecipeText" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_rnkut")
 theme_override_font_sizes/font_size = 40
 text = "Recipe"
-vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_j6iim")
+stretch_mode = 5
+
+[node name="RecipeWorth" type="Label" parent="HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_rnkut")
+theme_override_font_sizes/font_size = 40
+text = "$100"
 
 [node name="IconContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -11.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
 offset_right = 50.0
-offset_bottom = 39.0
-grow_vertical = 2
+grow_vertical = 0
 
 [node name="IngredientImage" type="TextureRect" parent="IconContainer"]
 custom_minimum_size = Vector2(50, 50)

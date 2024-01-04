@@ -9,5 +9,5 @@ recipeListRes = ExtResource("2_r1m11")
 spawnRecipeTimer = NodePath("SpawnRecipeTImer")
 
 [node name="SpawnRecipeTImer" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 6.0
 autostart = true
