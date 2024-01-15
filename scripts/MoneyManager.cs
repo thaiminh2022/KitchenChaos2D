@@ -9,8 +9,10 @@ public partial class MoneyManager : Node
 	}
 
 	public event EventHandler OnMoneyChange;
+    public event EventHandler<int> OnMoneyGain;
+	public event EventHandler<int> OnMoneyLoss;
 
-	[Export]
+    [Export]
 	private int moneyAmount;
 
 	private int moneyEarned;
@@ -24,12 +26,14 @@ public partial class MoneyManager : Node
 		moneyAmount += amount;
 		moneyEarned += amount;
 		OnMoneyChange?.Invoke(this, EventArgs.Empty);
+		OnMoneyGain?.Invoke(this, amount);
 
 	}
 	public void ReduceMoney(int amount) {
 		moneyAmount -= amount;
 		moneySpent += amount;
 		OnMoneyChange?.Invoke(this, EventArgs.Empty);
+		OnMoneyLoss?.Invoke(this, amount);
 	}
 
 

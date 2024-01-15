@@ -9,4 +9,4 @@
 script = ExtResource("3_ur0a6")
 kitchenObjectResList = Array[Object]([ExtResource("1_aixrg"), ExtResource("2_p3csi"), ExtResource("3_pwug3")])
 recipeName = "Cheese Burger"
-recipeWorth = 7
+recipeWorth = 10

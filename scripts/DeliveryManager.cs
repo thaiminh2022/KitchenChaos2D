@@ -17,13 +17,13 @@ public partial class DeliveryManager : Node {
 	}
 
 	[Export] private int waitingRecipeMax = 6;
-	[Export] private int uniqueRecipeInTurnMax = 3;
+	[Export] private int uniqueRecipeMax = 2;
+
 
 	[Export] private RecipeListRes recipeListRes;
 	[Export] private Timer spawnRecipeTimer;
 
 	private List<RecipeRes> waitingRecipeList;
-	private List<RecipeRes> lastRecipeList;
 
 
 	private int successfulDeliveriesAmount = 0;
@@ -33,7 +33,6 @@ public partial class DeliveryManager : Node {
 	public override void _EnterTree() {
 		Instance = this;
 		waitingRecipeList = new();
-		lastRecipeList = new();
 
 	}
 
@@ -54,22 +53,14 @@ public partial class DeliveryManager : Node {
 			int randomIndex = GD.RandRange(0, recipeResList.Length - 1);
 			RecipeRes recipe = recipeResList[randomIndex];
 			
-			// Suffle through recipe to not get too much same recipe
-			while(lastRecipeList.Contains(recipe)) {
+			while (waitingRecipeList.Count((waitingRecipe) => waitingRecipe == recipe) >= uniqueRecipeMax) {
 				randomIndex = GD.RandRange(0, recipeResList.Length - 1);
 				recipe = recipeResList[randomIndex];
 			}
-			
-			
-			if(lastRecipeList.Count >= uniqueRecipeInTurnMax) {
-				lastRecipeList.RemoveAt(0);
-				lastRecipeList.Add(recipe);
-			}
-			
-			waitingRecipeList.Add(recipe);
-			
-			OnRecipeSpawn?.Invoke(this, EventArgs.Empty);
 
+
+			waitingRecipeList.Add(recipe);
+			OnRecipeSpawn?.Invoke(this, EventArgs.Empty);
 		}
 
 	}

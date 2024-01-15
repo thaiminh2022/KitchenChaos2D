@@ -30,16 +30,16 @@ public partial class BindingSingleUI : HBoxContainer {
 			return;
 		}
 
-        bool matchedInputType =
-            @event is InputEventKey || @event is InputEventJoypadButton || @event is InputEventJoypadMotion;
+		bool matchedInputType =
+			@event is InputEventKey || @event is InputEventJoypadButton || @event is InputEventJoypadMotion;
 
-        if (matchedInputType) {
-            InputManager.Instance.SetKeybind(action, currentInputEvent, @event);
+		if (matchedInputType) {
+			InputManager.Instance.SetKeybind(action, currentInputEvent, @event);
 
-            SetBindingData(action, @event);
-            bindingBtn.ButtonPressed = false;
-        }
-    }
+			SetBindingData(action, @event);
+			bindingBtn.ButtonPressed = false;
+		}
+	}
 
 	private void BindingBtn_Toggled(bool buttonPressed) {
 		bindingBtn.SetProcessUnhandledInput(buttonPressed);

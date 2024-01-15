@@ -9,4 +9,4 @@ script = ExtResource("3_pyl3n")
 node = ExtResource("2_yubdk")
 icon = ExtResource("1_t7n3t")
 objectName = "Raw Meat"
-itemCost = 4
+itemCost = 3
