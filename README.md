@@ -14,10 +14,14 @@ A port of the famous [**CodeMonkey**][CodeMonkey] 10 hours Unity tutorial: Kitch
 
 </div>
 
-## Table of content
+## ⚠️ If you want to clone the project
+- Please make sure you are using Godot 4.1
+- On first launch, remove the addons folder and open every file in the "scene" directory.
+
+## Table of contents
 
 - [KitchenChaos2D](#kitchenchaos2d)
-  - [Table of content](#table-of-content)
+  - [Table of contents](# table-of-contents)
   - [✨ How To Pronounce My Name](#-how-to-pronounce-my-name)
   - [📰 About](#-about)
   - [🔰 Get Started](#-get-started)
@@ -36,24 +40,24 @@ A port of the famous [**CodeMonkey**][CodeMonkey] 10 hours Unity tutorial: Kitch
 
 ## ✨ How To Pronounce My Name
 
-My birth name is Thai, which is a Vietnamese name. I got my nick name Thaiminh2022 when I was 3 years of age playing games with a brother named Minh.
+My birth name is Thai, and I am Vietnamese. I got my nickname Thaiminh2022 when I was 3 years of age playing games with a brother named Minh.
 
 - Thai: **tie** with a **stress**.
 - Minh: the word **min**
 
 ## 📰 About
 
-- In January, [**CodeMonkey**][CodeMonkey] released one of his most comprehensive tutorial for game development for **free**.
+- In January, [**CodeMonkey**][CodeMonkey] released one of his most comprehensive tutorials for game development for **free**.
 - However, this tutorial use [**Unity**][unity_engine] as the game engine.
-- This is my attempt to port the game to the godot engine in **2D**
+- This is my attempt to port the game to the Godot engine in **2D**
 
 > 📝 Notes </br>
 > I create this repo to document changes I had to make to the source code for it to work with the Godot engine in case anyone have the same problem. </br>
->**If you want to know what are the changes, please prefer to the next next section**.
+>**If you want to know the changes, please refer to the next section**.
 
 ## 🔰 Get Started
 
-- This repo reflects my journey of learning how to do game development using the **godot engine**.
+- This repo reflects my journey of learning how to do game development using the **Godot Engine**.
 - You are **free to use the repo as a starting point**
 
 ```bash
@@ -66,11 +70,11 @@ gh repo clone thaiminh2022/KitchenChaos2D
 
 > **! WARNING** </br>
 > Some practices used in the original [**CodeMonkey**][CodeMonkey] tutorial video have to be changed because of dimension and engine differences. </br>
-> **If you want to know what are the changes, please prefer to the next section**.
+> **If you want to know the changes, please refer to the next section**.
 
 ## 💻 Code Changes
 
-***If you think you have better ideas for these listed problem, see contributing.***
+***If you think you have better ideas for this listed problem, see contributing.***
 
 ### Singleton vs Autoload
 
@@ -89,8 +93,8 @@ public class ClassName {
 }
 ```
 
-If you are using this method, you **HAVE TO** reset the singleton everytime you re-enter your scene, since godot does not do that automatically for you.
-One method is to have a reseter that automatically reset everytime before you enter the scene that contains the singleton.
+If you are using this method, you **HAVE TO** reset the singleton every time you re-enter your scene, since Godot does not do that automatically for you.
+One method is to have a reset-er that automatically resets every time before you enter the scene that contains the singleton.
 
 ```cs
 public class ClassName {
@@ -118,7 +122,7 @@ Autoload in godot is better explained using the [docs][autoload_docs]
 
 ### GetComponent() vs GetNode()
 
-These are Unity and Godot way to basicly get the attached script of a game object, repsectively. However, there are clear differences in syntax and the way both engine work.
+These are Unity and Godot ways to basically get the attached script of a game object, respectively.
 
 ```cs
 using UnityEngine; // GetComponent exists in UnityEngine
@@ -133,18 +137,18 @@ T node = GetNode<T>(pathToNode);
 
 #### GetComponent
 
-- Get the component attach to the current gameobject.
-- If there are multiples component with the same type, it will get the first component.
+- Get the component attached to the current game object.
+- If there are multiple components with the same type, it will get the first component.
 
-> - **GetComponent returns null if there're no component, no error is thrown**
-> - **GetComponent can get interface  that given to the component**
+> - **GetComponent returns null if there are no components, no error is thrown**
+> - **GetComponent can get interface  that is given to the component**
 
 #### GetNode
 
 - Get the children node of the node where the function is called.
 - You have to specify the path, multiple component will results in the first instance.
 
-> - **GetNode returns null if there're no component in the specified path, no error is thrown**
+> - **GetNode returns null if there are no component in the specified path, no error is thrown**
 > - **GetNode cannot get interface  that given to the component**
 
 **Solution** </br>
@@ -152,7 +156,7 @@ Use pattern matching instead
 
 ```cs
 interface IInterface {
-    // A interface
+    //An interface
 }
 
 if (component is IInterface _interface) {
@@ -163,7 +167,7 @@ if (component is IInterface _interface) {
 ### EventHandler vs [Signal]
 
 - EventHandler is a standard c# delegate use for **event**, see **Observer pattern**.
-- Signal is an attribute, which is also Godot own take on **event**, use EventHandler under the hood with some differences.
+- Signal is an attribute, which is also Godot's own take on **event**, use EventHandler under the hood with some differences.
 
 ```csharp
 using System; // EventHandler exists in System
@@ -181,15 +185,15 @@ private event EventHandler<EventArgs> OnEventHappend;
 | Interaction with other nodes  |     Only in C# files     | Interact with anything using the signal tab |
 | Usage in interface            | Can be use in interfaces |        Cannot be used in interfaces         |
 
-I originally use signal as it was more conventional for Godot, however CodeMonkey later use EventHandler in an interface, which sinal can't so I switched back to EventHandler. </br>
+I originally used signal as it was more conventional for Godot, however CodeMonkey later used EventHandler in an interface, which signal can't so I switched back to EventHandler. </br>
 
 >**Warning** </br>
-> If you are using a static event, you **HAVE TO** unsubcribe before the object goes out of scope. Most common way is do it in the _ExitTree override method. </br>
-> Another good option is to have a ResetScript that does that automaticly everytime before you enter the game scene.
+> If you are using a static event, you **HAVE TO** unsubscribe before the object goes out of scope. Most common way is to do it in the _ExitTree override method. </br>
+> Another good option is to have a ResetScript that does that automatically every time before you enter the game scene.
 
 ### In-script counter vs Timer node
 
-It's really common in game developement to have a counter varible which track the time before some actions happen. This can be done by using a in-script counter varible or the Timer node.
+It's really common in game development to have a counter variable that track the time before some actions happen. This can be done by using an in-script counter variable or the Timer node.
 
 For more details, checkout [**Timer Docs**][timer_docs]
 
@@ -199,7 +203,7 @@ For more details, checkout [**Timer Docs**][timer_docs]
 using Godot;
 
 float counter = 0; // The counting time (in seconds)
-float counterMax = 3; // The maxium time (in seconds)
+float counterMax = 3; // The maximum time (in seconds)
 
 public override void _Process(delta) {
   counter += delta;
@@ -213,7 +217,7 @@ public override void _Process(delta) {
 }
 ```
 
-This method is very common if you are comming from Unity. However, it requires a lot of boilerplate code.
+This method is very common if you are coming from Unity. However, it requires a lot of boilerplate code.
 
 #### Timer node (better option 90% of the time)
 
@@ -228,17 +232,17 @@ override void _Ready() {
 }
 
 private void TimerTimeout() {
-  // This will be call after setuped amount of second in the editor.
+  // This will be called after setup amount of second in the editor.
 }
 
 private override void _ExitTree() {
-  // It's also good to unsubcribe before the node goes out of scope
+  // It's also good to unsubscribe before the node goes out of scope
   timer.Timeout -= TimerTimeout;
 }
 
 ```
 
-This should be the better way. However it's only recommended to use Timer node if your wait time is **more than 0.05 seconds**. If your wait time is longer than that, please prefer the in-script method.
+This should be the better way. However, use Timer node if your wait time is **more than 0.05 seconds**. Otherwise, use the in-script method.
 
 ## ⚠️ License
 
